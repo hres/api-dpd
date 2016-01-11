@@ -11,9 +11,7 @@ using System.Data.Odbc;
 using Oracle.ManagedDataAccess.Client;
 namespace drug
 {
-    /// <summary>
-    /// Summary description for Class1
-    /// </summary>
+
     public class DBConnection
     {
 

@@ -131,136 +131,57 @@
     </header>
     <main role="main" property="mainContentOfPage" class="container">
        
-        <div id="body">
-            <section class="featured">
-                <div class="content-wrapper">
-                    <hgroup class="title">
-                        <h1>Drug Product Database APIs</h1>
-                    </hgroup>
-                    <table class="wb-tables table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Request Type:
-                                </th>
-                                <th scope=colgroup colspan=2>
-                                    Format:
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Get All Drug Product:</td>
-                                <td> <a class="btn btn-default" href="/api/drugproduct/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/drugproduct/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Drug Product Id = 100: </td>
-                                <td> <a class="btn btn-default" href="/api/drugproduct?id=100&type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/drugproduct?id=100&type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Drug Product DIN = 00016578: </td>
-                                <td> <a class="btn btn-default" href="/api/drugproduct?din=00016578&type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/drugproduct?din=00016578&type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Active Ingredient:</td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Active Ingredient = 1:</td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/1/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/1/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Companies:</td>
-                                <td><a class="btn btn-default" href="/api/company/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/company/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Company - Company Code = 10107:</td>
-                                <td><a class="btn btn-default" href="/api/company/10107?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/company/10107?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Route:</td>
-                                <td><a class="btn btn-default" href="/api/route/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/route/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Route - Drug code = 100 (Topical):</td>
-                                <td><a class="btn btn-default" href="/api/route/100/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/route/100/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Status:</td>
-                                <td><a class="btn btn-default" href="/api/status/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Status - Drug Code = 1000 (Discontinued...):</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Schedule - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Schedule - DrugCode - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
+        <div>
+            <h2>Search by drug product id</h2>
+            <input type="text" id="id" size="15" />
+            <input type="button" value="Search" onclick="find();" />
+            <p id="product" />
 
-                            <tr>
-                                <td>Get All Form - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Form - By To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Therapeutic Class - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Therapeutic Class - By Id - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Veterinary Species - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Veterinary Species - By Id - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get All Pharmaceutical - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Pharmaceutical - By Id To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </section>
-
+            <div id="placeholder"></div>
         </div>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+    var uri = 'api/drugproduct';
+
+    function find() {
+        var id = $('#id').val();
+           $.getJSON(uri + '/' + id + '/?type=json').done(function (data) {
+              // Add a list item for the product.
+              var output = "<div class='table-responsive'>";
+
+              output += "<table id='tabledata' class='table table-striped wb-tables'>";
+              output += "<caption class='text-left'>Search Result<br><span class='wb-inv'>Food Search Results</span></caption>";
+              output += "<thead>";
+              output += "<tr>";
+              output += "<th id='din' scope='col' class='hg-primary align-top' >DIN</th>";
+              output += "<th id='product' scope='col' class='hg-primary align-top' >Product</th>";
+              output += "<th id='company' scope='col' class='hg-primary align-top' >Company</th>";
+              output += "<th id='class' scope='col' class='hg-primary align-top' >Class</th>";
+
+              output += "</tr></thead><tbody>";
+             
+                  output += "<tr><td>";
+                  output += data.DrugIdentificationNumber;
+                  output += "</td><td>";
+                  output += data.BrandNameE;
+                  output += "</td><td>";
+                  output += data.CompanyCode;
+                  output += "</td><td>";
+                  output += data.ClassE;
+                  output += "</td>";
+                  output += "</tr>";
+            
+
+              output += "</tbody></table>";
+              document.getElementById("placeholder").innerHTML = output;
+          })
+          .fail(function (jqXHR, textStatus, err) {
+            $('#product').text('Error: ' + err);
+          });
+    }
+    </script>
+ 
         <div class="row pagedetails">
             <div class="col-sm-5 col-xs-12 datemod">
                 <dl id="wb-dtmd">

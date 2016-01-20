@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
     public class DrugProduct
     {
         public int DrugCode { get; set; }
-        public string DrugIndentificationNumber { get; set; }
+        public string DrugIdentificationNumber { get; set; }
         public string BrandNameE { get; set; }
         public string BrandNameF { get; set; }
         public string DescriptorE { get; set; }

@@ -29,7 +29,15 @@ namespace DpdWebApi.Controllers
             return drugProduct;
         }
 
-
+        public DrugProduct GetDrugProductByDin(string din)
+        {
+            DrugProduct drugProduct = databasePlaceholder.Get(din);
+            if (drugProduct == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return drugProduct;
+        }
         //public HttpResponseMessage PostDrugProduct(DrugProduct drugProduct)
         //{
         //    drugProduct = databasePlaceholder.Add(drugProduct);

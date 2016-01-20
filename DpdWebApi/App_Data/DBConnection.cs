@@ -61,7 +61,7 @@ namespace drug
                                 item.DescriptorE = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
                                 item.DescriptorF = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.DrugIndentificationNumber  = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+                                item.DrugIdentificationNumber  = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
                                 item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["NUMBER_OF_AIS"]);
 
                                 items.Add(item);
@@ -114,7 +114,7 @@ namespace drug
                                 item.DescriptorE = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
                                 item.DescriptorF = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.DrugIndentificationNumber  = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+                                item.DrugIdentificationNumber  = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
                                 item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["NUMBER_OF_AIS"]);
 
                                 drugProduct = item;
@@ -125,6 +125,59 @@ namespace drug
                 catch (Exception ex)
                 {
                     string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                    Console.WriteLine(errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return drugProduct;
+        }
+
+        public DrugProduct GetDrugProductByDin(String din)
+        {
+            var drugProduct = new DrugProduct();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_IDENTIFICATION_NUMBER = " + din;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new DrugProduct();
+                                item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
+                                item.BrandNameE = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                item.ClassE = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
+                                item.DescriptorE = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
+                                item.DescriptorF = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
+
+                                drugProduct = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDin()");
                     ExceptionHelper.LogException(ex, errorMessages);
                     Console.WriteLine(errorMessages);
                 }

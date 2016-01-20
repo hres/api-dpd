@@ -26,6 +26,12 @@ namespace DpdWebApi.Models
         return _drugProduct;
     }
 
+    public DrugProduct Get(string din)
+    {
+        _drugProduct = dbConnection.GetDrugProductByDin(din);
+        return _drugProduct;
+    }
+
 
     }
 }

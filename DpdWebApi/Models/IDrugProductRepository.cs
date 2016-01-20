@@ -10,8 +10,9 @@ namespace DpdWebApi.Models
     {
         IEnumerable<DrugProduct> GetAll();
         DrugProduct Get(int id);
-       // DrugProduct Add(DrugProduct drugProduct);
-       // void Remove(int id);
-       // bool Update(DrugProduct drugProduct);
+        DrugProduct Get(string din);
+        // DrugProduct Add(DrugProduct drugProduct);
+        // void Remove(int id);
+        // bool Update(DrugProduct drugProduct);
     }
 }

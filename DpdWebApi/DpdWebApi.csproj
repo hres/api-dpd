@@ -306,6 +306,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="index-en.html" />
     <Content Include="index-fr.html" />
+    <Content Include="searchDrugProductById_en.html" />
+    <Content Include="searchDrugProduct_en.html" />
     <Content Include="Views\Shared\Error404.htm" />
     <Content Include="Views\Shared\Error500.htm" />
     <Content Include="Views\Shared\GenericError.htm" />

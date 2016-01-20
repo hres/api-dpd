@@ -154,14 +154,14 @@
                                 <td><a class="btn btn-default" href="/api/drugproduct/?type=xml">XML</a></td>
                             </tr>
                             <tr>
-                                <td>Get Drug Product Id = 100: </td>
-                                <td> <a class="btn btn-default" href="/api/drugproduct?id=100&type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/drugproduct?id=100&type=xml">XML</a></td>
+                                <td>Get Drug Product Id = : <input type="text" id="strId" size="15" /></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?id= ' + document.getElementById('strId').value + '&type=json'">Json</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?id= ' + document.getElementById('strId').value + '&type=xml'">XML</a></td>
                             </tr>
                             <tr>
-                                <td>Get Drug Product DIN = 00016578: </td>
-                                <td> <a class="btn btn-default" href="/api/drugproduct?din=00016578&type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/drugproduct?din=00016578&type=xml">XML</a></td>
+                                <td>Get Drug Product DIN = : <input type="text" id="strDin" size="15" /></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=json'">Json</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=xml'">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Active Ingredient:</td>
@@ -259,7 +259,13 @@
 
                 </div>
             </section>
-
+            <script type="text/javascript">
+                $("#btnSend").click( function() {
+            var apiUrl = "/api/drugproduct/";
+            var id = document.getElementById(strId);
+            var din = document.getElementById(strDin);
+            
+            };
         </div>
         <div class="row pagedetails">
             <div class="col-sm-5 col-xs-12 datemod">

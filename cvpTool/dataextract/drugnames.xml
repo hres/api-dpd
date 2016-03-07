@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Table>
+<drugname name="ABBOTT-CITALOPRAM" />
+<drugname name="ABBOTT-CLOPIDOGREL"/>
+<drugname name="ABBOTT-LEVETIRACETAM" />
+<drugname name="ABBOTT-OLANZAPINE" />
+<drugname name="ABBOTT-PANTOPRAZOLE" />
+<drugname name="ABBOTT-QUETIAPINE" />
+<drugname name="ABBOTT-RABEPRAZOLE" />
+<drugname name="ABBOTT-TOPIRAMATE" />
+<drugname name="ABELCET" />
+<drugname name="ABILIFY" />
+<drugname name="ABLAVAR" />
+<drugname name="ABRAXANE" />
+<drugname name="ABSTRAL" />
+<drugname name="ACCEL" />
+<drugname name="ACCEL-ALENDRONATE" />
+<drugname name="ACCEL-AMLODIPINE" />
+<drugname name="ACCEL-CELECOXIB" />
+<drugname name="ATORVASTATIN-10" />
+<drugname name="ATORVASTATIN-20" />
+<drugname name="ATORVASTATIN-40" />
+<drugname name="ATORVASTATIN-80" />
+</Table>
+

@@ -1,5 +1,7 @@
-﻿using System.Net.Http.Formatting;
+﻿using Newtonsoft.Json.Converters;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Web.Http;
 
 
@@ -15,7 +17,7 @@ namespace DpdWebApi
             
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension ID",
-                routeTemplate: "api/{controller}/{id}/{din}.{ext}",
+                routeTemplate: "api/{controller}/{id}/{din}/{drugname}.{ext}",
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension DIN",
@@ -32,9 +34,11 @@ namespace DpdWebApi
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "json", new MediaTypeHeaderValue("application/json")));
+            config.Formatters.JsonFormatter.SupportedEncodings.Add(Encoding.GetEncoding("utf-8"));
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-dd" });
             config.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
-           
-            
+
+
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
             // To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
             // For more information, visit http://go.microsoft.com/fwlink/?LinkId=279712.

@@ -1,6 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="<bean:message bundle='clfRes' key='label.app.lang'/>" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
 <html class="no-js" lang="en" dir="ltr">
 <!--<![endif]-->
@@ -157,134 +155,134 @@
     <!-- BREADCRUMB ENDS | FIN DE BREADCRUMB -->
     <!-- CONTENT BEGINS | DEBUT DU CONTENU -->
 
-        <main role="main" property="mainContentOfPage" class="container">
-            <div id="body">
-                <section class="featured">
-                    <div class="content-wrapper">
-                        <hgroup class="title">
-                            <h1>Canada Vigilance Adverse Reaction Database - APIs</h1>
-                        </hgroup>
-                        <div class="col-md-4 col-sm-4">
-                            <a href="http://localhost:64591/searchReport-en.html">Search by Brand Name</a>
-                        </div>
-                        
-                        <div class="col-md-4 col-sm-4">
-                                <a href="http://localhost:64591/reference-en.html">API Reference</a>
-                        </div>
-                            <table class="wb-tables table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Request by:
-                                        </th>
-                                        <th scope=colgroup colspan=2>
-                                            Format:
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Drug product ingredients:</td>
-                                        <td><a class="btn btn-default" href="/api/drugproductingredient/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/drugproductingredient/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Drug Products:</td>
-                                        <td> <a class="btn btn-default" href="/api/drugproduct/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/drugproduct/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gender:</td>
-                                        <td> <a class="btn btn-default" href="/api/gender/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/gender/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Outcome:</td>
-                                        <td> <a class="btn btn-default" href="/api/outcome/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/outcome/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Reactions:</td>
-                                        <td> <a class="btn btn-default" href="/api/reaction/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/reaction/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Report Drug:</td>
-                                        <td> <a class="btn btn-default" href="/api/reportdrug/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/reportdrug/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Report Drug Indication:</td>
-                                        <td><a class="btn btn-default" href="/api/reportdrugindication/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/reportdrugindication/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Report Links:</td>
-                                        <td><a class="btn btn-default" href="/api/reportlink/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/reportlink/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Report Type Lx:</td>
-                                        <td><a class="btn btn-default" href="/api/reporttypelx/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/reporttypelx/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Reports:</td>
-                                        <td><a class="btn btn-default" href="/api/report/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/report/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>All Report by Drug Name:<input type="text" id="strDrugName" size="15" /></td>
-                                        <td><a class="btn btn-default" href='' onclick="this.href='/api/report?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=json'">Json</a></td>
-                                        <td><a class="btn btn-default" href='' onclick="this.href = '/api/report?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=xml'">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Seriousness Lx:</td>
-                                        <td><a class="btn btn-default" href="/api/seriousness/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/seriousness/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Source Lx:</td>
-                                        <td><a class="btn btn-default" href="/api/source/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/source/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>All Report Info:</td>
-                                        <td><a class="btn btn-default" href="/api/reportinfo/?type=json">Json</a></td>
-                                        <td><a class="btn btn-default" href="/api/reportinfo/?type=xml">XML</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>All Report Info by Drug Name:<input type="text" id="strDrugName" size="15" /></td>
-                                        <td><a class="btn btn-default" href='' onclick="this.href='/api/reportinfo?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=json'">Json</a></td>
-                                        <td><a class="btn btn-default" href='' onclick="this.href = '/api/reportinfo?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=xml'">XML</a></td>
-                                    </tr>
-                                 
-                                </tbody>
-                            </table>
+    <main role="main" property="mainContentOfPage" class="container">
+        <div id="body">
+            <section class="featured">
+                <div class="content-wrapper">
+                    <hgroup class="title">
+                        <h1>Canada Vigilance Adverse Reaction Database - APIs</h1>
+                    </hgroup>
+                    <div class="col-md-4 col-sm-4">
+                        <a href="http://localhost:64591/searchReport-en.html">Search by Brand Name</a>
+                    </div>
 
-                        </div>
-                </section>
+                    <div class="col-md-4 col-sm-4">
+                        <a href="http://localhost:64591/reference-en.html">API Reference</a>
+                    </div>
+                    <table class="wb-tables table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Request by:
+                                </th>
+                                <th scope=colgroup colspan=2>
+                                    Format:
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Drug product ingredients:</td>
+                                <td><a class="btn btn-default" href="/api/drugproductingredient/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/drugproductingredient/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Drug Products:</td>
+                                <td> <a class="btn btn-default" href="/api/drugproduct/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/drugproduct/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td> <a class="btn btn-default" href="/api/gender/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/gender/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Outcome:</td>
+                                <td> <a class="btn btn-default" href="/api/outcome/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/outcome/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Reactions:</td>
+                                <td> <a class="btn btn-default" href="/api/reaction/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/reaction/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Report Drug:</td>
+                                <td> <a class="btn btn-default" href="/api/reportdrug/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/reportdrug/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Report Drug Indication:</td>
+                                <td><a class="btn btn-default" href="/api/reportdrugindication/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/reportdrugindication/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Report Links:</td>
+                                <td><a class="btn btn-default" href="/api/reportlink/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/reportlink/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Report Type Lx:</td>
+                                <td><a class="btn btn-default" href="/api/reporttypelx/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/reporttypelx/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Reports:</td>
+                                <td><a class="btn btn-default" href="/api/report/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/report/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>All Report by Drug Name:<input type="text" id="strDrugName" size="15" /></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='/api/report?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=json'">Json</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href = '/api/report?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=xml'">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Seriousness Lx:</td>
+                                <td><a class="btn btn-default" href="/api/seriousness/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/seriousness/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>Source Lx:</td>
+                                <td><a class="btn btn-default" href="/api/source/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/source/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>All Report Info:</td>
+                                <td><a class="btn btn-default" href="/api/reportinfo/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="/api/reportinfo/?type=xml">XML</a></td>
+                            </tr>
+                            <tr>
+                                <td>All Report Info by Drug Name:<input type="text" id="strDrugName" size="15" /></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='/api/reportinfo?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=json'">Json</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href = '/api/reportinfo?drugname=' + '%' + document.getElementById('strDrugName').value + '%' + '&type=xml'">XML</a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </section>
 
 
+        </div>
+
+        <div class="row pagedetails">
+            <div class="col-sm-5 col-xs-12 datemod">
+                <dl id="wb-dtmd">
+                    <dt>Date modified:&#32;</dt>
+                    <dd><time property="dateModified">2016-01-12</time></dd>
+                </dl>
             </div>
-
-            <div class="row pagedetails">
-                <div class="col-sm-5 col-xs-12 datemod">
-                    <dl id="wb-dtmd">
-                        <dt>Date modified:&#32;</dt>
-                        <dd><time property="dateModified">2016-01-12</time></dd>
-                    </dl>
-                </div>
-                <div class="clear visible-xs"></div>
-                <div class="col-sm-4 col-xs-6">
-                    <a href="http://www.canada.ca/en/contact/feedback.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Feedback<span class="wb-inv"> about this web site</span></a>
-                </div>
-                <div class="col-sm-3 col-xs-6 text-right">
-                    <div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
-                </div>
-                <div class="clear visible-xs"></div>
+            <div class="clear visible-xs"></div>
+            <div class="col-sm-4 col-xs-6">
+                <a href="http://www.canada.ca/en/contact/feedback.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Feedback<span class="wb-inv"> about this web site</span></a>
             </div>
-        </main>
-       <!-- CONTENT ENDS | FIN DU CONTENU -->
+            <div class="col-sm-3 col-xs-6 text-right">
+                <div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
+            </div>
+            <div class="clear visible-xs"></div>
+        </div>
+    </main>
+    <!-- CONTENT ENDS | FIN DU CONTENU -->
     <!-- FOOTER BEGINS | DEBUT DU PIED DE LA PAGE -->
     <footer role="contentinfo" id="wb-info">
         <nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">

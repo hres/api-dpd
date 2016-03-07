@@ -16,7 +16,7 @@ namespace DpdWebApi
            // config.MapHttpAttributeRoutes();
             
             config.Routes.MapHttpRoute(
-                name: "Api UriPathExtension ID",
+                name: "Api UriPathExtension ID DIN and DrugName",
                 routeTemplate: "api/{controller}/{id}/{din}/{drugname}.{ext}",
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(

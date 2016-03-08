@@ -31,6 +31,7 @@
 
     <![endif]-->
     <link rel="stylesheet" href="inspections.css">
+
     <noscript><link rel="stylesheet" href="./wet/css/noscript.min.css" /></noscript>
     <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
     <script>dataLayer1 = [];</script>
@@ -153,123 +154,117 @@
                         <tbody>
                             <tr>
                                 <td>Get All Drug Product:</td>
-                                <td> <a class="btn btn-default" href="/api/drugproduct/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/drugproduct/?type=xml">XML</a></td>
+                                <td> <a class="btn btn-default" href="./api/drugproduct/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/drugproduct/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Drug Product Id = : <input type="text" id="strId" size="15" /></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?id= ' + document.getElementById('strId').value + '&type=json'">Json</a></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?id= ' + document.getElementById('strId').value + '&type=xml'">XML</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?id= ' + document.getElementById('strId').value + '&type=json'">Json</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?id= ' + document.getElementById('strId').value + '&type=xml'">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Drug Product DIN = : <input type="text" id="strDin" size="15" /></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=json'">Json</a></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='/api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=xml'">XML</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=json'">Json</a></td>
+                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=xml'">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Active Ingredient:</td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/activeingredient/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/activeingredient/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Active Ingredient = 1:</td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/1/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/activeingredient/1/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/activeingredient/1/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/activeingredient/1/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Companies:</td>
-                                <td><a class="btn btn-default" href="/api/company/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/company/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/company/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/company/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Company - Company Code = 10107:</td>
-                                <td><a class="btn btn-default" href="/api/company/10107?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/company/10107?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/company/10107?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/company/10107?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Route:</td>
-                                <td><a class="btn btn-default" href="/api/route/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/route/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/route/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/route/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Route - Drug code = 100 (Topical):</td>
-                                <td><a class="btn btn-default" href="/api/route/100/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/route/100/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/route/100/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/route/100/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Status:</td>
-                                <td><a class="btn btn-default" href="/api/status/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Status - Drug Code = 1000 (Discontinued...):</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Schedule - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Schedule - DrugCode - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
 
                             <tr>
                                 <td>Get All Form - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Form - By To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Therapeutic Class - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Therapeutic Class - By Id - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Veterinary Species - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Veterinary Species - By Id - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Pharmaceutical - To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get Pharmaceutical - By Id To come:</td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="/api/status/1000/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
                             </tr>
                         </tbody>
                     </table>
 
                 </div>
             </section>
-            <script type="text/javascript">
-                $("#btnSend").click( function() {
-            var apiUrl = "/api/drugproduct/";
-            var id = document.getElementById(strId);
-            var din = document.getElementById(strDin);
-            
-            };
-        </div>
+            </div>
+
         <div class="row pagedetails">
             <div class="col-sm-5 col-xs-12 datemod">
                 <dl id="wb-dtmd">
@@ -379,7 +374,7 @@
     <script src="./wet/assets/ie8-wet-boew2.min.js"></script>
     <![endif]-->
     <script src="./wet/js/theme.min.js"></script>
-    <script src="./js/inspections.js"></script>
+    <script src="./js/dpdfunction.js"></script>
     <!--[if lt IE 10 | !IE ]><!-->
     <script src="./js/jquery.xdomainrequest.min.js"></script>
     <!--<![endif]-->

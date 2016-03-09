@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Data;
+//using System.Data.SqlClient;
+using System.Text;
 using System.Configuration;
 using DpdWebApi.Models;
+using System.Data.Odbc;
 using Oracle.ManagedDataAccess.Client;
+
 namespace drug
 {
 
@@ -66,7 +72,7 @@ namespace drug
                 }
                 catch (Exception ex)
                 {
-                    string errorMessages = string.Format("DbConnection.cs - GetAllDrugProduct()");
+                    string errorMessages = string.Format("DbConnection.cs - GetAllInspections()");
                     ExceptionHelper.LogException(ex, errorMessages);
                     Console.WriteLine(errorMessages);
                 }
@@ -566,7 +572,7 @@ namespace drug
                 }
                 catch (Exception ex)
                 {
-                    string errorMessages = string.Format("DbConnection.cs - GetStatisByDrugCode()");
+                    string errorMessages = string.Format("DbConnection.cs - GetStatusByDrugCode()");
                     ExceptionHelper.LogException(ex, errorMessages);
                 }
                 finally
@@ -576,6 +582,522 @@ namespace drug
                 }
             }
             return status;
+        }
+
+        public List<Form> GetAllForm()
+        {
+            var items = new List<Form>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM";
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new Form();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.PharmFormCode = dr["PHARM_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARM_FORM_CODE"]);
+                                item.PharmaceuticalForm = dr["PHARMACEUTICAL_FORM"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM"].ToString().Trim();
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllForm()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+
+        public Form GetFormByDrugCode(int id)
+        {
+            var form = new Form();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM WHERE DRUG_CODE = " + id;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new Form();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.PharmFormCode = dr["PHARM_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARM_FORM_CODE"]);
+                                item.PharmaceuticalForm = dr["PHARMACEUTICAL_FORM"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM"].ToString().Trim();
+
+                                form = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetFormByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return form;
+        }
+
+        public List<Packaging> GetAllPackaging()
+        {
+            var items = new List<Packaging>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING";
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new Packaging();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.Upc = dr["UPC"] == DBNull.Value ? string.Empty : dr["UPC"].ToString().Trim();
+                                item.PackageSizeUnit = dr["PACKAGE_SIZE_UNIT"] == DBNull.Value ? string.Empty : dr["PACKAGE_SIZE_UNIT"].ToString().Trim();
+                                item.PackageType = dr["PACKAGE_TYPE"] == DBNull.Value ? string.Empty : dr["PACKAGE_TYPE"].ToString().Trim();
+                                item.PackageSize = dr["PACKAGE_SIZE"] == DBNull.Value ? string.Empty : dr["PACKAGE_SIZE"].ToString().Trim();
+                                item.ProductInformation = dr["PRODUCT_INFORMATION"] == DBNull.Value ? string.Empty : dr["PRODUCT_INFORMATION"].ToString().Trim();
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllPackaging()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+
+        public Packaging GetPackagingByDrugCode(int id)
+        {
+            var packaging = new Packaging();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING WHERE DRUG_CODE = " + id;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new Packaging();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.Upc = dr["UPC"] == DBNull.Value ? string.Empty : dr["UPC"].ToString().Trim();
+                                item.PackageSizeUnit = dr["PACKAGE_SIZE_UNIT"] == DBNull.Value ? string.Empty : dr["PACKAGE_SIZE_UNIT"].ToString().Trim();
+                                item.PackageType = dr["PACKAGE_TYPE"] == DBNull.Value ? string.Empty : dr["PACKAGE_TYPE"].ToString().Trim();
+                                item.PackageSize = dr["PACKAGE_SIZE"] == DBNull.Value ? string.Empty : dr["PACKAGE_SIZE"].ToString().Trim();
+                                item.ProductInformation = dr["PRODUCT_INFORMATION"] == DBNull.Value ? string.Empty : dr["PRODUCT_INFORMATION"].ToString().Trim();
+
+                                packaging = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetPackagingByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return packaging;
+        }
+
+        public List<PharmaceuticalStd> GetAllPharmaceuticalStd()
+        {
+            var items = new List<PharmaceuticalStd>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PHARMACEUTICAL_STD";
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new PharmaceuticalStd();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.PharmaceuticalStd = dr["PHARMACEUTICAL_STD"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_STD"].ToString().Trim();
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllPharamceuticalStd()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+
+        public PharmaceuticalStd GetPharmaceuticalStdByDrugCode(int id)
+        {
+            var pharmaceuticalStd = new PharmaceuticalStd();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PHARMACEUTICAL_STD WHERE DRUG_CODE = " + id;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new PharmaceuticalStd();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                
+                                pharmaceuticalStd = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetPharmaceuticalStdByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return pharmaceuticalStd;
+        }
+
+        public List<Schedule> GetAllSchedule()
+        {
+            var items = new List<Schedule>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE";
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new Schedule();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.Schedule = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllSchedule()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+
+        public Schedule GetScheduleByDrugCode(int id)
+        {
+            var schedule = new Schedule();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE WHERE DRUG_CODE = " + id;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new Schedule();
+                                item.Schedule = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+
+                                schedule = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetScheduleByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return schedule;
+        }
+
+        public List<TherapeuticClass> GetAllTherapeuticClass()
+        {
+            var items = new List<TherapeuticClass>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_THERAPEUTIC_CLASS";
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new TherapeuticClass();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.TcAtcNumber = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
+                                item.TcAtc = dr["TC_ATC"] == DBNull.Value ? string.Empty : dr["TC_ATC"].ToString().Trim();
+                                item.TcAhfsNumber = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
+                                item.TcAhfs = dr["TC_AHFS"] == DBNull.Value ? string.Empty : dr["TC_AHFS"].ToString().Trim();
+
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllTherapeuticClass()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+
+        public TherapeuticClass GetTherapeuticClassByDrugCode(int id)
+        {
+            var therapeuticClass = new TherapeuticClass();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_THERAPEUTIC_CLASS WHERE DRUG_CODE = " + id;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new TherapeuticClass();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.TcAtcNumber = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
+                                item.TcAtc = dr["TC_ATC"] == DBNull.Value ? string.Empty : dr["TC_ATC"].ToString().Trim();
+                                item.TcAhfsNumber = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
+                                item.TcAhfs = dr["TC_AHFS"] == DBNull.Value ? string.Empty : dr["TC_AHFS"].ToString().Trim();
+
+                                therapeuticClass = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetTherapeuticClassByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return therapeuticClass;
+        }
+
+        public List<VeterinarySpecies> GetAllVeterinarySpecies()
+        {
+            var items = new List<TherapeuticClass>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_VETERINARY_SPECIES";
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new VeterinarySpecies();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.VetSpecies = dr["VET_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SPECIES"].ToString().Trim();
+                                item.VetSubSpecies = dr["VET_SUB_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SUB_SPECIES"].ToString().Trim();
+
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetAllVeterinarySpecies()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+
+        public VeterinarySpecies GetVeterinarySpeciesByDrugCode(int id)
+        {
+            var veterinarySpecies = new VeterinarySpecies();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_VETERINARY_SPECIES WHERE DRUG_CODE = " + id;
+
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new VeterinarySpecies();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.VetSpecies = dr["VET_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SPECIES"].ToString().Trim();
+                                item.VetSubSpecies = dr["VET_SUB_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SUB_SPECIES"].ToString().Trim();
+
+                                veterinarySpecies = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetVeterinarySpeciesByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return veterinarySpecies;
         }
     }
 

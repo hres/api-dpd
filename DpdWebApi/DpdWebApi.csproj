@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DpdWebApi</RootNamespace>
     <AssemblyName>DpdWebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -212,20 +212,38 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ActiveIngredient.cs" />
+    <Compile Include="Models\ActiveIngredientRepository.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyRepository.cs" />
-    <Compile Include="Models\StatusRepository.cs" />
-    <Compile Include="Models\RouteRepository.cs" />
-    <Compile Include="Models\ICompanyRepository.cs" />
-    <Compile Include="Models\IStatusRepository.cs" />
-    <Compile Include="Models\IRouteRepository.cs" />
-    <Compile Include="Models\Route.cs" />
-    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\DrugProduct.cs" />
-    <Compile Include="Models\ActiveIngredientRepository.cs" />
     <Compile Include="Models\DrugProductRepository.cs" />
+    <Compile Include="Models\Form.cs" />
+    <Compile Include="Models\FormRepository.cs" />
     <Compile Include="Models\IActiveIngredientRepository.cs" />
+    <Compile Include="Models\ICompanyRepository.cs" />
     <Compile Include="Models\IDrugProductRepository.cs" />
+    <Compile Include="Models\IFormRepository.cs" />
+    <Compile Include="Models\IPackagingRepository.cs" />
+    <Compile Include="Models\IPharmaceuticalStdRepository.cs" />
+    <Compile Include="Models\IRouteRepository.cs" />
+    <Compile Include="Models\IScheduleRepository.cs" />
+    <Compile Include="Models\IStatusRepository.cs" />
+    <Compile Include="Models\ITherapeuticClassRepository.cs" />
+    <Compile Include="Models\IVeterinarySpeciesRepository.cs" />
+    <Compile Include="Models\Packaging.cs" />
+    <Compile Include="Models\PackagingRepository.cs" />
+    <Compile Include="Models\PharmaceuticalStd.cs" />
+    <Compile Include="Models\PharmaceuticalStdRepository.cs" />
+    <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\RouteRepository.cs" />
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\ScheduleRepository.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\StatusRepository.cs" />
+    <Compile Include="Models\TherapeuticClass.cs" />
+    <Compile Include="Models\TherapeuticClassRepository.cs" />
+    <Compile Include="Models\VeterinarySpecies.cs" />
+    <Compile Include="Models\VeterinarySpeciesRepository.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />

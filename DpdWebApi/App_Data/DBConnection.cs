@@ -66,7 +66,7 @@ namespace drug
                 }
                 catch (Exception ex)
                 {
-                    string errorMessages = string.Format("DbConnection.cs - GetAllInspections()");
+                    string errorMessages = string.Format("DbConnection.cs - GetAllDrugProduct()");
                     ExceptionHelper.LogException(ex, errorMessages);
                     Console.WriteLine(errorMessages);
                 }

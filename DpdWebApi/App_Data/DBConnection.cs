@@ -780,7 +780,7 @@ namespace drug
                             {
                                 var item = new PharmaceuticalStd();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.PharmaceuticalStd = dr["PHARMACEUTICAL_STD"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_STD"].ToString().Trim();
+                                item.pharmaceuticalStd = dr["PHARMACEUTICAL_STD"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_STD"].ToString().Trim();
                                 items.Add(item);
                             }
                         }
@@ -862,7 +862,7 @@ namespace drug
                             {
                                 var item = new Schedule();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.Schedule = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                item.schedule = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
                                 items.Add(item);
                             }
                         }
@@ -903,7 +903,7 @@ namespace drug
                             while (dr.Read())
                             {
                                 var item = new Schedule();
-                                item.Schedule = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                item.schedule = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
 
                                 schedule = item;
                             }
@@ -1016,7 +1016,7 @@ namespace drug
 
         public List<VeterinarySpecies> GetAllVeterinarySpecies()
         {
-            var items = new List<TherapeuticClass>();
+            var items = new List<VeterinarySpecies>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_VETERINARY_SPECIES";
 
             //using (SqlConnection con = new SqlConnection(DpdDBConnection))

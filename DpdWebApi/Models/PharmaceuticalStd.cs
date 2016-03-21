@@ -8,6 +8,6 @@ namespace DpdWebApi.Models
     public class PharmaceuticalStd
     {
         public int DrugCode { get; set; }
-        public String PharmaceuticalStd { get; set; }
+        public String pharmaceuticalStd { get; set; }
     }
 }

@@ -604,8 +604,11 @@ namespace drug
                             {
                                 var item = new Form();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.PharmFormCode = dr["PHARM_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARM_FORM_CODE"]);
-                                item.PharmaceuticalForm = dr["PHARMACEUTICAL_FORM"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM"].ToString().Trim();
+                                item.InactiveDate = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
+                                item.PharmaceuticalFormCode = dr["PHARMACEUTICAL_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARMACEUTICAL_FORM_CODE"]);
+                                item.PharmaceuticalFormE = dr["PHARMACEUTICAL_FORM"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM"].ToString().Trim();
+                                item.PharmaceuticalFormF = dr["PHARMACEUTICAL_FORM_F"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM_F"].ToString().Trim();
+
                                 items.Add(item);
                             }
                         }
@@ -647,8 +650,10 @@ namespace drug
                             {
                                 var item = new Form();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.PharmFormCode = dr["PHARM_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARM_FORM_CODE"]);
-                                item.PharmaceuticalForm = dr["PHARMACEUTICAL_FORM"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM"].ToString().Trim();
+                                item.InactiveDate = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
+                                item.PharmaceuticalFormCode = dr["PHARMACEUTICAL_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARMACEUTICAL_FORM_CODE"]);
+                                item.PharmaceuticalFormE = dr["PHARMACEUTICAL_FORM"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM"].ToString().Trim();
+                                item.PharmaceuticalFormF = dr["PHARMACEUTICAL_FORM_F"] == DBNull.Value ? string.Empty : dr["PHARMACEUTICAL_FORM_F"].ToString().Trim();
 
                                 form = item;
                             }
@@ -927,12 +932,13 @@ namespace drug
         public List<TherapeuticClass> GetAllTherapeuticClass()
         {
             var items = new List<TherapeuticClass>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_THERAPEUTIC_CLASS";
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_TC_FOR_ATC";
 
             //using (SqlConnection con = new SqlConnection(DpdDBConnection))
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                OracleCommand test = new OracleCommand("SELECT table_name FROM all_tables WHERE owner='DPD_ONLINE_OWNER'", con);
                 try
                 {
                     con.Open();
@@ -943,11 +949,10 @@ namespace drug
                             while (dr.Read())
                             {
                                 var item = new TherapeuticClass();
-                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.TcAtcCode = dr["TC_ATC_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["TC_ATC_CODE"]);
                                 item.TcAtcNumber = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
-                                item.TcAtc = dr["TC_ATC"] == DBNull.Value ? string.Empty : dr["TC_ATC"].ToString().Trim();
-                                item.TcAhfsNumber = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
-                                item.TcAhfs = dr["TC_AHFS"] == DBNull.Value ? string.Empty : dr["TC_AHFS"].ToString().Trim();
+                                item.TcAtcDescE = dr["TC_ATC_DESC"] == DBNull.Value ? string.Empty : dr["TC_ATC_DESC"].ToString().Trim();
+                                item.TcAtcDescF = dr["TC_ATC_DESC_F"] == DBNull.Value ? string.Empty : dr["TC_ATC_DESC_F"].ToString().Trim();
 
                                 items.Add(item);
                             }
@@ -989,11 +994,10 @@ namespace drug
                             while (dr.Read())
                             {
                                 var item = new TherapeuticClass();
-                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.TcAtcCode = dr["TC_ATC_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["TC_ATC_CODE"]);
                                 item.TcAtcNumber = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
-                                item.TcAtc = dr["TC_ATC"] == DBNull.Value ? string.Empty : dr["TC_ATC"].ToString().Trim();
-                                item.TcAhfsNumber = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
-                                item.TcAhfs = dr["TC_AHFS"] == DBNull.Value ? string.Empty : dr["TC_AHFS"].ToString().Trim();
+                                item.TcAtcDescE = dr["TC_ATC_DESC"] == DBNull.Value ? string.Empty : dr["TC_ATC_DESC"].ToString().Trim();
+                                item.TcAtcDescF = dr["TC_ATC_DESC_F"] == DBNull.Value ? string.Empty : dr["TC_ATC_DESC_F"].ToString().Trim();
 
                                 therapeuticClass = item;
                             }
@@ -1014,10 +1018,10 @@ namespace drug
             return therapeuticClass;
         }
 
-        public List<VeterinarySpecies> GetAllVeterinarySpecies()
+        public List<DrugVeterinarySpecies> GetAllDrugVeterinarySpecies()
         {
-            var items = new List<VeterinarySpecies>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_VETERINARY_SPECIES";
+            var items = new List<DrugVeterinarySpecies>();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_VETERINARY_SPECIES";
 
             //using (SqlConnection con = new SqlConnection(DpdDBConnection))
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
@@ -1032,10 +1036,11 @@ namespace drug
                         {
                             while (dr.Read())
                             {
-                                var item = new VeterinarySpecies();
+                                var item = new DrugVeterinarySpecies();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.VetSpecies = dr["VET_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SPECIES"].ToString().Trim();
-                                item.VetSubSpecies = dr["VET_SUB_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SUB_SPECIES"].ToString().Trim();
+                                item.VetSpeciesCode = dr["VET_SPECIES_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["VET_SPECIES_CODE"]);
+                                item.VetSpeciesE = dr["VET_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SPECIES"].ToString().Trim();
+                                item.VetSpeciesF = dr["VET_SPECIES_F"] == DBNull.Value ? string.Empty : dr["VET_SPECIES_F"].ToString().Trim();
 
                                 items.Add(item);
                             }
@@ -1044,7 +1049,7 @@ namespace drug
                 }
                 catch (Exception ex)
                 {
-                    string errorMessages = string.Format("DbConnection.cs - GetAllVeterinarySpecies()");
+                    string errorMessages = string.Format("DbConnection.cs - GetAllDrugVeterinarySpecies()");
                     ExceptionHelper.LogException(ex, errorMessages);
                 }
                 finally
@@ -1056,9 +1061,9 @@ namespace drug
             return items;
         }
 
-        public VeterinarySpecies GetVeterinarySpeciesByDrugCode(int id)
+        public DrugVeterinarySpecies GetDrugVeterinarySpeciesByDrugCode(int id)
         {
-            var veterinarySpecies = new VeterinarySpecies();
+            var veterinarySpecies = new DrugVeterinarySpecies();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_VETERINARY_SPECIES WHERE DRUG_CODE = " + id;
 
             //using (SqlConnection con = new SqlConnection(DpdDBConnection))
@@ -1076,10 +1081,11 @@ namespace drug
                         {
                             while (dr.Read())
                             {
-                                var item = new VeterinarySpecies();
+                                var item = new DrugVeterinarySpecies();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.VetSpecies = dr["VET_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SPECIES"].ToString().Trim();
-                                item.VetSubSpecies = dr["VET_SUB_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SUB_SPECIES"].ToString().Trim();
+                                item.VetSpeciesCode = dr["VET_SPECIES_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["VET_SPECIES_CODE"]);
+                                item.VetSpeciesE = dr["VET_SPECIES"] == DBNull.Value ? string.Empty : dr["VET_SPECIES"].ToString().Trim();
+                                item.VetSpeciesF = dr["VET_SPECIES_F"] == DBNull.Value ? string.Empty : dr["VET_SPECIES_F"].ToString().Trim();
 
                                 veterinarySpecies = item;
                             }
@@ -1088,7 +1094,7 @@ namespace drug
                 }
                 catch (Exception ex)
                 {
-                    string errorMessages = string.Format("DbConnection.cs - GetVeterinarySpeciesByDrugCode()");
+                    string errorMessages = string.Format("DbConnection.cs - GetDrugVeterinarySpeciesByDrugCode()");
                     ExceptionHelper.LogException(ex, errorMessages);
                 }
                 finally

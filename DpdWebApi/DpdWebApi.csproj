@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DpdWebApi</RootNamespace>
     <AssemblyName>DpdWebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -87,9 +87,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\oracle\product\12\odp.net\managed\common\Oracle.ManagedDataAccess.dll</HintPath>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\..\..\..\..\..\..\Oracle\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Swashbuckle.Core">
       <HintPath>..\packages\Swashbuckle.Core.5.0.0\lib\net40\Swashbuckle.Core.dll</HintPath>
@@ -98,6 +97,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
@@ -176,8 +176,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http">
-    </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -202,12 +200,18 @@
     <Compile Include="Areas\HelpPage\ModelDescriptions.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ActiveIngredientController.cs" />
+    <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\PackagingController.cs" />
+    <Compile Include="Controllers\PharmaceuticalStdController.cs" />
     <Compile Include="Controllers\RouteController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DrugProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TherapeuticClassController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\DrugVeterinarySpeciesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,7 +233,7 @@
     <Compile Include="Models\IScheduleRepository.cs" />
     <Compile Include="Models\IStatusRepository.cs" />
     <Compile Include="Models\ITherapeuticClassRepository.cs" />
-    <Compile Include="Models\IVeterinarySpeciesRepository.cs" />
+    <Compile Include="Models\IDrugVeterinarySpeciesRepository.cs" />
     <Compile Include="Models\Packaging.cs" />
     <Compile Include="Models\PackagingRepository.cs" />
     <Compile Include="Models\PharmaceuticalStd.cs" />
@@ -242,55 +246,101 @@
     <Compile Include="Models\StatusRepository.cs" />
     <Compile Include="Models\TherapeuticClass.cs" />
     <Compile Include="Models\TherapeuticClassRepository.cs" />
-    <Compile Include="Models\VeterinarySpecies.cs" />
-    <Compile Include="Models\VeterinarySpeciesRepository.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Models\DrugVeterinarySpecies.cs" />
+    <Compile Include="Models\DrugVeterinarySpeciesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\DpdWebApi.dll" />
-    <Content Include="bin\DpdWebApi.pdb" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\de\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\de\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\de\System.Spatial.resources.dll" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />
     <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\es\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\es\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\es\System.Spatial.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\fr\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\fr\System.Spatial.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\it\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\it\System.Spatial.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ja\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ja\System.Spatial.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ko\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ko\System.Spatial.resources.dll" />
     <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
     <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
     <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
     <Content Include="bin\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Microsoft.AI.Web.xml" />
     <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Microsoft.AI.WindowsServer.xml" />
     <Content Include="bin\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Microsoft.ApplicationInsights.xml" />
     <Content Include="bin\Microsoft.Data.Edm.dll" />
+    <Content Include="bin\Microsoft.Data.Edm.xml" />
     <Content Include="bin\Microsoft.Data.OData.dll" />
+    <Content Include="bin\Microsoft.Data.OData.xml" />
     <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
     <Content Include="bin\Microsoft.Web.Mvc.FixedDisplayModes.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Oracle.DataAccess.dll" />
     <Content Include="bin\Oracle.ManagedDataAccess.dll" />
+    <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\ru\System.Spatial.resources.dll" />
     <Content Include="bin\Swashbuckle.Core.dll" />
     <Content Include="bin\System.Net.Http.Extensions.dll" />
+    <Content Include="bin\System.Net.Http.Extensions.xml" />
     <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
     <Content Include="bin\System.Net.Http.Primitives.dll" />
+    <Content Include="bin\System.Net.Http.Primitives.xml" />
     <Content Include="bin\System.Spatial.dll" />
+    <Content Include="bin\System.Spatial.xml" />
     <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Http.dll" />
     <Content Include="bin\System.Web.Http.OData.dll" />
+    <Content Include="bin\System.Web.Http.OData.xml" />
     <Content Include="bin\System.Web.Http.Tracing.dll" />
+    <Content Include="bin\System.Web.Http.Tracing.xml" />
     <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
     <Content Include="bin\System.Web.Providers.dll" />
+    <Content Include="bin\System.Web.Providers.xml" />
     <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hans\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Spatial.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.Edm.resources.dll" />
+    <Content Include="bin\zh-Hant\Microsoft.Data.OData.resources.dll" />
+    <Content Include="bin\zh-Hant\System.Spatial.resources.dll" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -352,8 +402,6 @@
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
-    <Content Include="bin\ApplicationInsights.config" />
-    <Content Include="bin\DpdWebApi.dll.config" />
     <Content Include="wet\ajax\mobmenu-af.html" />
     <Content Include="wet\ajax\mobmenu-ar.html" />
     <Content Include="wet\ajax\mobmenu-bg.html" />
@@ -568,7 +616,7 @@
     <Content Include="wet\js\polyfills\svg.min.js" />
     <Content Include="wet\js\theme.min.js" />
     <Content Include="wet\js\wet-boew.min.js" />
-    <None Include="Properties\PublishProfiles\DpdWebApi20151230113805 - Web Deploy.pubxml" />
+    <Content Include="bin\ApplicationInsights.config" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
@@ -621,6 +669,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\distro\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wet\demo\" />
   </ItemGroup>
   <ItemGroup>

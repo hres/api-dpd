@@ -158,24 +158,9 @@
                                 <td><a class="btn btn-default" href="./api/drugproduct/?type=xml">XML</a></td>
                             </tr>
                             <tr>
-                                <td>Get Drug Product Id = : <input type="text" id="strId" size="15" /></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?id= ' + document.getElementById('strId').value + '&type=json'">Json</a></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?id= ' + document.getElementById('strId').value + '&type=xml'">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Drug Product DIN = : <input type="text" id="strDin" size="15" /></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=json'">Json</a></td>
-                                <td><a class="btn btn-default" href='' onclick="this.href='./api/drugproduct?din= ' + document.getElementById('strDin').value + '&type=xml'">XML</a></td>
-                            </tr>
-                            <tr>
                                 <td>Get All Active Ingredient:</td>
                                 <td><a class="btn btn-default" href="./api/activeingredient/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api/activeingredient/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Active Ingredient = 1:</td>
-                                <td><a class="btn btn-default" href="./api/activeingredient/1/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/activeingredient/1/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Companies:</td>
@@ -183,19 +168,9 @@
                                 <td><a class="btn btn-default" href="./api/company/?type=xml">XML</a></td>
                             </tr>
                             <tr>
-                                <td>Get Company - Company Code = 10107:</td>
-                                <td><a class="btn btn-default" href="./api/company/10107?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/company/10107?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
                                 <td>Get All Route:</td>
                                 <td><a class="btn btn-default" href="./api/route/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api/route/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
-                                <td>Get Route - Drug code = 100 (Topical):</td>
-                                <td><a class="btn btn-default" href="./api/route/100/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/route/100/?type=xml">XML</a></td>
                             </tr>
                             <tr>
                                 <td>Get All Status:</td>
@@ -203,61 +178,35 @@
                                 <td><a class="btn btn-default" href="./api/status/?type=xml">XML</a></td>
                             </tr>
                             <tr>
-                                <td>Get Status - Drug Code = 1000 (Discontinued...):</td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
-                            </tr>
-                            <tr>
                                 <td>Get Schedule:</td>
                                 <td><a class="btn btn-default" href="./api/schedule/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api/schedule/?type=xml">XML</a></td>
                             </tr>
-                            <!--<tr>
-                                <td>Get Schedule - DrugCode - To come:</td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
-                            </tr>-->
-
                             <tr>
                                 <td>Get All Form:</td>
                                 <td><a class="btn btn-default" href="./api/form/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api/form/?type=xml">XML</a></td>
                             </tr>
-                            <!--<tr>
-                                <td>Get Form - By To come:</td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
-                            </tr>-->
                             <tr>
                                 <td>Get All Therapeutic Class:</td>
                                 <td><a class="btn btn-default" href="./api/therapeuticclass/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api/therapeuticclass/?type=xml">XML</a></td>
                             </tr>
-                            <!--<tr>
-                                <td>Get Therapeutic Class - By Id - To come:</td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
-                            </tr>-->
                             <tr>
                                 <td>Get All Veterinary Species:</td>
-                                <td><a class="btn btn-default" href="./api/veterinaryspecies/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/veterinaryspecies/?type=xml">XML</a></td>
+                                <td><a class="btn btn-default" href="./api/drugveterinaryspecies/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/drugveterinaryspecies/?type=xml">XML</a></td>
                             </tr>
-                            <!--<tr>
-                                <td>Get Veterinary Species - By Id - To come:</td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
-                            </tr>-->
                             <tr>
                                 <td>Get All Pharmaceutical:</td>
                                 <td><a class="btn btn-default" href="./api/pharmaceuticalstd/?type=json">Json</a></td>
                                 <td><a class="btn btn-default" href="./api/pharmaceuticalstd/?type=xml">XML</a></td>
                             </tr>
-                            <!--<tr>
-                                <td>Get Pharmaceutical - By Id To come:</td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=json">Json</a></td>
-                                <td><a class="btn btn-default" href="./api/status/1000/?type=xml">XML</a></td>
-                            </tr>-->
+                            <tr>
+                                <td>Get All Packaging:</td>
+                                <td><a class="btn btn-default" href="./api/packaging/?type=json">Json</a></td>
+                                <td><a class="btn btn-default" href="./api/packaging/?type=xml">XML</a></td>
+                            </tr>
                         </tbody>
                     </table>
 

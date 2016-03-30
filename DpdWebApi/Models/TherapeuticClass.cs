@@ -7,10 +7,10 @@ namespace DpdWebApi.Models
 {
     public class TherapeuticClass
     {
-        public int DrugCode { get; set; }
-        public String TcAtcNumber { get; set; }
-        public String TcAtc { get; set; }
-        public String TcAhfsNumber { get; set; }
-        public String TcAhfs { get; set; }
+        // The name of this table is TC_FOR_ATC instead of THERAPEUTIC_CLASS
+        public int TcAtcCode { get; set; }
+        public string TcAtcNumber { get; set; }
+        public string TcAtcDescE { get; set; } //there is no _E in the DB
+        public string TcAtcDescF { get; set; }
     }
 }

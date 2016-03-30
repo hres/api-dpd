@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DpdWebApi.Models
 {
-    interface IVeterinarySpeciesRepository
+    interface IDrugVeterinarySpeciesRepository
     {
-        IEnumerable<VeterinarySpecies> GetAll();
-        VeterinarySpecies Get(int id);
+        IEnumerable<DrugVeterinarySpecies> GetAll();
+        DrugVeterinarySpecies Get(int id);
     }
 }

@@ -8,20 +8,20 @@ using DpdWebApi.Models;
 
 namespace DpdWebApi.Controllers
 {
-    public class VeterinarySpeciesController : ApiController
+    public class DrugVeterinarySpeciesController : ApiController
     {
-        static readonly IVeterinarySpeciesRepository databasePlaceholder = new VeterinarySpeciesRepository();
+        static readonly IDrugVeterinarySpeciesRepository databasePlaceholder = new DrugVeterinarySpeciesRepository();
 
-        public IEnumerable<VeterinarySpecies> GetAllActiveIngredient()
+        public IEnumerable<DrugVeterinarySpecies> GetAllActiveIngredient()
         {
 
             return databasePlaceholder.GetAll();
         }
 
 
-        public VeterinarySpecies GetActiveIngredientByID(int id)
+        public DrugVeterinarySpecies GetActiveIngredientByID(int id)
         {
-            VeterinarySpecies veterinarySpecies = databasePlaceholder.Get(id);
+            DrugVeterinarySpecies veterinarySpecies = databasePlaceholder.Get(id);
             if (veterinarySpecies == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

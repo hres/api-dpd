@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/GoC.WebTemplate/GoCWebTemplate_Layout.cshtml";
+}
+
+<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>Drug Product Database APIs</h1>
+            </hgroup>
+
+            <a href="http://localhost:51195/searchDrugProduct_en.html">Search by Drug Product</a>
+
+            <table class="wb-tables table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Request Type:
+                        </th>
+                        <th scope=colgroup colspan=2>
+                            Format:
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Get All Drug Product:</td>
+                        <td> <a class="btn btn-default" href="./api/drugproduct/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/drugproduct/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Active Ingredient:</td>
+                        <td><a class="btn btn-default" href="./api/activeingredient/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/activeingredient/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Companies:</td>
+                        <td><a class="btn btn-default" href="./api/company/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/company/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Route:</td>
+                        <td><a class="btn btn-default" href="./api/route/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/route/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Status:</td>
+                        <td><a class="btn btn-default" href="./api/status/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/status/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get Schedule:</td>
+                        <td><a class="btn btn-default" href="./api/schedule/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/schedule/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Form:</td>
+                        <td><a class="btn btn-default" href="./api/form/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/form/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Therapeutic Class:</td>
+                        <td><a class="btn btn-default" href="./api/therapeuticclass/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/therapeuticclass/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Veterinary Species:</td>
+                        <td><a class="btn btn-default" href="./api/drugveterinaryspecies/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/drugveterinaryspecies/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Pharmaceutical:</td>
+                        <td><a class="btn btn-default" href="./api/pharmaceuticalstd/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/pharmaceuticalstd/?type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Get All Packaging:</td>
+                        <td><a class="btn btn-default" href="./api/packaging/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/packaging/?type=xml">XML</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+</div>
+

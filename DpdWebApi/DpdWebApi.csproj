@@ -53,6 +53,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GoC.WebTemplateMVC, Version=4.0.20.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\GoC.WebTemplateMVC.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
@@ -185,6 +189,10 @@
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebTemplateCore, Version=1.0.5851.20464, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\WebTemplateCore.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -399,9 +407,42 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="js\dpdfunction.js" />
+    <Content Include="Libraries\GoC.WebTemplateMVC.dll" />
+    <Content Include="Libraries\WebTemplateCore.dll" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
+    <Content Include="Views\GoC.WebTemplate\ChangeLog.txt" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\footer-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\footer-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\prefooter-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\prefooter-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\refTop.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenu-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenu-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenuTop-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenuTop-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\splash.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\splashTop.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\top-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\top-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\refTop.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenu-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\secMenuTop-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splash.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\splashTop.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\top-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-fr.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-en.html" />
+    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-fr.html" />
     <Content Include="wet\ajax\mobmenu-af.html" />
     <Content Include="wet\ajax\mobmenu-ar.html" />
     <Content Include="wet\ajax\mobmenu-bg.html" />
@@ -659,13 +700,21 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.eot" />
     <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.ttf" />
     <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.woff" />
     <Content Include="wet\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="wet\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="wet\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.LeftMenu_Layout.cshtml" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
+    <Content Include="Views\GoC.WebTemplate\GoCWebTemplate_Layout.cshtml" />
+    <Content Include="Views\Home\IndexEN.cshtml" />
+    <Content Include="Views\Home\IndexFR.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\distro\" />

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = "~/Views/GoC.WebTemplate/GoCWebTemplate_Layout.cshtml";
 }
 
@@ -9,23 +8,18 @@
             <hgroup class="title">
                 <h1>Drug Product Database APIs</h1>
             </hgroup>
-
             <a href="http://localhost:51195/searchDrugProduct_en.html">Search by Drug Product</a>
-
-            <table class="wb-tables table table-striped table-hover">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>
-                            Request Type:
-                        </th>
-                        <th scope=colgroup colspan=2>
-                            Format:
+                        <th>Request Type:</th>
+                        <th scope=colgroup colspan=2>Format:</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Get All Drug Product:</td>
-                        <td> <a class="btn btn-default" href="./api/drugproduct/?type=json">Json</a></td>
+                        <td><a class="btn btn-default" href="./api/drugproduct/?type=json">Json</a></td>
                         <td><a class="btn btn-default" href="./api/drugproduct/?type=xml">XML</a></td>
                     </tr>
                     <tr>
@@ -80,7 +74,6 @@
                     </tr>
                 </tbody>
             </table>
-
         </div>
     </section>
 </div>

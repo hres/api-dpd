@@ -9,8 +9,6 @@ namespace MvcApplication1.Controllers
 {
     public class HomeController : GoC.WebTemplate.WebTemplateBaseController
     {
-        // TODO: add redirect view that is responsible for change the locale
-
         public ActionResult IndexEN()
         {
             // Page Title
@@ -46,11 +44,12 @@ namespace MvcApplication1.Controllers
             this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.googleplus);
 
             // Date Modified
-            this.WebTemplateCore.DateModified = Convert.ToDateTime("2016-04-04");
+            this.WebTemplateCore.DateModified = Convert.ToDateTime("2016-04-11");
 
             return View();
         }
 
+        // Proper French translation still needed for view
         public ActionResult IndexFR()
         {
             // Page Title
@@ -85,9 +84,28 @@ namespace MvcApplication1.Controllers
             this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.yahoomail);
             this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.googleplus);
 
-            this.WebTemplateCore.DateModified = Convert.ToDateTime("2016-04-08");
+            this.WebTemplateCore.DateModified = Convert.ToDateTime("2016-04-11");
 
             return View();
+        }
+
+        //View Responsible for changing between the English and French PM
+        public ActionResult LanguageControl()
+        {
+            // If pages other than Index are used this will need to be passed a parameter so that
+            // it can change to the correct French/English version rather than just hardcoded
+            if (Session["GoC.Template.Culture"].Equals("en-CA"))
+            {
+                Session["GoC.Template.Culture"] = "fr-CA";
+                return Redirect("IndexFR");
+            }
+            else if (Session["GoC.Template.Culture"].Equals("fr-CA"))
+            {
+                Session["GoC.Template.Culture"] = "en-CA";
+                return Redirect("IndexEN");
+            }
+            else //Default redirect to English Index
+                return Redirect("IndexEn");
         }
     }
 }

@@ -5,76 +5,154 @@
 <div id="body">
     <section class="featured">
         <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>Drug Product Database APIs</h1>
-            </hgroup>
-            <a href="http://localhost:51195/searchDrugProduct_en.html">Search by Drug Product</a>
-            <table class="table table-striped table-hover">
+           
+                <h1>Drug Product Database</h1>
+           
+            <p>The DPD contains product specific information on drugs approved for use in Canada. The database is managed by Health Canada and includes human pharmaceutical and biological drugs, veterinary drugs, radiopharmaceutical drugs and disinfectant products. It contains approximately 47,000 products that are currently approved, marketed or cancelled.</p>
+            <a href="./SearchDrugProduct">Search Drug Product</a> - 
+            <a href="./Reference">Drug Product Database API Guide</a>
+            <h2>Licence:</h2>
+
+            <a href="http://open.canada.ca/en/open-government-licence-canada">Open Government Licence - Canada</a>
+
+
+            <h2>Dataset Resources</h2>
+            
+            <table class="wb-tables table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Request Type:</th>
-                        <th scope=colgroup colspan=2>Format:</th>
+                        <th scope="col">Resource Name</th>
+                        <th class="text-center">Format</th><th></th>
+                       
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Get All Drug Product:</td>
-                        <td><a class="btn btn-default" href="./api/drugproduct/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/drugproduct/?type=xml">XML</a></td>
+                        <td>Drug Product - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugproduct/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugproduct/?lang=en&type=xml">XML</a></td>
+                        
                     </tr>
                     <tr>
-                        <td>Get All Active Ingredient:</td>
-                        <td><a class="btn btn-default" href="./api/activeingredient/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/activeingredient/?type=xml">XML</a></td>
+                        <td>Drug Product - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugproduct/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugproduct/?lang=fr&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Companies:</td>
-                        <td><a class="btn btn-default" href="./api/company/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/company/?type=xml">XML</a></td>
+                        <td>Active Ingredient - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/activeingredient/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/activeingredient/?lang=en&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Route:</td>
-                        <td><a class="btn btn-default" href="./api/route/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/route/?type=xml">XML</a></td>
+                        <td>Active Ingredient - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/activeingredient/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/activeingredient/?lang=fr&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Status:</td>
-                        <td><a class="btn btn-default" href="./api/status/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/status/?type=xml">XML</a></td>
+                        <td>Companies - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/company/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/company/?lang=en&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get Schedule:</td>
-                        <td><a class="btn btn-default" href="./api/schedule/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/schedule/?type=xml">XML</a></td>
+                        <td>Companies - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/company/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/company/?lang=fr&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Form:</td>
-                        <td><a class="btn btn-default" href="./api/form/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/form/?type=xml">XML</a></td>
+                        <td>Route - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/route/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/route/?lang=en&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Therapeutic Class:</td>
-                        <td><a class="btn btn-default" href="./api/therapeuticclass/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/therapeuticclass/?type=xml">XML</a></td>
+                        <td>Route - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/route/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/route/?lang=fr&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Veterinary Species:</td>
-                        <td><a class="btn btn-default" href="./api/drugveterinaryspecies/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/drugveterinaryspecies/?type=xml">XML</a></td>
+                        <td>Status - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/status/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/status/?lang=en&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Pharmaceutical:</td>
-                        <td><a class="btn btn-default" href="./api/pharmaceuticalstd/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/pharmaceuticalstd/?type=xml">XML</a></td>
+                        <td>Status - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/status/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/status/?lang=fr&type=xml">XML</a></td>
                     </tr>
                     <tr>
-                        <td>Get All Packaging:</td>
-                        <td><a class="btn btn-default" href="./api/packaging/?type=json">Json</a></td>
-                        <td><a class="btn btn-default" href="./api/packaging/?type=xml">XML</a></td>
+                        <td>Schedule - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/schedule/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/schedule/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Schedule - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/schedule/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/schedule/?lang=fr&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Form - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/form/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/form/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Form - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/form/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/form/?lang=fr&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Therapeutic Class - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/therapeuticclass/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/therapeuticclass/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Therapeutic Class - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/therapeuticclass/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/therapeuticclass/?lang=fr&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Veterinary Species - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugveterinaryspecies/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugveterinaryspecies/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Veterinary Species - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugveterinaryspecies/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/drugveterinaryspecies/?lang=fr&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Pharmaceutical - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/pharmaceuticalstd/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/pharmaceuticalstd/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Pharmaceutical - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/pharmaceuticalstd/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/pharmaceuticalstd/?lang=fr&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Packaging - English</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/packaging/?lang=en&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/packaging/?lang=en&type=xml">XML</a></td>
+                    </tr>
+                    <tr>
+                        <td>Packaging - French</td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/packaging/?lang=fr&type=json">JSON</a></td>
+                        <td class="text-center"><a class="btn btn-default" href="./api/packaging/?lang=fr&type=xml">XML</a></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+
+            <h2>Developer Tools</h2>
+            <p>The information on this page (the dataset metadata) is also available in JSON format</p>
+            <a href="">Link to JSON format</a>
+
+
+            <h2>Related Items</h2>
+            <p>More to come</p>
+
+</div>
+
+       
+
     </section>
 </div>
 

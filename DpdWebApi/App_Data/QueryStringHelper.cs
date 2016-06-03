@@ -12,8 +12,9 @@ namespace medicalDevice
     /// </summary>
     public static class QueryStringHelper
     {
+        
         #region queryString
-  
+
         public static string GetLang(this NameValueCollection queryString)
         {
             return queryString.AllKeys.Any(x => x.ToLower() == "lang") ? queryString["lang"].Trim() : "en";
@@ -85,6 +86,7 @@ namespace medicalDevice
         #endregion
 
     }
+    
 
 }
 

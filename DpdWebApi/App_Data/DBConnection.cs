@@ -32,9 +32,180 @@ namespace drug
         {
             get { return ConfigurationManager.ConnectionStrings["dpd"].ToString(); }
         }
+        public List<SearchDrug> GetBySearchCriteria(string lang, string din, string brandname, string company)
+        {
+            var orderClause = "";
+            var items = new List<SearchDrug>();
+            string commandText = "SELECT DISTINCT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS, A.CLASS_F, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
+            commandText += " B.COMPANY_NAME, C.STATUS, C.STATUS_F, D.SCHEDULE, D.SCHEDULE_F, E.INGREDIENT, E.INGREDIENT_F, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, E.STRENGTH_UNIT, E.STRENGTH_UNIT_F";
+            commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
+            commandText += " FULL OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS C on A.DRUG_CODE = C.DRUG_CODE";
+            commandText += " FULL OUTER JOIN DPD_ONLINE_OWNER.WQRY_SCHEDULE D on A.DRUG_CODE = D.DRUG_CODE";
+            commandText += " FULL OUTER JOIN DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS E on A.DRUG_CODE = E.DRUG_CODE";
+            commandText += " FULL OUTER JOIN DPD_ONLINE_OWNER.WQRY_COMPANIES B ON A.COMPANY_CODE = B.COMPANY_CODE";
+            commandText += " WHERE";
+            if (din != null)
+            {
+                commandText += " UPPER(A.DRUG_IDENTIFICATION_NUMBER) LIKE '%" + din.ToUpper() + "%'";
+            }
+            if (brandname != null)
+            {
+                if (din != null) commandText += " OR";
+                if (lang.Equals("fr"))
+                {
+                    commandText += " UPPER(A.BRAND_NAME_F) LIKE '%" + brandname.ToUpper() + "%'";
+                }
+                else {
+                    commandText += " UPPER(A.BRAND_NAME) LIKE '%" + brandname.ToUpper() + "%'";
+                }
+            }
+            if (company != null)
+            {
+                if ((din != null) || (brandname != null)) commandText += " OR";
+                commandText += " UPPER(B.COMPANY_NAME) LIKE '%" + company.ToUpper() + "%'";
+            }
+            if (lang.Equals("fr"))
+            {
+                orderClause += " translate(B.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(A.BRAND_NAME_F,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
+            }
+            else
+            {
+                orderClause += " translate(B.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(A.BRAND_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
+            }
+            commandText += " ORDER BY" + orderClause + " A.DRUG_IDENTIFICATION_NUMBER";
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using ( OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new SearchDrug();
+                                
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.ClassName = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.StatusName = dr["STATUS_F"] == DBNull.Value ? string.Empty : dr["STATUS_F"].ToString().Trim();
+                                    item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                    item.AiName = dr["INGREDIENT_F"] == DBNull.Value ? string.Empty : dr["INGREDIENT_F"].ToString().Trim();
+                                    item.Strength = dr["STRENGTH"] == DBNull.Value ? string.Empty : dr["STRENGTH"].ToString().Trim();
+                                    item.StrengthUnitName = dr["STRENGTH_UNIT_F"] == DBNull.Value ? string.Empty : dr["STRENGTH_UNIT_F"].ToString().Trim();
+                                    
+                                }
+                                else {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                    item.ClassName = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                    item.StatusName = dr["STATUS"] == DBNull.Value ? string.Empty : dr["STATUS"].ToString().Trim();
+                                    item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                    item.AiName = dr["INGREDIENT"] == DBNull.Value ? string.Empty : dr["INGREDIENT"].ToString().Trim();
+                                    item.Strength = dr["STRENGTH"] == DBNull.Value ? string.Empty : dr["STRENGTH"].ToString().Trim();
+                                    item.StrengthUnitName = dr["STRENGTH_UNIT"] == DBNull.Value ? string.Empty : dr["STRENGTH_UNIT"].ToString().Trim();
+                                    item.DosageValue = dr["DOSAGE_VALUE"] == DBNull.Value ? string.Empty : dr["DOSAGE_VALUE"].ToString().Trim();
+                                    item.DosageUnit = dr["DOSAGE_UNIT"] == DBNull.Value ? string.Empty : dr["DOSAGE_UNIT"].ToString().Trim();
 
+                                }
+                                item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
+                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
+                                item.CompanyName = dr["COMPANY_NAME"] == DBNull.Value ? string.Empty : dr["COMPANY_NAME"].ToString().Trim();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+                               
+                                items.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetBySearchCriteria()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                    Console.WriteLine(errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return items;
+        }
+        
+        public SearchDrug GetSearchDrugProductById(int id, string lang)
+        {
+            var drugProduct = new SearchDrug();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_CODE = " + id;
 
-        public List<DrugProduct> GetAllDrugProduct()
+            //using (SqlConnection con = new SqlConnection(DpdDBConnection))
+            using (
+
+                OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new SearchDrug();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.ClassName = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.StatusName = dr["STATUS_F"] == DBNull.Value ? string.Empty : dr["STATUS_F"].ToString().Trim();
+                                    item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                    item.AiName = dr["INGREDIENT_F"] == DBNull.Value ? string.Empty : dr["INGREDIENT_F"].ToString().Trim();
+                                    item.Strength = dr["STRENGTH"] == DBNull.Value ? string.Empty : dr["STRENGTH"].ToString().Trim();
+                                    item.StrengthUnitName = dr["STRENGTH_UNIT_F"] == DBNull.Value ? string.Empty : dr["STRENGTH_UNIT_F"].ToString().Trim();
+
+                                }
+                                else {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                    item.ClassName = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                    item.StatusName = dr["STATUS"] == DBNull.Value ? string.Empty : dr["STATUS"].ToString().Trim();
+                                    item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
+                                    item.AiName = dr["INGREDIENT"] == DBNull.Value ? string.Empty : dr["INGREDIENT"].ToString().Trim();
+                                    item.Strength = dr["STRENGTH"] == DBNull.Value ? string.Empty : dr["STRENGTH"].ToString().Trim();
+                                    item.StrengthUnitName = dr["STRENGTH_UNIT"] == DBNull.Value ? string.Empty : dr["STRENGTH_UNIT"].ToString().Trim();
+
+                                }
+                                item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
+                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
+                                item.CompanyName = dr["COMPANY_NAME"] == DBNull.Value ? string.Empty : dr["COMPANY_NAME"].ToString().Trim();
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+
+                                drugProduct = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                    Console.WriteLine(errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return drugProduct;
+        }
+
+        public List<DrugProduct> GetAllDrugProduct(string lang)
         {
             var items = new List<DrugProduct>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT";
@@ -54,13 +225,22 @@ namespace drug
                             {
                                 var item  = new DrugProduct();
                                 item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                item.BrandNameE = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
-                                item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
-                                item.ClassE = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
-                                item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.Descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
+                                }
+                                else {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                    //item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                    //item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
+                                    
+
+                                }
                                 item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["COMPANY_CODE"]);
-                                item.DescriptorE = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
-                                item.DescriptorF = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.DrugIdentificationNumber  = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
                                 item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["NUMBER_OF_AIS"]);
@@ -85,7 +265,7 @@ namespace drug
             return items;
         }
 
-        public DrugProduct GetDrugProductByDrugCode(int id)
+        public DrugProduct GetDrugProductByDrugCode(int id, string lang)
         {
             var drugProduct = new DrugProduct();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_CODE = " + id;
@@ -107,16 +287,25 @@ namespace drug
                             {
                              var item  = new DrugProduct();
                                 item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                item.BrandNameE = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
-                                item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
-                                item.ClassE = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
-                                item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
-                                item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["COMPANY_CODE"]);
-                                item.DescriptorE = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
-                                item.DescriptorF = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
-                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.DrugIdentificationNumber  = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
-                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 :  Convert.ToInt32(dr["NUMBER_OF_AIS"]);
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.Descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
+                                }
+                                else {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                    //item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                    //item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
+
+
+                                }
+                                item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
+                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
 
                                 drugProduct = item;
                             }
@@ -138,7 +327,7 @@ namespace drug
             return drugProduct;
         }
 
-        public DrugProduct GetDrugProductByDin(String din)
+        public DrugProduct GetDrugProductByDin(String din, string lang)
         {
             var drugProduct = new DrugProduct();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_IDENTIFICATION_NUMBER = " + din;
@@ -160,13 +349,22 @@ namespace drug
                             {
                                 var item = new DrugProduct();
                                 item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                item.BrandNameE = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
-                                item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
-                                item.ClassE = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
-                                item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.Descriptor = dr["STATUS_NAME"] == DBNull.Value ? string.Empty : dr["STATUS_NAME_F"].ToString().Trim();
+                                }
+                                else {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                    //item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                    //item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+                                    item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
+
+
+                                }
                                 item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
-                                item.DescriptorE = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
-                                item.DescriptorF = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
                                 item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
                                 item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);

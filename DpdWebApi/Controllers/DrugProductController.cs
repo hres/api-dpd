@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IDrugProductRepository databasePlaceholder = new DrugProductRepository();
 
-        public IEnumerable<DrugProduct> GetAllDrugProduct()
+        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public DrugProduct GetDrugProductByID(int id)
+        public DrugProduct GetDrugProductByID(int id, string lang)
         {
-            DrugProduct drugProduct = databasePlaceholder.Get(id);
+            DrugProduct drugProduct = databasePlaceholder.Get(id, lang);
             if (drugProduct == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -29,9 +29,9 @@ namespace DpdWebApi.Controllers
             return drugProduct;
         }
 
-        public DrugProduct GetDrugProductByDin(string din)
+        public DrugProduct GetDrugProductByDin(string din, string lang)
         {
-            DrugProduct drugProduct = databasePlaceholder.Get(din);
+            DrugProduct drugProduct = databasePlaceholder.Get(din, lang);
             if (drugProduct == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DpdWebApi</RootNamespace>
     <AssemblyName>DpdWebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -46,10 +46,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
@@ -79,17 +75,17 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.Edm, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.Edm.5.7.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft WCF Data Services\5.6.4\bin\.NETFramework\Microsoft.Data.Edm.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Data.OData.5.7.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft WCF Data Services\5.6.4\bin\.NETFramework\Microsoft.Data.OData.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess">
       <HintPath>..\..\..\..\..\..\..\Oracle\Oracle.ManagedDataAccess.dll</HintPath>
@@ -100,6 +96,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions">
@@ -208,6 +205,8 @@
     <Compile Include="Areas\HelpPage\ModelDescriptions.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ActiveIngredientController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SearchDrugController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\PackagingController.cs" />
     <Compile Include="Controllers\PharmaceuticalStdController.cs" />
@@ -227,6 +226,9 @@
     <Compile Include="Models\ActiveIngredientRepository.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyRepository.cs" />
+    <Compile Include="Models\SearchDrugRepository.cs" />
+    <Compile Include="Models\ISearchDrugRepository.cs" />
+    <Compile Include="Models\SearchDrug.cs" />
     <Compile Include="Models\DrugProduct.cs" />
     <Compile Include="Models\DrugProductRepository.cs" />
     <Compile Include="Models\Form.cs" />
@@ -261,127 +263,44 @@
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
-    <Content Include="bin\de\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\de\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\de\System.Spatial.resources.dll" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\DpdWebApi.dll" />
+    <Content Include="bin\DpdWebApi.pdb" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\EntityFramework.xml" />
-    <Content Include="bin\es\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\es\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\es\System.Spatial.resources.dll" />
-    <Content Include="bin\fr\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\fr\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\fr\System.Spatial.resources.dll" />
-    <Content Include="bin\it\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\it\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\it\System.Spatial.resources.dll" />
-    <Content Include="bin\ja\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\ja\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\ja\System.Spatial.resources.dll" />
-    <Content Include="bin\ko\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\ko\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\ko\System.Spatial.resources.dll" />
+    <Content Include="bin\GoC.WebTemplateMVC.dll" />
     <Content Include="bin\Microsoft.AI.Agent.Intercept.dll" />
     <Content Include="bin\Microsoft.AI.DependencyCollector.dll" />
-    <Content Include="bin\Microsoft.AI.DependencyCollector.xml" />
     <Content Include="bin\Microsoft.AI.PerfCounterCollector.dll" />
     <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.dll" />
-    <Content Include="bin\Microsoft.AI.ServerTelemetryChannel.xml" />
     <Content Include="bin\Microsoft.AI.Web.dll" />
-    <Content Include="bin\Microsoft.AI.Web.xml" />
     <Content Include="bin\Microsoft.AI.WindowsServer.dll" />
-    <Content Include="bin\Microsoft.AI.WindowsServer.xml" />
     <Content Include="bin\Microsoft.ApplicationInsights.dll" />
-    <Content Include="bin\Microsoft.ApplicationInsights.xml" />
     <Content Include="bin\Microsoft.Data.Edm.dll" />
-    <Content Include="bin\Microsoft.Data.Edm.xml" />
     <Content Include="bin\Microsoft.Data.OData.dll" />
-    <Content Include="bin\Microsoft.Data.OData.xml" />
     <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\Microsoft.Web.Mvc.FixedDisplayModes.dll" />
     <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
-    <Content Include="bin\Oracle.DataAccess.dll" />
     <Content Include="bin\Oracle.ManagedDataAccess.dll" />
-    <Content Include="bin\ru\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\ru\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\ru\System.Spatial.resources.dll" />
     <Content Include="bin\Swashbuckle.Core.dll" />
     <Content Include="bin\System.Net.Http.Extensions.dll" />
-    <Content Include="bin\System.Net.Http.Extensions.xml" />
     <Content Include="bin\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\System.Net.Http.Formatting.xml" />
     <Content Include="bin\System.Net.Http.Primitives.dll" />
-    <Content Include="bin\System.Net.Http.Primitives.xml" />
     <Content Include="bin\System.Spatial.dll" />
-    <Content Include="bin\System.Spatial.xml" />
     <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
     <Content Include="bin\System.Web.Http.dll" />
     <Content Include="bin\System.Web.Http.OData.dll" />
-    <Content Include="bin\System.Web.Http.OData.xml" />
     <Content Include="bin\System.Web.Http.Tracing.dll" />
-    <Content Include="bin\System.Web.Http.Tracing.xml" />
     <Content Include="bin\System.Web.Http.WebHost.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.xml" />
-    <Content Include="bin\System.Web.Http.xml" />
     <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Mvc.xml" />
     <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
     <Content Include="bin\System.Web.Providers.dll" />
-    <Content Include="bin\System.Web.Providers.xml" />
     <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="bin\WebGrease.dll" />
-    <Content Include="bin\zh-Hans\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\zh-Hans\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\zh-Hans\System.Spatial.resources.dll" />
-    <Content Include="bin\zh-Hant\Microsoft.Data.Edm.resources.dll" />
-    <Content Include="bin\zh-Hant\Microsoft.Data.OData.resources.dll" />
-    <Content Include="bin\zh-Hant\System.Spatial.resources.dll" />
-    <Content Include="Content\themes\base\accordion.css" />
-    <Content Include="Content\themes\base\all.css" />
-    <Content Include="Content\themes\base\autocomplete.css" />
-    <Content Include="Content\themes\base\base.css" />
-    <Content Include="Content\themes\base\button.css" />
-    <Content Include="Content\themes\base\core.css" />
-    <Content Include="Content\themes\base\datepicker.css" />
-    <Content Include="Content\themes\base\dialog.css" />
-    <Content Include="Content\themes\base\draggable.css" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
-    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="Content\themes\base\menu.css" />
-    <Content Include="Content\themes\base\progressbar.css" />
-    <Content Include="Content\themes\base\resizable.css" />
-    <Content Include="Content\themes\base\selectable.css" />
-    <Content Include="Content\themes\base\selectmenu.css" />
-    <Content Include="Content\themes\base\slider.css" />
-    <Content Include="Content\themes\base\sortable.css" />
-    <Content Include="Content\themes\base\spinner.css" />
-    <Content Include="Content\themes\base\tabs.css" />
-    <Content Include="Content\themes\base\theme.css" />
-    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="bin\WebTemplateCore.dll" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -406,26 +325,10 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="js\dpdfunction.js" />
     <Content Include="Libraries\GoC.WebTemplateMVC.dll" />
     <Content Include="Libraries\WebTemplateCore.dll" />
-    <Content Include="Scripts\ai.0.15.0-build58334.js" />
-    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="Views\GoC.WebTemplate\ChangeLog.txt" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\footer-en.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\footer-fr.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\prefooter-en.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\prefooter-fr.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\refTop.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenu-en.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenu-fr.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenuTop-en.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\secMenuTop-fr.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\splash.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\splashTop.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\top-en.html" />
-    <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcintranet\top-fr.html" />
     <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-en.html" />
     <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\footer-fr.html" />
     <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\prefooter-en.html" />
@@ -443,241 +346,6 @@
     <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactFooter-fr.html" />
     <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-en.html" />
     <Content Include="Views\GoC.WebTemplate\StaticFallbackFiles\gcweb\transactTop-fr.html" />
-    <Content Include="wet\ajax\mobmenu-af.html" />
-    <Content Include="wet\ajax\mobmenu-ar.html" />
-    <Content Include="wet\ajax\mobmenu-bg.html" />
-    <Content Include="wet\ajax\mobmenu-cs.html" />
-    <Content Include="wet\ajax\mobmenu-de.html" />
-    <Content Include="wet\ajax\mobmenu-el.html" />
-    <Content Include="wet\ajax\mobmenu-en.html" />
-    <Content Include="wet\ajax\mobmenu-es.html" />
-    <Content Include="wet\ajax\mobmenu-et.html" />
-    <Content Include="wet\ajax\mobmenu-fr.html" />
-    <Content Include="wet\ajax\mobmenu-hi.html" />
-    <Content Include="wet\ajax\mobmenu-hu.html" />
-    <Content Include="wet\ajax\mobmenu-hy.html" />
-    <Content Include="wet\ajax\mobmenu-id.html" />
-    <Content Include="wet\ajax\mobmenu-is.html" />
-    <Content Include="wet\ajax\mobmenu-it.html" />
-    <Content Include="wet\ajax\mobmenu-ja.html" />
-    <Content Include="wet\ajax\mobmenu-ko.html" />
-    <Content Include="wet\ajax\mobmenu-lt.html" />
-    <Content Include="wet\ajax\mobmenu-lv.html" />
-    <Content Include="wet\ajax\mobmenu-nl.html" />
-    <Content Include="wet\ajax\mobmenu-pl.html" />
-    <Content Include="wet\ajax\mobmenu-pt-BR.html" />
-    <Content Include="wet\ajax\mobmenu-pt.html" />
-    <Content Include="wet\ajax\mobmenu-ru.html" />
-    <Content Include="wet\ajax\mobmenu-sk.html" />
-    <Content Include="wet\ajax\mobmenu-sq.html" />
-    <Content Include="wet\ajax\mobmenu-th.html" />
-    <Content Include="wet\ajax\mobmenu-tr.html" />
-    <Content Include="wet\ajax\mobmenu-uk.html" />
-    <Content Include="wet\ajax\mobmenu-vi.html" />
-    <Content Include="wet\ajax\mobmenu-zh-Hans.html" />
-    <Content Include="wet\ajax\mobmenu-zh.html" />
-    <Content Include="wet\ajax\sitemenu-af.html" />
-    <Content Include="wet\ajax\sitemenu-ar.html" />
-    <Content Include="wet\ajax\sitemenu-bg.html" />
-    <Content Include="wet\ajax\sitemenu-cs.html" />
-    <Content Include="wet\ajax\sitemenu-de.html" />
-    <Content Include="wet\ajax\sitemenu-el.html" />
-    <Content Include="wet\ajax\sitemenu-en.html" />
-    <Content Include="wet\ajax\sitemenu-es.html" />
-    <Content Include="wet\ajax\sitemenu-et.html" />
-    <Content Include="wet\ajax\sitemenu-fr.html" />
-    <Content Include="wet\ajax\sitemenu-hi.html" />
-    <Content Include="wet\ajax\sitemenu-hu.html" />
-    <Content Include="wet\ajax\sitemenu-hy.html" />
-    <Content Include="wet\ajax\sitemenu-id.html" />
-    <Content Include="wet\ajax\sitemenu-is.html" />
-    <Content Include="wet\ajax\sitemenu-it.html" />
-    <Content Include="wet\ajax\sitemenu-ja.html" />
-    <Content Include="wet\ajax\sitemenu-ko.html" />
-    <Content Include="wet\ajax\sitemenu-lt.html" />
-    <Content Include="wet\ajax\sitemenu-lv.html" />
-    <Content Include="wet\ajax\sitemenu-nl.html" />
-    <Content Include="wet\ajax\sitemenu-pl.html" />
-    <Content Include="wet\ajax\sitemenu-pt-BR.html" />
-    <Content Include="wet\ajax\sitemenu-pt.html" />
-    <Content Include="wet\ajax\sitemenu-ru.html" />
-    <Content Include="wet\ajax\sitemenu-sk.html" />
-    <Content Include="wet\ajax\sitemenu-sq.html" />
-    <Content Include="wet\ajax\sitemenu-th.html" />
-    <Content Include="wet\ajax\sitemenu-tr.html" />
-    <Content Include="wet\ajax\sitemenu-uk.html" />
-    <Content Include="wet\ajax\sitemenu-vi.html" />
-    <Content Include="wet\ajax\sitemenu-zh-Hans.html" />
-    <Content Include="wet\ajax\sitemenu-zh.html" />
-    <Content Include="wet\ajax\test.html" />
-    <Content Include="wet\assets\backdrop.png" />
-    <Content Include="wet\assets\cloud-popup-relative.png" />
-    <Content Include="wet\assets\favicon-mobile.png" />
-    <Content Include="wet\assets\favicon.ico" />
-    <Content Include="wet\assets\fd-slider-sprite.png" />
-    <Content Include="wet\assets\feedback.png" />
-    <Content Include="wet\assets\loading.png" />
-    <Content Include="wet\assets\mediacontrols.html" />
-    <Content Include="wet\assets\mobile.png" />
-    <Content Include="wet\assets\multimedia.swf" />
-    <Content Include="wet\assets\sig-blk-en.png" />
-    <Content Include="wet\assets\sig-blk-en.svg" />
-    <Content Include="wet\assets\sig-blk-fr.png" />
-    <Content Include="wet\assets\sig-blk-fr.svg" />
-    <Content Include="wet\assets\sig-en.png" />
-    <Content Include="wet\assets\sig-en.svg" />
-    <Content Include="wet\assets\sig-fr.png" />
-    <Content Include="wet\assets\sig-fr.svg" />
-    <Content Include="wet\assets\sig-spl.png" />
-    <Content Include="wet\assets\sig-spl.svg" />
-    <Content Include="wet\assets\social.png" />
-    <Content Include="wet\assets\sprites_geomap.png" />
-    <Content Include="wet\assets\sprites_share.png" />
-    <Content Include="wet\assets\wmms-alt.png" />
-    <Content Include="wet\assets\wmms-blk.png" />
-    <Content Include="wet\assets\wmms-blk.svg" />
-    <Content Include="wet\assets\wmms-spl.png" />
-    <Content Include="wet\assets\wmms-spl.svg" />
-    <Content Include="wet\assets\wmms.png" />
-    <Content Include="wet\assets\wmms.svg" />
-    <Content Include="wet\assets\zoom-minus-mini.png" />
-    <Content Include="wet\assets\zoom-plus-mini.png" />
-    <Content Include="wet\assets\zoom-world-mini.png" />
-    <Content Include="wet\css\ie8-wet-boew.min.css" />
-    <Content Include="wet\css\messages-ie.min.css" />
-    <Content Include="wet\css\messages.min.css" />
-    <Content Include="wet\css\mobile-centre.min.css" />
-    <Content Include="wet\css\noscript.min.css" />
-    <Content Include="wet\css\polyfills\datalist.min.css" />
-    <Content Include="wet\css\polyfills\datepicker.min.css" />
-    <Content Include="wet\css\polyfills\details.min.css" />
-    <Content Include="wet\css\polyfills\meter.min.css" />
-    <Content Include="wet\css\polyfills\progress.min.css" />
-    <Content Include="wet\css\polyfills\slider.min.css" />
-    <Content Include="wet\css\social-media-centre.min.css" />
-    <Content Include="wet\css\theme-srv.min.css" />
-    <Content Include="wet\css\theme.min.css" />
-    <Content Include="wet\css\wet-boew.min.css" />
-    <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.svg" />
-    <Content Include="wet\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="wet\img\218x291.png" />
-    <Content Include="wet\img\265x352.png" />
-    <Content Include="wet\img\360x203.png" />
-    <Content Include="wet\img\520x200.png" />
-    <Content Include="wet\img\520x296.png" />
-    <Content Include="wet\img\features\355x113.png" />
-    <Content Include="wet\img\promos\1170x347-1.png" />
-    <Content Include="wet\img\promos\1170x347-2.png" />
-    <Content Include="wet\img\promos\1170x347-3.png" />
-    <Content Include="wet\img\promos\520x200-1.png" />
-    <Content Include="wet\img\promos\520x200-2.png" />
-    <Content Include="wet\img\promos\520x200-3.png" />
-    <Content Include="wet\img\promos\780x231-1.png" />
-    <Content Include="wet\img\promos\780x231-2.png" />
-    <Content Include="wet\img\splash\sp-bg-2.jpg" />
-    <Content Include="wet\img\tuwyt.png" />
-    <Content Include="wet\js\deps\additional-methods.min.js" />
-    <Content Include="wet\js\deps\geomap-lib.min.js" />
-    <Content Include="wet\js\deps\jquery.dataTables.min.js" />
-    <Content Include="wet\js\deps\jquery.flot.canvas.min.js" />
-    <Content Include="wet\js\deps\jquery.flot.min.js" />
-    <Content Include="wet\js\deps\jquery.flot.orderBars.min.js" />
-    <Content Include="wet\js\deps\jquery.flot.pie.min.js" />
-    <Content Include="wet\js\deps\jquery.magnific-popup.min.js" />
-    <Content Include="wet\js\deps\jquery.pjax.min.js" />
-    <Content Include="wet\js\deps\jquery.validate.min.js" />
-    <Content Include="wet\js\deps\lang-apollo.min.js" />
-    <Content Include="wet\js\deps\lang-clj.min.js" />
-    <Content Include="wet\js\deps\lang-css.min.js" />
-    <Content Include="wet\js\deps\lang-dart.min.js" />
-    <Content Include="wet\js\deps\lang-go.min.js" />
-    <Content Include="wet\js\deps\lang-hs.min.js" />
-    <Content Include="wet\js\deps\lang-lisp.min.js" />
-    <Content Include="wet\js\deps\lang-lua.min.js" />
-    <Content Include="wet\js\deps\lang-ml.min.js" />
-    <Content Include="wet\js\deps\lang-n.min.js" />
-    <Content Include="wet\js\deps\lang-proto.min.js" />
-    <Content Include="wet\js\deps\lang-scala.min.js" />
-    <Content Include="wet\js\deps\lang-sql.min.js" />
-    <Content Include="wet\js\deps\lang-tex.min.js" />
-    <Content Include="wet\js\deps\lang-vb.min.js" />
-    <Content Include="wet\js\deps\lang-vhdl.min.js" />
-    <Content Include="wet\js\deps\lang-wiki.min.js" />
-    <Content Include="wet\js\deps\lang-xq.min.js" />
-    <Content Include="wet\js\deps\lang-yaml.min.js" />
-    <Content Include="wet\js\deps\OpenLayers.min.js" />
-    <Content Include="wet\js\deps\prettify.min.js" />
-    <Content Include="wet\js\deps\proj4.min.js" />
-    <Content Include="wet\js\deps\tableparser.min.js" />
-    <Content Include="wet\js\i18n\af.min.js" />
-    <Content Include="wet\js\i18n\ar.min.js" />
-    <Content Include="wet\js\i18n\bg.min.js" />
-    <Content Include="wet\js\i18n\cs.min.js" />
-    <Content Include="wet\js\i18n\de.min.js" />
-    <Content Include="wet\js\i18n\el.min.js" />
-    <Content Include="wet\js\i18n\en.min.js" />
-    <Content Include="wet\js\i18n\es.min.js" />
-    <Content Include="wet\js\i18n\et.min.js" />
-    <Content Include="wet\js\i18n\fr.min.js" />
-    <Content Include="wet\js\i18n\hi.min.js" />
-    <Content Include="wet\js\i18n\hu.min.js" />
-    <Content Include="wet\js\i18n\hy.min.js" />
-    <Content Include="wet\js\i18n\id.min.js" />
-    <Content Include="wet\js\i18n\is.min.js" />
-    <Content Include="wet\js\i18n\it.min.js" />
-    <Content Include="wet\js\i18n\ja.min.js" />
-    <Content Include="wet\js\i18n\ko.min.js" />
-    <Content Include="wet\js\i18n\lt.min.js" />
-    <Content Include="wet\js\i18n\lv.min.js" />
-    <Content Include="wet\js\i18n\nl.min.js" />
-    <Content Include="wet\js\i18n\pl.min.js" />
-    <Content Include="wet\js\i18n\pt-BR.min.js" />
-    <Content Include="wet\js\i18n\pt.min.js" />
-    <Content Include="wet\js\i18n\ru.min.js" />
-    <Content Include="wet\js\i18n\sk.min.js" />
-    <Content Include="wet\js\i18n\sq.min.js" />
-    <Content Include="wet\js\i18n\th.min.js" />
-    <Content Include="wet\js\i18n\tr.min.js" />
-    <Content Include="wet\js\i18n\uk.min.js" />
-    <Content Include="wet\js\i18n\vi.min.js" />
-    <Content Include="wet\js\i18n\zh-Hans.min.js" />
-    <Content Include="wet\js\i18n\zh.min.js" />
-    <Content Include="wet\js\ie8-wet-boew.min.js" />
-    <Content Include="wet\js\ie8-wet-boew2.min.js" />
-    <Content Include="wet\js\polyfills\datalist.min.js" />
-    <Content Include="wet\js\polyfills\datalist_dynamic.min.js" />
-    <Content Include="wet\js\polyfills\datepicker.min.js" />
-    <Content Include="wet\js\polyfills\details.min.js" />
-    <Content Include="wet\js\polyfills\jawsariafixes.min.js" />
-    <Content Include="wet\js\polyfills\meter.min.js" />
-    <Content Include="wet\js\polyfills\mobile.min.js" />
-    <Content Include="wet\js\polyfills\progress.min.js" />
-    <Content Include="wet\js\polyfills\slider.min.js" />
-    <Content Include="wet\js\polyfills\slider_wrapper.min.js" />
-    <Content Include="wet\js\polyfills\svg.min.js" />
-    <Content Include="wet\js\theme.min.js" />
-    <Content Include="wet\js\wet-boew.min.js" />
-    <Content Include="bin\ApplicationInsights.config" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Scripts\jquery-ui-1.11.4.js" />
-    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-3.4.0.debug.js" />
-    <Content Include="Scripts\knockout-3.4.0.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="index-en.html" />
-    <Content Include="index-fr.html" />
-    <Content Include="searchDrugProductById_en.html" />
-    <Content Include="searchDrugProduct_en.html" />
     <Content Include="Views\Shared\Error404.htm" />
     <Content Include="Views\Shared\Error500.htm" />
     <Content Include="Views\Shared\GenericError.htm" />
@@ -685,30 +353,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.eot" />
-    <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.ttf" />
-    <Content Include="wet\fonts\gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.woff" />
-    <Content Include="wet\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="wet\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="wet\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.LeftMenu_Layout.cshtml" />
     <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
     <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
@@ -717,15 +364,22 @@
     <Content Include="Views\Home\IndexFR.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\distro\" />
-    <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="wet\demo\" />
+    <Folder Include="obj\Release\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Reference.cshtml" />
+    <Content Include="Views\Home\SearchDrugProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\DpdWebApi.dll.config" />
+    <None Include="Properties\PublishProfiles\dpd.pubxml" />
+    <None Include="Properties\PublishProfiles\dpdapi.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

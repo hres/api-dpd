@@ -12,23 +12,23 @@ namespace DpdWebApi.Models
     DBConnection dbConnection = new DBConnection("en");
     
 
-    public IEnumerable<DrugProduct> GetAll()
+    public IEnumerable<DrugProduct> GetAll(string lang)
     {
-        _drugProducts = dbConnection.GetAllDrugProduct();
+        _drugProducts = dbConnection.GetAllDrugProduct(lang);
 
         return _drugProducts;
     }
 
 
-    public DrugProduct Get(int id)
+    public DrugProduct Get(int id, string lang)
     {
-        _drugProduct = dbConnection.GetDrugProductByDrugCode(id);
+        _drugProduct = dbConnection.GetDrugProductByDrugCode(id, lang);
         return _drugProduct;
     }
 
-    public DrugProduct Get(string din)
+    public DrugProduct Get(string din, string lang)
     {
-        _drugProduct = dbConnection.GetDrugProductByDin(din);
+        _drugProduct = dbConnection.GetDrugProductByDin(din, lang);
         return _drugProduct;
     }
 

@@ -8,9 +8,9 @@ namespace DpdWebApi.Models
 {
     interface IDrugProductRepository
     {
-        IEnumerable<DrugProduct> GetAll();
-        DrugProduct Get(int id);
-        DrugProduct Get(string din);
+        IEnumerable<DrugProduct> GetAll(string lang);
+        DrugProduct Get(int id, string lang);
+        DrugProduct Get(string din, string lang);
         // DrugProduct Add(DrugProduct drugProduct);
         // void Remove(int id);
         // bool Update(DrugProduct drugProduct);

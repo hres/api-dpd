@@ -17,15 +17,15 @@ namespace DpdWebApi
             
             config.Routes.MapHttpRoute(
                 name: "Api UriPathExtension ID DIN and DrugName",
-                routeTemplate: "api/{controller}/{id}/{din}/{drugname}.{ext}",
+                routeTemplate: "api/{controller}/{lang}/{din}/{brandname}/{company}.{ext}",
                 defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
             config.Routes.MapHttpRoute(
                name: "Api UriPathExtension DIN",
-               routeTemplate: "api/{controller}/{din}.{ext}",
+               routeTemplate: "api/{controller}/{din}/{lang}.{ext}",
                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "Api ID and DIN",
-                routeTemplate: "api/{controller}/{id}/{din}",
+                routeTemplate: "api/{controller}/{id}/{din}/{lang}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(

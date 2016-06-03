@@ -1,0 +1,220 @@
+********** 8:14:30 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetSearch()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 72
+
+********** 8:15:19 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00904: "ABILIFY": invalid identifier
+Source: DbConnection.cs - GetSearch()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 72
+
+********** 8:16:21 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00904: "ABILIFY": invalid identifier
+Source: DbConnection.cs - GetSearch()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 72
+
+********** 8:19:10 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00904: "ABILIFY": invalid identifier
+Source: DbConnection.cs - GetSearch()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 72
+
+********** 8:19:37 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00904: "A"."BRAND_NAME_E": invalid identifier
+Source: DbConnection.cs - GetSearch()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 72
+
+********** 8:39:31 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00936: missing expression
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 72
+
+********** 8:44:07 AM **********
+Exception Type: System.OutOfMemoryException
+Exception: Exception of type 'System.OutOfMemoryException' was thrown.
+Source: DbConnection.cs - GetSearch()
+Stack Trace: 
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 78
+
+********** 8:46:10 AM **********
+Exception Type: System.OutOfMemoryException
+Exception: Exception of type 'System.OutOfMemoryException' was thrown.
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at System.String.CtorCharArrayStartLength(Char[] value, Int32 startIndex, Int32 length)
+   at OracleInternal.I18N.Conv.ConvertBytesToString(Byte[] bytes, Int32 byteOffset, Int32 byteCount, Char[] chars, Boolean bUseReplacementChar)
+   at OracleInternal.TTC.Accessors.Accessor.GetString(Byte[] rawBytesToConvert, Int32 byteOffset, Int32 length, Byte charSetForm, Char[] charArrayForConversion)
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.GetString(Int32 i)
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.get_Item(Int32 i)
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.get_Item(String columnName)
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 96
+
+********** 9:06:09 AM **********
+Exception Type: System.OutOfMemoryException
+Exception: Exception of type 'System.OutOfMemoryException' was thrown.
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.GetValue(Int32 i)
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.get_Item(Int32 i)
+   at Oracle.ManagedDataAccess.Client.OracleDataReader.get_Item(String columnName)
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 106
+
+********** 9:06:14 AM **********
+Exception Type: System.OutOfMemoryException
+Exception: Exception of type 'System.OutOfMemoryException' was thrown.
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 80
+
+********** 9:11:40 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-01719: outer join operator (+) not allowed in operand of OR or IN
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 74
+
+********** 10:45:30 AM **********
+Exception Type: System.UnauthorizedAccessException
+Exception: Access is denied. (Exception from HRESULT: 0x80070005 (E_ACCESSDENIED))
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at System.Threading.Monitor.ObjWait(Boolean exitContext, Int32 millisecondsTimeout, Object obj)
+   at System.Threading.Monitor.Wait(Object obj, Int32 millisecondsTimeout, Boolean exitContext)
+   at System.Threading.Monitor.Wait(Object obj, Int32 millisecondsTimeout)
+   at System.Threading.ManualResetEventSlim.Wait(Int32 millisecondsTimeout, CancellationToken cancellationToken)
+   at System.Threading.ManualResetEventSlim.Wait(Int32 millisecondsTimeout)
+   at OracleInternal.ConnectionPool.PoolManager`3.CreateNewPR(Int32 reqCount, Boolean bForPoolPopulation, ConnectionString csWithDiffOrNewPwd, String instanceName)
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 98
+
+********** 10:58:15 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-01652: unable to extend temp segment by 128 in tablespace TEMP
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 99
+
+********** 11:03:20 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 99
+
+********** 11:05:00 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 99
+
+********** 11:05:23 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 97
+
+********** 11:07:19 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 97
+
+********** 11:07:45 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 97
+
+********** 11:13:17 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00933: SQL command not properly ended
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 97
+
+********** 11:29:53 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-00904: "E"."E"."STRENGTH_UNIT": invalid identifier
+Source: DbConnection.cs - GetBySearchCriteria()
+Stack Trace: 
+   at OracleInternal.ServiceObjects.OracleCommandImpl.VerifyExecution(OracleConnectionImpl connectionImpl, Int32& cursorId, Boolean bThrowArrayBindRelatedErrors, OracleException& exceptionForArrayBindDML, Boolean& hasMoreRowsInDB, Boolean bFirstIterationDone)
+   at OracleInternal.ServiceObjects.OracleCommandImpl.ExecuteReader(String commandText, OracleParameterCollection paramColl, CommandType commandType, OracleConnectionImpl connectionImpl, OracleDataReaderImpl& rdrImpl, Int32 longFetchSize, Int64 clientInitialLOBFS, OracleDependencyImpl orclDependencyImpl, Int64[] scnForExecution, Int64[]& scnFromExecution, OracleParameterCollection& bindByPositionParamColl, Boolean& bBindParamPresent, Int64& internalInitialLOBFS, OracleException& exceptionForArrayBindDML, Boolean isDescribeOnly, Boolean isFromEF)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader(Boolean requery, Boolean fillRequest, CommandBehavior behavior)
+   at Oracle.ManagedDataAccess.Client.OracleCommand.ExecuteReader()
+   at drug.DBConnection.GetBySearchCriteria(String lang, String din, String brandname, String company) in C:\Users\hcuser\Documents\dpdWebApi\DpdWebApi\App_Data\DBConnection.cs:line 83
+

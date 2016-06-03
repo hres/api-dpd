@@ -89,6 +89,85 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
+        public ActionResult SearchDrugProduct()
+        {
+            // Page Title
+            this.WebTemplateCore.HeaderTitle = "Drug Product Database";
+
+            // Breadcrumb Navigtation
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("http://canada.ca/en/index.html", "Home", ""));
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("http://open.canada.ca/en", "Open Government", ""));
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("http://open.canada.ca/data/en/dataset?q=DPD", "Open Data", ""));
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("", "Search Drug Product Database", ""));
+
+            // Feedback
+            this.WebTemplateCore.ShowFeedbackLink = true;
+
+            // Social Media Links
+            this.WebTemplateCore.ShowSharePageLink = true;
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.bitly);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.linkedin);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.blogger);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.myspace);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.delicious);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.pinterest);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.digg);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.reddit);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.diigo);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.stumbleupon);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.email);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.tumblr);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.facebook);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.twitter);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.gmail);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.yahoomail);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.googleplus);
+
+            // Date Modified
+            this.WebTemplateCore.DateModified = Convert.ToDateTime("2016-04-13");
+            
+            return View();
+        }
+
+        public ActionResult Reference()
+        {
+            // Page Title
+            this.WebTemplateCore.HeaderTitle = "Drug Product Database - Reference";
+
+            // Breadcrumb Navigtation
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("http://canada.ca/en/index.html", "Home", ""));
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("http://open.canada.ca/en", "Open Government", ""));
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("http://open.canada.ca/data/en/dataset?q=DPD", "Open Data", ""));
+            this.WebTemplateCore.Breadcrumbs.Add(new Breadcrumb("", "Search Drug Product Database", ""));
+
+            // Feedback
+            this.WebTemplateCore.ShowFeedbackLink = true;
+
+            // Social Media Links
+            this.WebTemplateCore.ShowSharePageLink = true;
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.bitly);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.linkedin);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.blogger);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.myspace);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.delicious);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.pinterest);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.digg);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.reddit);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.diigo);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.stumbleupon);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.email);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.tumblr);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.facebook);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.twitter);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.gmail);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.yahoomail);
+            this.WebTemplateCore.SharePageMediaSites.Add(GoC.WebTemplate.Core.SocialMediaSites.googleplus);
+
+            // Date Modified
+            this.WebTemplateCore.DateModified = Convert.ToDateTime("2016-04-13");
+            return View();
+        }
+
         //View Responsible for changing between the English and French PM
         public ActionResult LanguageControl()
         {

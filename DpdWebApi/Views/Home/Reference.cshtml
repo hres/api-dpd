@@ -1,0 +1,234 @@
+﻿@{
+    Layout = "~/Views/GoC.WebTemplate/GoCWebTemplate_Layout.cshtml";
+}
+
+<main role="main" property="mainContentOfPage" class="container">
+    <a href="./IndexEN">Dataset Resources</a> -
+    <a href="./SearchDrugProduct">Search Drug Product</a>
+    <section>
+        <h1 id="wb-cont">Drug Product Database API Guide</h1>
+        <!--h2-section-start-->
+        <section>
+            <h2 id="a">Table of contents</h2>
+            <ul>
+                <li><a href="#a1">Introduction</a></li>
+
+                <li>
+                    <a href="#a2">Drug Product Data</a>
+                    <ul>
+                        <li><a href="#a2.1">Parameters</a></li>
+                        <li><a href="#a2.2">Response format</a></li>
+                        <li><a href="#a2.3">Sample response</a></li>
+                        <li><a href="#a2.4">jQuery example </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <!--h2-section-end-->
+        <section>
+            <h2 id="a1">Introduction</h2>
+            <p>The DPD contains product specific information on drugs approved for use in Canada. The database is managed by Health Canada and includes human pharmaceutical and biological drugs, veterinary drugs, radiopharmaceutical drugs and disinfectant products. It contains approximately 47,000 products that are currently approved, marketed or cancelled.</p>
+
+            <p>Open DPD Data is a search-based API that serves public DPD data about the following:</p>
+            <ul>
+                <li>Drug Product</li>
+                <li>Active Ingredient</li>
+                <li>Veterinary Species</li>
+                <li>Form</li>
+                <li>Packaging</li>
+                <li>Pharmaceutical Std</li>
+                <li>Route</li>
+                <li>Schedule</li>
+                <li>Status</li>
+                <li>Therapeutic Class</li>
+                <li>Values</li>
+            </ul>
+            <p>Each of these has one or more <em>endpoints,</em> which serve unique data—such as data about.... Every query to the API must go through one endpoint for one kind of data.</p>
+
+        </section>
+        <section>
+            <h2 id="a2">Drug Product Data</h2>
+
+            <!--h3-section-start-->
+            <section>
+                <h3 id="a2.1">Parameters</h3>
+                <p>There is only one parameter in the request: language.</p>
+                <table>
+                    <caption>
+                        Request language parameters
+                    </caption>
+                    <tr>
+                        <th scope="col">Parameter</th>
+                        <th scope="col">Meaning</th>
+                        <th scope="col">Values</th>
+                        <th scope="col">Required?</th>
+                        <th scope="col">Notes</th>
+                    </tr>
+                    <tr>
+                        <td><span class="nowrap">/api/<search param>/<code>lang</code></span></td>
+                        <td>Changes language</td>
+                        <td>
+                            <ul class="list-unstyled mrgn-lft-0 nowrap">
+                                <li><code>en</code>&nbsp;- English</li>
+                                <li><code>fr</code>&nbsp;- French</li>
+                            </ul>
+                        </td>
+                        <td><strong>Yes</strong></td>
+                        <td>Determines whether the response is in English or French.</td>
+                    </tr>
+                </table>
+                <p>Drug Product data can be accessed via these URIs:</p>
+                <ul>
+                    <li><a href="http://api.hres.ca/dpd/api/drugproduct/?lang=en">http://api.hres.ca/dpd/api/drugproduct/?lang=en</a></li>
+                    <li><a href="http://api.hres.ca/dpd/api/drugproduct/?lang=fr">http://api.hres.ca/dpd/api/drugproduct/?lang=fr</a></li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <h3 id="a2.2">Response format</h3>
+            <p>The response can be in JSON or XML:</p>
+            <table>
+                <caption>
+                    Response result objects
+                </caption>
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+                <tr>
+                    <td><strong>drugproduct</strong></td>
+                    <td>The drug product objects</td>
+                </tr>
+                <tr>
+                    <td><strong>activeingredient</strong></td>
+                    <td>The drug ingredient objects</td>
+                </tr>
+                 
+                <tr>
+                    <td><strong>company</strong></td>
+                    <td>The company objects</td>
+                </tr>
+                <tr>
+                    <td><strong>route</strong></td>
+                    <td>The route objects</td>
+                </tr>
+                <tr>
+                    <td><strong>status</strong></td>
+                    <td>The status objects</td>
+                </tr>
+                <tr>
+                    <td><strong>schedule</strong></td>
+                    <td>The schedule objects</td>
+                </tr>
+                <tr>
+                    <td><strong>form</strong></td>
+                    <td>The form objects</td>
+                </tr>
+                <tr>
+                    <td><strong>therapeuticclass</strong></td>
+                    <td>The therapeutic class objects</td>
+                </tr>
+                <tr>
+                    <td><strong>drugveterinaryspecies</strong></td>
+                    <td>The drug veterinary species objects</td>
+                </tr>
+                <tr>
+                    <td><strong>pharmaceuticalstd</strong></td>
+                    <td>The pharmaceutical std objects</td>
+                </tr>packaging
+                <tr>
+                    <td><strong>packaging</strong></td>
+                    <td>The packaging objects</td>
+                </tr>
+            </table>
+            <p>Each&nbsp;<strong>drug product </strong>&nbsp;object consists of the following values:</p>
+            <table>
+                <caption>
+                   Drug Product object values
+                </caption>
+                <tr>
+                    <th scope="col">Key</th>
+                    <th scope="col">Value</th>
+                </tr>
+                <tr>
+                    <td><strong>DrugCode</strong></td>
+                    <td>The drug code.</td>
+                </tr>
+                <tr>
+                    <td><strong>DrugIdentificationNumber</strong></td>
+                    <td>The drug identification number.</td>
+                </tr>
+                <tr>
+                    <td><strong>BrandName</strong></td>
+                    <td>The brand name.</td>
+                </tr>
+                <tr>
+                    <td><strong>Descriptor</strong></td>
+                    <td>The descriptor</td>
+                </tr>
+                <tr>
+                    <td><strong>CompanyCode</strong></td>
+                    <td>The company code.</td>
+                </tr>
+                <tr>
+                    <td><strong>NumberOfAis</strong></td>
+                    <td>The number of active ingredient .....</td>
+                </tr>
+                <tr>
+                    <td><strong>AiGroupNo</strong></td>
+                    <td>The active ingredient group number.</td>
+                </tr>
+                <tr>
+                    <td><strong>Class</strong></td>
+                    <td>The class.</td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h3 id="a2.3">Sample response</h3>
+            <pre class="prettify prettyprint linenums">
+[{"DrugCode":10,"DrugIdentificationNumber":"00015288","BrandName":"SECONAL SODIUM PULVULE 240 0.1GM","Descriptor":"","CompanyCode":3550,"NumberOfAis":1,"AiGroupNo":"0106011001","Class":"Human"},
+{"DrugCode":100,"DrugIdentificationNumber":"00002216","BrandName":"PENICILLIN G POTASSIUM INJ 5000000IU","Descriptor":"","CompanyCode":3691,"NumberOfAis":1,"AiGroupNo":"0105882002","Class":"Human"},
+{"DrugCode":1000,"DrugIdentificationNumber":"00190934","BrandName":"PMG PROTOMORPHOGEN BEEF PROSTATE 164MGMS","Descriptor":"","CompanyCode":5282,"NumberOfAis":1,"AiGroupNo":"0107391001","Class":"Human"}]
+</pre>
+        </section>
+        <!--h3-section-end-->
+        <!--h3-section-start-->
+        <section>
+            <h3 id="a2.4">jQuery example</h3>
+            <p>Example for a function that appends a list of the most recent recalls of all categories to an element with id &quot;#responses&quot;, given a language selection:</p>
+            <pre class="prettify prettyprint linenums">function getRecent(lang) {
+    var base = 'http://api.hres.ca/dpd/....';
+    var uri = base + '/api/drugproduct/' + lang;
+    $.ajax({
+        url:uri,
+        type:'GET',
+        Accept:&quot;application/json&quot;,
+        dataType: 'json',
+        success:function(data){
+            var frag = document.createDocumentFragment();
+            for (var i=0; i&lt;data.results.ALL.length; i++) {
+                var a = document.createElement(&quot;a&quot;);
+                var title = document.createTextNode(data.results.ALL[i].title);
+                a.appendChild(title);
+                a.setAttribute(&quot;href&quot;, base + data.results.ALL[i].url);
+                frag.appendChild(a);
+                frag.appendChild(document.createElement(&quot;br&quot;));
+            }
+            $(&quot;#responses&quot;)[0].appendChild(frag);
+        },
+        error:function(error){
+        },
+    });
+    return;
+};			</pre>
+        </section>
+        <!--h3-section-end-->
+    </section>
+   
+    
+
+</main>
+
+

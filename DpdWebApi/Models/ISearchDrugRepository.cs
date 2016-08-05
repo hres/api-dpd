@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DpdWebApi.Models
 {
     interface ISearchDrugRepository
     {
-        IEnumerable<SearchDrug> GetAll(string lang, string din, string brandname, string company);
+        IEnumerable<SearchDrug> GetAllByCriteria(string din = "", string brandname = "", string company = "", string lang = "");
+        IEnumerable<SearchDrug> GetAll(string lang = "");
         SearchDrug Get(int id, string lang);
-       // SearchDrug Get(string din, string lang);
     }
 }

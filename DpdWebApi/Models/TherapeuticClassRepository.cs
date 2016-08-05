@@ -9,15 +9,15 @@ namespace DpdWebApi.Models
         private TherapeuticClass _therapeuticClass = new TherapeuticClass();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<TherapeuticClass> GetAll()
+        public IEnumerable<TherapeuticClass> GetAll(string lang)
         {
-            _therapeuticClasses = dbConnection.GetAllTherapeuticClass();
+            _therapeuticClasses = dbConnection.GetAllTherapeuticClass(lang);
             return _therapeuticClasses;
         }
 
-        public TherapeuticClass Get(int id)
+        public TherapeuticClass Get(int id, string lang)
         {
-            _therapeuticClass = dbConnection.GetTherapeuticClassByDrugCode(id);
+            _therapeuticClass = dbConnection.GetTherapeuticClassByDrugCode(id, lang);
             return _therapeuticClass;
         }
     }

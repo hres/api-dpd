@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IScheduleRepository databasePlaceholder = new ScheduleRepository();
 
-        public IEnumerable<Schedule> GetAllActiveIngredient()
+        public IEnumerable<Schedule> GetAllActiveIngredient(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public Schedule GetActiveIngredientByID(int id)
+        public Schedule GetActiveIngredientByID(int id, string lang)
         {
-            Schedule schedule = databasePlaceholder.Get(id);
+            Schedule schedule = databasePlaceholder.Get(id, lang);
             if (schedule == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

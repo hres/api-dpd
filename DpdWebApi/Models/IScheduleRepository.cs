@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IScheduleRepository
     {
-        IEnumerable<Schedule> GetAll();
-        Schedule Get(int id);
+        IEnumerable<Schedule> GetAll(string lang);
+        Schedule Get(int id, string lang);
     }
 }

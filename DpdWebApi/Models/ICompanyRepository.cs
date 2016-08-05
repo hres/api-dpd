@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface ICompanyRepository
     {
-        IEnumerable<Company> GetAll();
-        Company Get(int id);
+        IEnumerable<Company> GetAll(string lang);
+        Company Get(int id, string lang);
     }
 }

@@ -1,0 +1,22 @@
+********** 8:51:03 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-01017: invalid username/password; logon denied
+Source: DbConnection.cs - GetAllActiveIngredients()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllActiveIngredient(String lang) in C:\Users\hcuser\Documents\dpdWebApi\api-dpd\DpdWebApi\App_Data\DBConnection.cs:line 403
+
+********** 8:51:16 AM **********
+Exception Type: Oracle.ManagedDataAccess.Client.OracleException
+Exception: ORA-01017: invalid username/password; logon denied
+Source: DbConnection.cs - GetAllCompany()
+Stack Trace: 
+   at OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, String affinityInstanceName, Boolean bForceMatch)
+   at OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword)
+   at Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   at drug.DBConnection.GetAllCompany() in C:\Users\hcuser\Documents\dpdWebApi\api-dpd\DpdWebApi\App_Data\DBConnection.cs:line 514
+

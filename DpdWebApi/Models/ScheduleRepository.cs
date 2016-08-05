@@ -9,15 +9,15 @@ namespace DpdWebApi.Models
         private Schedule _schedule = new Schedule();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<Schedule> GetAll()
+        public IEnumerable<Schedule> GetAll(string lang)
         {
-            _schedules = dbConnection.GetAllSchedule();
+            _schedules = dbConnection.GetAllSchedule(lang);
             return _schedules;
         }
 
-        public Schedule Get(int id)
+        public Schedule Get(int id, string lang)
         {
-            _schedule = dbConnection.GetScheduleByDrugCode(id);
+            _schedule = dbConnection.GetScheduleByDrugCode(id, lang);
             return _schedule;
         }
     }

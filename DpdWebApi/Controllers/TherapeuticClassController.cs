@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly ITherapeuticClassRepository databasePlaceholder = new TherapeuticClassRepository();
 
-        public IEnumerable<TherapeuticClass> GetAllActiveIngredient()
+        public IEnumerable<TherapeuticClass> GetAllActiveIngredient(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public TherapeuticClass GetActiveIngredientByID(int id)
+        public TherapeuticClass GetActiveIngredientByID(int id, string lang)
         {
-            TherapeuticClass therapeuticClass = databasePlaceholder.Get(id);
+            TherapeuticClass therapeuticClass = databasePlaceholder.Get(id, lang);
             if (therapeuticClass == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

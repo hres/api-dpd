@@ -13,12 +13,9 @@ namespace DpdWebApi.Models
         public string CompanyType { get; set; }
         public string SuiteNumber { get; set; }
         public string CityName { get; set; }
-        public string StreetNameE { get; set; }
-        public string StreetNameF { get; set; }
-        public string ProvinceE { get; set; }
-        public string ProvinceF { get; set; }
-        public string CountryE { get; set; }
-        public string CountryF { get; set; }
+        public string StreetName { get; set; }
+        public string ProvinceName { get; set; }
+        public string CountryName { get; set; }
         public string PostalCode { get; set; }
         public string PostOfficeBox { get; set; }
     }

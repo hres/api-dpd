@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IFormRepository databasePlaceholder = new FormRepository();
 
-        public IEnumerable<Form> GetAllForm()
+        public IEnumerable<Form> GetAllForm(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public Form GetFormByID(int id)
+        public Form GetFormByID(int id, string lang)
         {
-            Form form = databasePlaceholder.Get(id);
+            Form form = databasePlaceholder.Get(id, lang);
             if (form == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

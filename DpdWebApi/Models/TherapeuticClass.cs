@@ -10,7 +10,7 @@ namespace DpdWebApi.Models
         // The name of this table is TC_FOR_ATC instead of THERAPEUTIC_CLASS
         public int TcAtcCode { get; set; }
         public string TcAtcNumber { get; set; }
-        public string TcAtcDescE { get; set; } //there is no _E in the DB
-        public string TcAtcDescF { get; set; }
+        public string TcAtcDescName { get; set; } //there is no _E in the DB
+
     }
 }

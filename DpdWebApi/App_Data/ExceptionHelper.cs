@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
+using System.Configuration;
 
-namespace drug
+namespace dhpr
 {
     /// <summary>
     /// Summary description for ExceptionHelper
@@ -21,29 +22,17 @@ namespace drug
         // Log an Exception
         public static void LogException(Exception exc, string source)
         {
-            string logFile = string.Empty;
             try
             {
-                // filePath usually comes from the App.config file. I've written the value explicitly here for demo purposes.
-                var filePath = HttpContext.Current.Server.MapPath("/logs");
-                // Append a backslash if one is not present at the end of the file path.
-                if (!filePath.EndsWith("\\"))
-                {
-                    filePath += "\\";
-                }
-                // Create the path if it doesn't exist.
-                if (!Directory.Exists(filePath))
-                {
-                    Directory.CreateDirectory(filePath);
-                }
-
-                logFile = string.Format("{0}{1:yyyyMMdd}.txt", filePath, DateTime.Now);
+                var filePath = ConfigurationManager.AppSettings["logFileLocation"].ToString();
+                var logFile = string.Format("{0}{1:yyyyMMdd}.txt", filePath, DateTime.Now);
 
                 if (!File.Exists(logFile)) //No File? Create
                 {
                     FileStream fs = File.Create(logFile);
                     fs.Close();
                 }
+
 
                 // Open the log file for append and write the log
                 using (System.IO.StreamWriter sw = new StreamWriter(logFile, true))

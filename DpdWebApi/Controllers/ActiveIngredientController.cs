@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IActiveIngredientRepository databasePlaceholder = new ActiveIngredientRepository();
 
-        public IEnumerable<ActiveIngredient> GetAllActiveIngredient()
+        public IEnumerable<ActiveIngredient> GetAllActiveIngredient(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public ActiveIngredient GetActiveIngredientByID(int id)
+        public ActiveIngredient GetActiveIngredientByID(int id, string lang)
         {
-            ActiveIngredient activeIngredient = databasePlaceholder.Get(id);
+            ActiveIngredient activeIngredient = databasePlaceholder.Get(id, lang);
             if (activeIngredient == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

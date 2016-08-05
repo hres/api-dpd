@@ -10,17 +10,17 @@ namespace DpdWebApi.Models
     private List<DrugProduct> _drugProducts = new List<DrugProduct>();
     private DrugProduct _drugProduct = new DrugProduct();
     DBConnection dbConnection = new DBConnection("en");
-    
-
-    public IEnumerable<DrugProduct> GetAll(string lang)
-    {
-        _drugProducts = dbConnection.GetAllDrugProduct(lang);
-
-        return _drugProducts;
-    }
 
 
-    public DrugProduct Get(int id, string lang)
+        public IEnumerable<DrugProduct> GetAll(string lang)
+        {
+            _drugProducts = null; //dbConnection.GetAllDrugProduct(lang);
+
+            return _drugProducts;
+        }
+
+
+        public DrugProduct Get(int id, string lang)
     {
         _drugProduct = dbConnection.GetDrugProductByDrugCode(id, lang);
         return _drugProduct;

@@ -13,21 +13,18 @@ namespace DpdWebApi
         public static readonly string UriPathExtensionKey = "ext";
         public static void Register(HttpConfiguration config)
         {
-           // config.MapHttpAttributeRoutes();
-            
             config.Routes.MapHttpRoute(
-                name: "Api UriPathExtension ID DIN and DrugName",
-                routeTemplate: "api/{controller}/{lang}/{din}/{brandname}/{company}.{ext}",
-                defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional});
+               name: "ApiMultiParamPathExtension ID",
+               routeTemplate: "api/{controller}/{din}/{brandname}/{company}/{lang}.{ext}",
+               defaults: new { din = RouteParameter.Optional, brandname = RouteParameter.Optional, company = RouteParameter.Optional, lang = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
-               name: "Api UriPathExtension DIN",
-               routeTemplate: "api/{controller}/{din}/{lang}.{ext}",
-               defaults: new { id = RouteParameter.Optional, ext = RouteParameter.Optional });
+               name: "ApiTwoUriPathExtension ID",
+               routeTemplate: "api/{controller}/{lang}.{ext}",
+               defaults: new { lang = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
-                name: "Api ID and DIN",
-                routeTemplate: "api/{controller}/{id}/{din}/{lang}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                name: "ApiUriPathExtension ID",
+                routeTemplate: "api/{controller}/{lang}/{id}.{ext}",
+                defaults: new { lang = RouteParameter.Optional, id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IFormRepository
     {
-        IEnumerable<Form> GetAll();
-        Form Get(int id);
+        IEnumerable<Form> GetAll(string lang);
+        Form Get(int id, string lang);
     }
 }

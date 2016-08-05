@@ -12,17 +12,17 @@ namespace DpdWebApi.Models
     DBConnection dbConnection = new DBConnection("en");
 
 
-    public IEnumerable<ActiveIngredient> GetAll()
+    public IEnumerable<ActiveIngredient> GetAll(string lang)
     {
-        _activeIngredients = dbConnection.GetAllActiveIngredient();
+        _activeIngredients = dbConnection.GetAllActiveIngredient(lang);
 
         return _activeIngredients;
     }
 
 
-    public ActiveIngredient Get(int id)
+    public ActiveIngredient Get(int id, string lang)
     {
-        _activeIngredient = dbConnection.GetActiveIngredientById(id);
+        _activeIngredient = dbConnection.GetActiveIngredientById(id, lang);
         return _activeIngredient;
     }
 

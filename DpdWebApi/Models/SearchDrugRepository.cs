@@ -5,16 +5,21 @@ namespace DpdWebApi.Models
 {
     public class SearchDrugRepository : ISearchDrugRepository
     {
-        // We are using the list and _fakeDatabaseID to represent what would
-        // most likely be a database of some sort, with an auto-incrementing ID field:
         private List<SearchDrug> _drugs = new List<SearchDrug>();
         private SearchDrug _drug = new SearchDrug();
         DBConnection dbConnection = new DBConnection("en");
 
 
-        public IEnumerable<SearchDrug> GetAll(string lang, string din, string brandname, string company)
+        public IEnumerable<SearchDrug> GetAllByCriteria(string din = "", string brandname = "", string company = "", string lang = "")
         {
-            _drugs = dbConnection.GetBySearchCriteria(lang, din, brandname, company);
+            _drugs = dbConnection.GetBySearchCriteria(din, brandname, company, lang);
+
+            return _drugs;
+        }
+
+        public IEnumerable<SearchDrug> GetAll(string lang = "")
+        {
+            _drugs = dbConnection.GetAllDrugProduct(lang);
 
             return _drugs;
         }

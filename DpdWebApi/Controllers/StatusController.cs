@@ -11,16 +11,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IStatusRepository databasePlaceholder = new StatusRepository();
 
-        public IEnumerable<Status> GetAllStatus()
+        public IEnumerable<Status> GetAllStatus(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public Status GetStatusByID(int id)
+        public Status GetStatusByID(int id, string lang)
         {
-            Status status = databasePlaceholder.Get(id);
+            Status status = databasePlaceholder.Get(id, lang);
             if (status == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

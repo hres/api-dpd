@@ -10,7 +10,6 @@ namespace DpdWebApi.Models
         public int DrugCode { get; set; }
         public DateTime? InactiveDate { get; set; }
         public int PharmaceuticalFormCode { get; set; }
-        public string PharmaceuticalFormE { get; set; } //DB Entry has no _E
-        public string PharmaceuticalFormF { get; set; }
+        public string PharmaceuticalFormName { get; set; } //DB Entry has no _E
     }
 }

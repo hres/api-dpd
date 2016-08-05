@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IDrugVeterinarySpeciesRepository databasePlaceholder = new DrugVeterinarySpeciesRepository();
 
-        public IEnumerable<DrugVeterinarySpecies> GetAllActiveIngredient()
+        public IEnumerable<DrugVeterinarySpecies> GetAllActiveIngredient(string lang)
         {
 
-            return databasePlaceholder.GetAll();
+            return databasePlaceholder.GetAll(lang);
         }
 
 
-        public DrugVeterinarySpecies GetActiveIngredientByID(int id)
+        public DrugVeterinarySpecies GetActiveIngredientByID(int id, string lang)
         {
-            DrugVeterinarySpecies veterinarySpecies = databasePlaceholder.Get(id);
+            DrugVeterinarySpecies veterinarySpecies = databasePlaceholder.Get(id, lang);
             if (veterinarySpecies == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IDrugVeterinarySpeciesRepository
     {
-        IEnumerable<DrugVeterinarySpecies> GetAll();
-        DrugVeterinarySpecies Get(int id);
+        IEnumerable<DrugVeterinarySpecies> GetAll(string lang);
+        DrugVeterinarySpecies Get(int id, string lang);
     }
 }

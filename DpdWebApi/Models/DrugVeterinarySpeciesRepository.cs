@@ -10,15 +10,15 @@ namespace DpdWebApi.Models
         private DrugVeterinarySpecies _veterinarySpecies = new DrugVeterinarySpecies();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<DrugVeterinarySpecies> GetAll()
+        public IEnumerable<DrugVeterinarySpecies> GetAll(string lang)
         {
-            _veterinarySpeciess = dbConnection.GetAllDrugVeterinarySpecies();
+            _veterinarySpeciess = dbConnection.GetAllDrugVeterinarySpecies(lang);
             return _veterinarySpeciess;
         }
 
-        public DrugVeterinarySpecies Get(int id)
+        public DrugVeterinarySpecies Get(int id, string lang)
         {
-            _veterinarySpecies = dbConnection.GetDrugVeterinarySpeciesByDrugCode(id);
+            _veterinarySpecies = dbConnection.GetDrugVeterinarySpeciesByDrugCode(id, lang);
             return _veterinarySpecies;
         }
     }

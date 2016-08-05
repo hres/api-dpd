@@ -12,17 +12,17 @@ namespace DpdWebApi.Models
     DBConnection dbConnection = new DBConnection("en");
 
 
-    public IEnumerable<Status> GetAll()
+    public IEnumerable<Status> GetAll(string lang)
     {
-        _statuses = dbConnection.GetAllStatus();
+        _statuses = dbConnection.GetAllStatus(lang);
 
         return _statuses;
     }
 
 
-    public Status Get(int id)
+    public Status Get(int id, string lang)
     {
-        _status = dbConnection.GetStatusByDrugCode(id);
+        _status = dbConnection.GetStatusByDrugCode(id, lang);
         return _status;
     }
 

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using DpdWebApi.Models;
 
@@ -11,12 +8,15 @@ namespace DpdWebApi.Controllers
     public class SearchDrugController : ApiController
     {
         static readonly ISearchDrugRepository databasePlaceholder = new SearchDrugRepository();
-
-        public IEnumerable<SearchDrug> GetBySearchCriteria(string lang, string din, string brandname, string company)
+        //to make them optional we must pass empty string
+        //public IEnumerable<SearchDrug> GetBySearchCriteria(string din = "", string brandname = "", string company= "", string lang = "")
+        //{
+        //    return databasePlaceholder.GetAllByCriteria(din, brandname, company, lang);
+        //}
+        public IEnumerable<SearchDrug> GetBySearchCriteria(string din, string brandname, string company, string lang)
         {
-            return databasePlaceholder.GetAll(lang, din, brandname, company);
+            return databasePlaceholder.GetAllByCriteria(din, brandname, company, lang);
         }
-
 
         public SearchDrug GetSearchDrugProductByID(int id, string lang)
         {
@@ -26,6 +26,12 @@ namespace DpdWebApi.Controllers
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
             return drugProduct;
+        }
+
+        public IEnumerable<SearchDrug> GetAllDrugProduct(string lang)
+        {
+
+            return databasePlaceholder.GetAll(lang);
         }
     }
 }

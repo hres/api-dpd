@@ -1,6 +1,6 @@
-﻿var dhpr = "http://api.hres.ca/dpd/Controllers/dhprController.ashx?";
+﻿//var dhpr = "http://api.hres.ca/dpd/Controllers/dhprController.ashx?";
 
-//var dhpr = "./Controllers/dhprController.ashx?";
+var dhpr = "./Controllers/dhprController.ashx?";
 
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

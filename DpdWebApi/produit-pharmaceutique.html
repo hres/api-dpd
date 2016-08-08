@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" dir="ltr">
+<html class="no-js" lang="fr" dir="ltr">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
@@ -141,53 +141,52 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
     </header>
 
     <div class="container">
-            <main role="main" property="mainContentOfPage" class="container">
-                <div class="wb-frmvld">
-                    <form name="dpd" action="drug-product-result.html" method="get" id="dpd">
-                        <h1 property="name" id="wb-cont">Drug &amp; product database</h1>
-                                <p>Drug product database .....</p>
-                                
+        <main role="main" property="mainContentOfPage" class="container">
+            <div class="wb-frmvld">
+                <form name="dpd" action="produit-pharmaceutique-resultat.html" method="get" id="dpd">
+                    <h1 property="name" id="wb-cont">Base de donnée produits pharmaceutiques</h1>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Recherche de produits pharmaceutiques</h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="term" class="control-label required">
+                                    <span class="field-name">Drug name, company or drug identification number(DIN) :</span>
+                                    <strong class="required">(required)</strong>
+                                </label>
+                                <input name="term" type="text" id="term" list="list-liste" placeholder="[Enter text here to search for a drug name, company or drug identification number (DIN).]" class="full-width" required="required">
+                                <datalist id="list-liste" data-ajax-replace=".././list-liste-eng.txt" class="wb-data-ajax-replace-inited"> </datalist>
+                            </div>
 
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h2 class="panel-title">Drug product search</h2>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="form-group">
-                                            <label for="term" class="control-label required">
-                                                <span class="field-name">Drug name,company, or drug identification number(DIN) :</span>
-                                                <strong class="required">(required)</strong>
-                                            </label>
-                                            <input name="term" type="text" id="term" list="list-liste" placeholder="[Enter text here to search for a drug name, company or drug identification number (DIN).]" class="full-width" required="required">
-                                            <datalist id="list-liste" data-ajax-replace=".././list-liste-eng.txt" class="wb-data-ajax-replace-inited"> </datalist>
-                                        </div>
+                            <div class="form-group">
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+                                <input type="reset" value="Reset" class="btn btn-default nextBtn" />
+                            </div>
+                        </div>
+                    </div>
+                    <p>For more information on Drug product, click here: <a href="http://www.hc-sc.gc.ca/dhp-mps/prodpharma/databasdon/index-eng.php">Health Canada Drug product database</a></p>
+                    <p><a href="http://api.hres.ca/dpd/produit-pharmaceutique-resultat.html?lang=fr&amp;term=">List of all Drug Product</a></p>
 
-                                        <div class="form-group">
-                                            <input type="submit" value="Submit" class="btn btn-primary" />
-                                            <input type="reset" value="Reset" class="btn btn-default nextBtn" />
-                                        </div>
-                                    </div>
-                              </div>
-                            <p>For more information on Drug product, click here: <a href="http://www.hc-sc.gc.ca/dhp-mps/prodpharma/rds-sdr/index-eng.php">http://www.hc-sc.gc.ca/dhp-mps/prodpharma/rds-sdr/index-eng.php</a></p>
-                    </form>
+                </form>
+            </div>
+            <div class="row pagedetails">
+                <div class="col-sm-5 col-xs-12 datemod">
+                    <dl id="wb-dtmd">
+                        <dt>Date modified:&#32;</dt>
+                        <dd><time property="dateModified">2016-08-05</time></dd>
+                    </dl>
                 </div>
-                <div class="row pagedetails">
-                    <div class="col-sm-5 col-xs-12 datemod">
-                        <dl id="wb-dtmd">
-                            <dt>Date modified:&#32;</dt>
-                            <dd><time property="dateModified">2016-07-28</time></dd>
-                        </dl>
-                    </div>
-                    <div class="clear visible-xs"></div>
-                    <div class="col-sm-4 col-xs-6">
-                        <a href="http://www.canada.ca/en/contact/feedback.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Feedback<span class="wb-inv"> about this web site</span></a>
-                    </div>
-                    <div class="col-sm-3 col-xs-6 text-right">
-                        <div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
-                    </div>
-                    <div class="clear visible-xs"></div>
+                <div class="clear visible-xs"></div>
+                <div class="col-sm-4 col-xs-6">
+                    <a href="http://www.canada.ca/en/contact/feedback.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Feedback<span class="wb-inv"> about this web site</span></a>
                 </div>
-            </main>
+                <div class="col-sm-3 col-xs-6 text-right">
+                    <div class="wb-share" data-wb-share='{"lnkClass": "btn btn-default"}'></div>
+                </div>
+                <div class="clear visible-xs"></div>
+            </div>
+        </main>
     </div>
 
     <footer role="contentinfo" id="wb-info">
@@ -271,7 +270,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
             </div>
         </div>
     </footer>
-    
+
     <!--[if gte IE 9 | !IE ]><!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src="./distro/4.0.20/wet-boew/js/wet-boew.min.js"></script>
@@ -282,7 +281,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
     <script src="./js/dhpr.js"></script>
     <!--[if lt IE 10 | !IE ]><!-->
     <script src="./js/jquery.xdomainrequest.min.js"></script>
-    <!--<![endif]-->  
+    <!--<![endif]-->
     <script>
         //$("#myButton").on("click", function (e) {
         //    e.preventDefault();
@@ -292,7 +291,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
         //    var jsonData = JSON.stringify({ aData: aData });
         //    $.ajax({
         //        type: "POST",
-        //        //getListOfCars is my webmethod   
+        //        //getListOfCars is my webmethod
         //        url: "WebService.asmx/getListOfCars",
         //        data: jsonData,
         //        contentType: "application/json; charset=utf-8",
@@ -317,6 +316,6 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
         //    function OnErrorCall(response) { console.log(error); }
         //});
     </script>
-       
+
 </body>
 </html>

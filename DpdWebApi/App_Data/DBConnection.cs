@@ -34,16 +34,17 @@ namespace drug
         public List<SearchDrug> GetBySearchCriteria(string din, string brandname, string company, string lang)
         {
             var orderClause = "";
+            var sortBrand = "";
             var items = new List<SearchDrug>();
             string commandText = "SELECT DISTINCT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
             commandText += " B.COMPANY_NAME, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
             if (lang.Equals("fr"))
             {
-                commandText += " A.BRAND_NAME_F as BRAND_NAME, A.CLASS_F as CLASS,D.SCHEDULE_F as SCHEDULE, E.INGREDIENT_F as INGREDIENT,";
+                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS_F as CLASS,D.SCHEDULE_F as SCHEDULE, E.INGREDIENT_F as INGREDIENT,";
                 commandText += " E.STRENGTH_UNIT_F as STRENGTH_UNIT, EX.EXTERNAL_STATUS_FRENCH as EXTERNAL_STATUS, pm.PM_FRENCH_FNAME as PM_NAME";
             }
             else {
-                commandText += " A.BRAND_NAME, A.CLASS, D.SCHEDULE, E.INGREDIENT, E.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, pm.PM_ENGLISH_FNAME as PM_NAME";
+                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS, D.SCHEDULE, E.INGREDIENT, E.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, pm.PM_ENGLISH_FNAME as PM_NAME";
             }
                 commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
             commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS C on A.DRUG_CODE = C.DRUG_CODE";
@@ -61,14 +62,23 @@ namespace drug
             if (brandname != null)
             {
                 if (din != null) commandText += " OR";
-                if (lang.Equals("fr"))
-                {
-                    commandText += " UPPER(A.BRAND_NAME_F) LIKE '%" + brandname.ToUpper() + "%'";
-                }
-                else {
-                    commandText += " UPPER(A.BRAND_NAME) LIKE '%" + brandname.ToUpper() + "%'";
-                }
+                commandText += " UPPER(A.BRAND_NAME_F) LIKE '%" + brandname.ToUpper() + "%'";
+                commandText += " OR UPPER(A.BRAND_NAME) LIKE '%" + brandname.ToUpper() + "%'";
+          
+                //if (lang.Equals("fr"))
+                //{
+                //    sortBrand = ", CASE WHEN DRUG.BRAND_NAME_F IS NOT NULL THEN UPPER(DRUG.BRAND_NAME_F)"
+                //            + " WHEN DRUG.BRAND_NAME IS NOT NULL THEN upper(DRUG.BRAND_NAME)"
+                //            + " ELSE NULL END AS SORT_COLUMN ";
+                //}
+                //else {
+                //    sortBrand = ", CASE WHEN DRUG.BRAND_NAME IS NOT NULL THEN UPPER(DRUG.BRAND_NAME)"
+                //            + " WHEN DRUG.BRAND_NAME_F IS NOT NULL THEN upper(DRUG.BRAND_NAME_F)"
+                //            + " ELSE NULL END AS SORT_COLUMN ";
+                //}
+
             }
+        
             if (company != null)
             {
                 if ((din != null) || (brandname != null)) commandText += " OR";
@@ -96,8 +106,14 @@ namespace drug
                             while (dr.Read())
                             {
                                 var item = new SearchDrug();
-                                
-                                item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
+                                }
+                                else
+                                {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
+                                }
                                 item.ClassName = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
                                 item.StatusName = dr["EXTERNAL_STATUS"] == DBNull.Value ? string.Empty : dr["EXTERNAL_STATUS"].ToString().Trim();
                                 item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
@@ -235,21 +251,18 @@ namespace drug
             else {
                 commandText += " A.BRAND_NAME, A.CLASS, D.SCHEDULE, E.INGREDIENT, E.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, pm.PM_ENGLISH_FNAME as PM_NAME";
             }
-            commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A,";
-            commandText += " DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS E,";
-            commandText += " DPD_ONLINE_OWNER.WQRY_STATUS C,";
-            commandText += " DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL EX,";
-            commandText += " DPD_ONLINE_OWNER.WQRY_SCHEDULE D,";
-            commandText += " DPD_ONLINE_OWNER.WQRY_COMPANIES B,";
-            commandText += " DPD_ONLINE_OWNER.WQRY_PM_DRUG pm";
-            commandText += " WHERE A.DRUG_CODE = C.DRUG_CODE";
-            commandText += " AND C.EXTERNAL_STATUS_CODE = EX.EXTERNAL_STATUS_CODE";
-            commandText += " AND A.DRUG_CODE = D.DRUG_CODE";
-            commandText += " AND A.COMPANY_CODE = B.COMPANY_CODE";
-            commandText += " AND A.DRUG_CODE = E.DRUG_CODE(+)";
-            commandText += " AND A.DRUG_CODE = pm.DRUG_CODE(+)";
-            commandText += " and E.id = (select min(id) from DPD_ONLINE_OWNER.wqry_active_ingredients E";
-            commandText += " where A.drug_code = E.drug_code)";
+            commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS C on A.DRUG_CODE = C.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL EX on C.EXTERNAL_STATUS_CODE = EX.EXTERNAL_STATUS_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_SCHEDULE D on A.DRUG_CODE = D.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_FORM F on A.DRUG_CODE = F.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_ROUTE R on A.DRUG_CODE = R.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_AHFS H on A.DRUG_CODE = H.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_ATC T on A.DRUG_CODE = T.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS E on A.DRUG_CODE = E.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_COMPANIES B ON A.COMPANY_CODE = B.COMPANY_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_PM_DRUG pm ON A.DRUG_CODE = pm.DRUG_CODE";
+            commandText += " WHERE E.id = (select min(id) from DPD_ONLINE_OWNER.wqry_active_ingredients E where A.drug_code = E.drug_code)";
             commandText += " ORDER BY" + orderClause + " A.DRUG_IDENTIFICATION_NUMBER";
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {

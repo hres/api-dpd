@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" dir="ltr">
+<html class="no-js" lang="fr" dir="ltr">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
     wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-    <title>Drug &amp; health product register</title>
+    <title>Search results summary</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <!-- Meta data -->
     <meta name="dcterms.language" title="ISO639-2" content="eng" />
@@ -147,40 +147,42 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
             </div>
         </nav>
     </header>
-    
+
     <div class="container">
         <main role="main" property="mainContentOfPage" class="container">
-            <h1 property="name" id="wb-cont">Drug &amp; product search</h1>
-            
+            <h1 property="name" id="wb-cont">Résumé des résultats de recherche</h1>
+
             <section class="panel panel-default">
                 <header class="panel-heading">
-                    <h2 class="panel-title" id="title">Drug product search results</h2>
+                    <h2 class="panel-title" id="title">Résultats de recherche</h2>
                 </header>
-
+                <div><a href="produit-pharmaceutique.html">Nouvelle recherche</a></div>
                 <div class="panel-body">
-                    <p id="subParam1">Below are the results for drug products.</p>
-                        
-                     <table id="rdsTable" class="wb-tables table table-striped table-hover table-bordered">
-                            <thead>
-                                <tr class="active">
-                                    <th>Status</th>
-                                    <th>DIN</th>
-                                    <th>Company</th>
-                                    <th>Product</th>
-                                    <th>PM</th>
-                                    <th>Schedule</th>
-                                    <th>A.I. Name</th>
-                                    <th>Strength</th>
-                            </thead>
-                            <tbody id="tbodyMain"></tbody>
-                     </table>
-</div>
+                    <p id="subParam1">List of Returned Drug Products</p>
+
+                    <table id="dpdTable" class="wb-tables table table-striped table-hover table-bordered">
+                        <thead>
+                            <tr class="active">
+                                <th>Status</th>
+                                <th>DIN</th>
+                                <th>Company</th>
+                                <th>Product</th>
+                                <th>Class</th>
+                                <th>PM<sup id="fn1-rf"><a class="fn-lnk" href="#fn1"><span class="wb-inv">See footnote</span>1</a></sup></th>
+                                <th>Schedule</th>
+                                <th>#<sup id="fn2-rf"><a class="fn-lnk" href="#fn2"><span class="wb-inv">See footnote</span>2</a></sup></th>
+                                <th>A.I. Name<sup id="fn2-rf"><a class="fn-lnk" href="#fn2"><span class="wb-inv">See footnote</span>3</a></sup></th>
+                                <th>Strength</th>
+                        </thead>
+                        <tbody id="tbodyMain"></tbody>
+                    </table>
+                </div>
             </section>
             <div class="row pagedetails">
                 <div class="col-sm-5 col-xs-12 datemod">
                     <dl id="wb-dtmd">
                         <dt>Date modified:&#32;</dt>
-                        <dd><time property="dateModified">2016-07-28</time></dd>
+                        <dd><time property="dateModified">2016-08-05</time></dd>
                     </dl>
                 </div>
                 <div class="clear visible-xs"></div>
@@ -193,7 +195,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
                 <div class="clear visible-xs"></div>
             </div>
         </main>
- </div>
+    </div>
     <footer role="contentinfo" id="wb-info">
         <nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
             <h2 class="wb-inv">About this site</h2>
@@ -289,35 +291,43 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
     <!--[if lt IE 10 | !IE ]><!-->
     <script src="./js/jquery.xdomainrequest.min.js"></script>
     <!--<![endif]-->
- 
+
     <script>
-        var lang = " en";
+        var lang = "fr";
         var pType = "dpd";
         $('#btnDownload').hide();
-        $("a#langLink").attr('href', goDhprLangUrl(lang, pType));            
-        alert("go dhprlang url");
-            window["wb-tables"] = {
+        $("a#langLink").attr('href', goDhprLangUrl(lang, pType));
+        alert(goDhprLangUrl(lang, pType));
+       
+        window["wb-tables"] = {
+                "bSortClasses": false,
                 "processing": true,
+                "deferRender": true,
                 "ajax": {
                     "url": goDhprUrl(lang, pType),
                     "error": OnFail
                 },
-                "order": [[4, "desc"]],
+                "order": [[1, "desc"]],
                 "columns": [
-                            { "data": "StatusName" },
-                                {
-                                    "data": null,
-                                    "render": function (data, type, full) {
-                                        return '<a href=drug-product-detail.html?lang=en&linkID=' + data.DrugIdentificationNumber + '>' + data.DrugIdentificationNumber + '</a>';
-                                    }
-                                },
-                                { "data": "CompanyName" },
-                                { "data": "BrandName" },
-                                { "data": "ClassName" },
-                                { "data": "PM"},
-                                { "data": "ScheduleName" },
-                                { "data": "AiName" },
-                                { "data":"DosageValue" + " " + "DosageUnit" }
+                    { "data": "StatusName" },
+                    {
+                        "data": null,
+                        "render": function (data, type, full) {
+                            return '<a href=produit-pharmaceutique-detail.html?lang=fr&linkID=' + data.DrugCode + '>' + data.DrugIdentificationNumber + '</a>';
+                        }
+                    },
+                    { "data": "CompanyName", sDefaultContent: "" },
+                    { "data": "BrandName" },
+                    { "data": "ClassName", sDefaultContent: "" },
+                    { "data": "PMName",
+                        "render": function (data, type, full, meta) {
+                            return formatedPM(data, lang);
+                        }
+                    },
+                    { "data": "ScheduleName", sDefaultContent: "" },
+                    { "data": "NumberOfAis", sDefaultContent: "" },
+                    { "data": "AiName", sDefaultContent: "" },
+                    { "data": "StrengthName", sDefaultContent: "" }
                 ]
             }
 
@@ -333,7 +343,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
                 }
 
                 $('#btnExcel').click(function () {
-                    ExportExcel(json, "RDSResult", true);
+                    ExportExcel(json, "DPDResult", true);
                 });
 
                 //Export json // "href": "data:application/json," + encodeURIComponent(JSON.stringify($(this).data().obj))
@@ -341,7 +351,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
                     var arrData = typeof json != 'object' ? JSON.parse(json) : json;
                     $("<a />", {
                         "download": "DPDResult.json",
-                        "href": "data:application/json," + encodeURIComponent(JSON.stringify(json))                      
+                        "href": "data:application/json," + encodeURIComponent(JSON.stringify(json))
                     }).appendTo("body")
                   .click(function () {
                       $(this).remove()
@@ -362,7 +372,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
                       $(this).remove()
                   })[0].click()
                 });
-            });            
+            });
     </script>
 </body>
 </html>

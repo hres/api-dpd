@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 <!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" dir="ltr">
+<html class="no-js" lang="fr" dir="ltr">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
     wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-    <title>Drug &amp; health product register</title>
+    <title>Product information</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <!-- Meta data -->
     <meta name="dcterms.language" title="ISO639-2" content="eng" />
@@ -56,7 +56,7 @@
 <body vocab="http://schema.org/" typeof="WebPage" class="secondary">
     <!-- Google Tag Manager DO NOT REMOVE OR MODIFY - NE PAS SUPPRIMER OU MODIFIER -->
     <noscript><iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
+    <script>(function (w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer1' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer1', 'GTM-TLGQ9K');</script>
     <!-- End Google Tag Manager -->
     <ul id="wb-tphp">
         <li class="wb-slc">
@@ -94,10 +94,10 @@
                     <form action="http://recherche-search.gc.ca/rGs/s_r?#wb-land" method="get" name="cse-search-box" role="search" class="form-inline">
                         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
                         <script type="text/javascript">
-var autoCompletionOptions = { 'validLanguages' : 'en', };
-		google.load( 'search', '1');
-		google.setOnLoadCallback( function() {google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q' ), 'cse-search-box', autoCompletionOptions );});
-		google.setOnLoadCallback( function() {setTimeout( function(){google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q-imprt' ), 'cse-search-box',autoCompletionOptions );}, 2000);});</script>
+                            var autoCompletionOptions = { 'validLanguages': 'en', };
+                            google.load('search', '1');
+                            google.setOnLoadCallback(function () { google.search.CustomSearchControl.attachAutoCompletionWithOptions('008724028898028201144:knjjdikrhq0', document.getElementById('wb-srch-q'), 'cse-search-box', autoCompletionOptions); });
+                            google.setOnLoadCallback(function () { setTimeout(function () { google.search.CustomSearchControl.attachAutoCompletionWithOptions('008724028898028201144:knjjdikrhq0', document.getElementById('wb-srch-q-imprt'), 'cse-search-box', autoCompletionOptions); }, 2000); });</script>
                         <div class="form-group">
                             <label for="wb-srch-q" class="wb-inv">Search website</label>
                             <input name="cdn" value="canada" type="hidden" />
@@ -148,27 +148,110 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
         </nav>
     </header>
 
-    <div class="container">
+    <a class="container">
         <main role="main" property="mainContentOfPage" class="container">
-            <h1 property="name" id="wb-cont">Drug &amp; product</h1>
+            <h1 property="name" id="wb-cont">Renseignements sur le produit</h1>
+            <a href="produit-pharmaceutique.html">Nouvelle recherche</a>
             <section>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 id="title" class="panel-title">Drug product Summary: <span id="Drugname"></span></h2>
+                        <h2 id="title" class="panel-title">Drug product Summary: <span id="searchcriteria"></span></h2>
                     </div>
-                    
-                        <div class="row">
-                            <p class="col-sm-4"><strong>Drug Name</strong></p>
-                            <div class="col-sm-8"><p id="drugname"></p></div>
-                        </div>
-                        
-                   
+                    <p class="well">
+                        Due to the fact that the information originated with an organization that is not subject to the Official Languages Act, the document may only appear in the language in which it was written. Translations of the document are the responsibility of the sponsor involved.
+                        prompt.search.drug.instruction=You may search by <strong>either</strong> a) drug identification number (<abbr>DIN</abbr>), b) Anatomical Therapeutical Chemical (<abbr>ATC</abbr>) code, or c) by company or one or more of the various other product characteristics listed. When typing inside fields, do not include punctuation marks such as hyphens, commas, colons, brackets and wildcard characters (%).
+                    </p>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Current status: </strong></p>
+                        <div class="col-sm-8"><p id="statusname"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Date: </strong></p>
+                        <div class="col-sm-8"><p id="historydate"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Original market date: </strong></p>
+                        <div class="col-sm-8"><p id="originalmarketdate"></p></div>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Product name:  </strong></p>
+                        <div class="col-sm-8"><p id="brandname"></p></div>
+                    </div>
+                    <p>
+                        <span class="help-block">
+                            Help on accessing alternative formats, such as Portable Document Format (<abbr>PDF</abbr>), Microsoft Word and PowerPoint (<abbr>PPT</abbr>) files, can be obtained in the
+                            <a href="http://www.hc-sc.gc.ca/home-accueil/help-aide/index-eng.php#alt">
+                                alternate format help section
+                            </a>.
+                        </span>
+                    </p>
+
+                    <div class="row">
+                        <p class="col-sm-4"><strong>DIN: </strong></p>
+                        <div class="col-sm-8"><p id="din"></p></div>
+                    </div>
+
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Company: </strong></p>
+                        <div class="col-sm-8"> <p id="companyname"></p></div>
+                        <p class="col-sm-4"></p>
+                        <div class="col-sm-8"><p id="streetname"></p></div>
+                        <p class="col-sm-4"></p>
+                        <div class="col-sm-8"><p id="suitenumber"></p></div>
+                        <p class="col-sm-4"></p>
+                        <div class="col-sm-8"><p id="cityname"></p></div>
+                        <p class="col-sm-4"></p>
+                        <div class="col-sm-8"><p id="provincename"></p></div>
+                        <p class="col-sm-4"></p>
+                        <div class="col-sm-8"><p id="countryname"></p></div>
+                    </div>
+
+
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Class:</strong></p>
+                        <div class="col-sm-8"><p id="classname"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Dosage form(s):</strong></p>
+                        <div class="col-sm-8"><p id="formname"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Route(s) of administration:</strong></p>
+                        <div class="col-sm-8"><p id="routename"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Number of active ingredient(s):</strong></p>
+                        <div class="col-sm-8"><p id="ainumber"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Schedule(s):</strong></p>
+                        <div class="col-sm-8"><p id="schedulename"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>American Hospital Formulary Service (AHFS):</strong></p>
+                        <div class="col-sm-8"><p id="ahfsname"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Anatomical Therapeutical Chemical (ATC):</strong></p>
+                        <div class="col-sm-8"><p id="atcname"></p></div>
+                    </div>
+                    <div class="row">
+                        <p class="col-sm-4"><strong>Active ingredient group (AIG) number:</strong></p>
+                        <div class="col-sm-8"><p id="aigroupno"></p></div>
+                    </div>
+
+                    <p>List of active ingredient(s)</p>
+
+                </div>
+
             </section>
+            <a href="produit-pharmaceutique.html">Nouvelle recherche</a>
             <div class="row pagedetails">
                 <div class="col-sm-5 col-xs-12 datemod">
                     <dl id="wb-dtmd">
                         <dt>Date modified:&#32;</dt>
-                        <dd><time property="dateModified">2016-06-23</time></dd>
+                        <dd><time property="dateModified">2016-08-05</time></dd>
                     </dl>
                 </div>
                 <div class="clear visible-xs"></div>
@@ -181,116 +264,141 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
                 <div class="clear visible-xs"></div>
             </div>
         </main>
-    </div>
-  
-    <footer role="contentinfo" id="wb-info">
-        <nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
-            <h2 class="wb-inv">About this site</h2>
-            <div class="row">
-                <div class="col-sm-3 col-lg-3">
-                    <section>
-                        <h3>Contact information</h3>
-                        <!--Start Healthy Canadians contact info-->
-                        <ul class="list-unstyled">
-                            <li><a href="/report-signalez/index-eng.php">Report a concern</a></li>
-                            <li><a href="/say-exprimez/index-eng.php">Public involvement</a></li>
-                            <li><a href="/contact-contactez/index-eng.php">General enquiries</a></li>
-                            <li><a href="/connect-connectez/index-eng.php">Stay connected</a></li>
-                        </ul>
-                        <!--End Healthy Canadians contact info-->
-                    </section>
-                    <section>
-                        <h3>News</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="http://news.gc.ca/web/index-en.do">Newsroom</a></li>
-                            <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=1">News releases</a></li>
-                            <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=3">Media advisories</a></li>
-                            <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=970">Speeches</a></li>
-                            <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=980">Statements</a></li>
-                        </ul>
-                    </section>
-                </div>
-                <section class="col-sm-3 col-lg-3">
-                    <h3>Government</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="http://www.canada.ca/en/gov/system">How government works</a></li>
-                        <li><a href="http://www.canada.ca/en/gov/dept">Departments and agencies</a></li>
-                        <li><a href="http://pm.gc.ca/eng">Prime Minister</a></li>
-                        <li><a href="http://www.canada.ca/en/gov/ministers">Ministers</a></li>
-                        <li><a href="http://www.canada.ca/en/gov/publicservice">Public service and military</a></li>
-                        <li><a href="http://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
-                        <li><a href="http://www.canada.ca/en/gov/libraries">Libraries</a></li>
-                        <li><a href="http://www.canada.ca/en/gov/publications">Publications</a></li>
-                        <li><a href="http://www.canada.ca/en/gov/statistics">Statistics and data</a></li>
-                        <li><a href="http://www.canada.ca/en/newsite.html">About Canada.ca</a></li>
-                    </ul>
-                </section>
-                <section class="col-sm-3 col-lg-3 brdr-lft">
-                    <h3>Transparency</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="http://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
-                        <li><a href="http://open.canada.ca/en">Open government</a></li>
-                        <li><a href="http://www.canada.ca/en/transparency/disclosure.html">Proactive disclosure</a></li>
-                        <li><a href="http://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
-                        <li><a href="http://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
-                    </ul>
-                </section>
-                <div class="col-sm-3 col-lg-3 brdr-lft">
-                    <section>
-                        <h3>Feedback</h3>
-                        <p><a href="http://www.canada.ca/en/contact/feedback.html"><img src="./distro/4.0.20/GCWeb/assets/feedback.png" alt="Feedback about this Web site"></a></p>
-                    </section>
-                    <section>
-                        <h3>Social media</h3>
-                        <p><a href="http://www.canada.ca/en/social"><img src="./distro/4.0.20/GCWeb/assets/social.png" alt="Social media"></a></p>
-                    </section>
-                    <section>
-                        <h3>Mobile centre</h3>
-                        <p><a href="http://www.canada.ca/en/mobile"><img src="./distro/4.0.20/GCWeb/assets/mobile.png" alt="Mobile centre"></a></p>
-                    </section>
-                </div>
-            </div>
-        </nav>
-        <div class="brand">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-6 visible-sm visible-xs tofpg">
-                        <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
-                    </div>
-                    <div class="col-xs-6 col-md-12 text-right">
-                        <object type="image/svg+xml" tabindex="-1" role="img" data="./distro/4.0.20/GCWeb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
-                    </div>
-                </div>
-            </div>
         </div>
-    </footer>
 
-    <!--[if gte IE 9 | !IE ]><!-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-    <script src="./distro/4.0.20/wet-boew/js/wet-boew.min.js"></script>
-    <!--<![endif]-->
-    <!--[if lt IE 9]>
-    <script src="./distro/4.0.20/wet-boew/js/ie8-wet-boew2.min.js"></script>
-    <![endif]-->
+        <footer role="contentinfo" id="wb-info">
+            <nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
+                <h2 class="wb-inv">About this site</h2>
+                <div class="row">
+                    <div class="col-sm-3 col-lg-3">
+                        <section>
+                            <h3>Contact information</h3>
+                            <!--Start Healthy Canadians contact info-->
+                            <ul class="list-unstyled">
+                                <li><a href="/report-signalez/index-eng.php">Report a concern</a></li>
+                                <li><a href="/say-exprimez/index-eng.php">Public involvement</a></li>
+                                <li><a href="/contact-contactez/index-eng.php">General enquiries</a></li>
+                                <li><a href="/connect-connectez/index-eng.php">Stay connected</a></li>
+                            </ul>
+                            <!--End Healthy Canadians contact info-->
+                        </section>
+                        <section>
+                            <h3>News</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="http://news.gc.ca/web/index-en.do">Newsroom</a></li>
+                                <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=1">News releases</a></li>
+                                <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=3">Media advisories</a></li>
+                                <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=970">Speeches</a></li>
+                                <li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=980">Statements</a></li>
+                            </ul>
+                        </section>
+                    </div>
+                    <section class="col-sm-3 col-lg-3">
+                        <h3>Government</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="http://www.canada.ca/en/gov/system">How government works</a></li>
+                            <li><a href="http://www.canada.ca/en/gov/dept">Departments and agencies</a></li>
+                            <li><a href="http://pm.gc.ca/eng">Prime Minister</a></li>
+                            <li><a href="http://www.canada.ca/en/gov/ministers">Ministers</a></li>
+                            <li><a href="http://www.canada.ca/en/gov/publicservice">Public service and military</a></li>
+                            <li><a href="http://www.canada.ca/en/government/system/laws.html">Treaties, laws and regulations</a></li>
+                            <li><a href="http://www.canada.ca/en/gov/libraries">Libraries</a></li>
+                            <li><a href="http://www.canada.ca/en/gov/publications">Publications</a></li>
+                            <li><a href="http://www.canada.ca/en/gov/statistics">Statistics and data</a></li>
+                            <li><a href="http://www.canada.ca/en/newsite.html">About Canada.ca</a></li>
+                        </ul>
+                    </section>
+                    <section class="col-sm-3 col-lg-3 brdr-lft">
+                        <h3>Transparency</h3>
+                        <ul class="list-unstyled">
+                            <li><a href="http://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+                            <li><a href="http://open.canada.ca/en">Open government</a></li>
+                            <li><a href="http://www.canada.ca/en/transparency/disclosure.html">Proactive disclosure</a></li>
+                            <li><a href="http://www.canada.ca/en/transparency/terms.html">Terms and conditions</a></li>
+                            <li><a href="http://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
+                        </ul>
+                    </section>
+                    <div class="col-sm-3 col-lg-3 brdr-lft">
+                        <section>
+                            <h3>Feedback</h3>
+                            <p><a href="http://www.canada.ca/en/contact/feedback.html"><img src="./distro/4.0.20/GCWeb/assets/feedback.png" alt="Feedback about this Web site"></a></p>
+                        </section>
+                        <section>
+                            <h3>Social media</h3>
+                            <p><a href="http://www.canada.ca/en/social"><img src="./distro/4.0.20/GCWeb/assets/social.png" alt="Social media"></a></p>
+                        </section>
+                        <section>
+                            <h3>Mobile centre</h3>
+                            <p><a href="http://www.canada.ca/en/mobile"><img src="./distro/4.0.20/GCWeb/assets/mobile.png" alt="Mobile centre"></a></p>
+                        </section>
+                    </div>
+                </div>
+            </nav>
+            <div class="brand">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6 visible-sm visible-xs tofpg">
+                            <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
+                        </div>
+                        <div class="col-xs-6 col-md-12 text-right">
+                            <object type="image/svg+xml" tabindex="-1" role="img" data="./distro/4.0.20/GCWeb/assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-    <script src="./js/dhpr.js"></script>
-    <!--[if lt IE 10 | !IE ]><!-->
-    <script src="./js/jquery.xdomainrequest.min.js"></script>
-    <!--<![endif]-->
+        <!--[if gte IE 9 | !IE ]><!-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+        <script src="./distro/4.0.20/wet-boew/js/wet-boew.min.js"></script>
+        <!--<![endif]-->
+        <!--[if lt IE 9]>
+        <script src="./distro/4.0.20/wet-boew/js/ie8-wet-boew2.min.js"></script>
+        <![endif]-->
 
-    <script>
-        var lang = "en";
+        <script src="./js/dhpr.js"></script>
+        <!--[if lt IE 10 | !IE ]><!-->
+        <script src="./js/jquery.xdomainrequest.min.js"></script>
+        <!--<![endif]-->
+
+        <script>
+        var lang = "fr";
         var pType = "dpd";
-        $("a#langLink").attr('href', goDhprLangUrlByID(lang,pType) );
+
+        $("a#langLink").attr('href', goDhprLangUrlByID(lang, pType));
+
         $.getJSON(goDhprUrlByID(lang, pType), function (data) {
-            if ($.trim(data.LinkId) == '') {
+            if ($.trim(data.DrugIdentificationNumber) == '') {
                 OnFail("");
             }
             else {
-                $('#drugname').append(data.Drugname);
-                              
+                $('#searchcriteria').append(data.BrandName);
+                $('#brandname').append(data.BrandName);
+                $('#din').append(data.DrugIdentificationNumber);
+                $('#companyname').append(data.CompanyName);
+                $('#strengthname').append(data.StrengthName);
+                $('#ainumber').append(data.NumberOfAis);
+                $('#schedulename').append(data.ScheduleName);
+                $('#classname').append(data.ClassName);
+                $('#statusname').append(data.StatusName);
+                $('#pmname').append(formatedDate(data.PMName));
+                $('#aigroupno').append(data.AiGroupNo);
+                $('#atcname').append(data.AtcName);
+                $('#ahfsname').append(data.AhfsName);
+                $('#originalmarketdate').append(formatedDate(data.OriginalMarketDate));
+                $('#historydate').append(formatedDate(data.HistoryDate));
+                $('#routename').append(data.RouteName);
+                $('#formname').append(data.FormName);
+                $('#ingredientlist').append(formatedList(data.IngredientList));
+                $('#streetname').append(formatedList(data.StreetName));
+                $('#suitenumber').append(formatedList(data.SuiteNumber));
+                $('#cityname').append(formatedList(data.CityName));
+                $('#provincename').append(formatedList(data.ProvinceName));
+                $('#countryname').append(formatedList(data.CountryName));
+                $('#postalcode').append(formatedList(data.PostalCode));
+
             }
-       });
-    </script>
+        });
+        </script>
 </body>
 </html>

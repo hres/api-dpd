@@ -297,8 +297,6 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
         var pType = "dpd";
         $('#btnDownload').hide();
         $("a#langLink").attr('href', goDhprLangUrl(lang, pType));
-        alert(goDhprLangUrl(lang, pType));
-       
         window["wb-tables"] = {
                 "bSortClasses": false,
                 "processing": true,
@@ -327,7 +325,7 @@ var autoCompletionOptions = { 'validLanguages' : 'en', };
                     { "data": "ScheduleName", sDefaultContent: "" },
                     { "data": "NumberOfAis", sDefaultContent: "" },
                     { "data": "AiName", sDefaultContent: "" },
-                    { "data": "StrengthName", sDefaultContent: "" }
+                    { "data": "AiStrengthAndDosageText", sDefaultContent: "" }
                 ]
             }
 

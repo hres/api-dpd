@@ -34,65 +34,59 @@ namespace drug
         public List<SearchDrug> GetBySearchCriteria(string din, string brandname, string company, string lang)
         {
             var orderClause = "";
-            var sortBrand = "";
             var items = new List<SearchDrug>();
-            string commandText = "SELECT DISTINCT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
-            commandText += " B.COMPANY_NAME, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
+            string commandText = "SELECT DISTINCT D.DRUG_CODE, D.DRUG_IDENTIFICATION_NUMBER, D.NUMBER_OF_AIS, D.AI_GROUP_NO,";
+            commandText += " C.COMPANY_NAME, I.DOSAGE_VALUE, I.DOSAGE_UNIT, I.STRENGTH, ";
             if (lang.Equals("fr"))
             {
-                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS_F as CLASS,D.SCHEDULE_F as SCHEDULE, E.INGREDIENT_F as INGREDIENT,";
-                commandText += " E.STRENGTH_UNIT_F as STRENGTH_UNIT, EX.EXTERNAL_STATUS_FRENCH as EXTERNAL_STATUS, pm.PM_FRENCH_FNAME as PM_NAME";
+                commandText += " D.BRAND_NAME, D.BRAND_NAME_F, D.CLASS_F as CLASS, S.SCHEDULE_F as SCHEDULE, I.INGREDIENT_F as INGREDIENT,";
+                commandText += " I.STRENGTH_UNIT_F as STRENGTH_UNIT, EX.EXTERNAL_STATUS_FRENCH as EXTERNAL_STATUS, PM.PM_FRENCH_FNAME as PM_NAME";
+                commandText += ", CASE WHEN D.BRAND_NAME_F IS NOT NULL THEN UPPER(D.BRAND_NAME_F)";
+                commandText += " WHEN D.BRAND_NAME IS NOT NULL THEN upper(D.BRAND_NAME)";
+                commandText += " ELSE NULL END AS SORT_COLUMN";
             }
             else {
-                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS, D.SCHEDULE, E.INGREDIENT, E.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, pm.PM_ENGLISH_FNAME as PM_NAME";
+                commandText += " D.BRAND_NAME, D.BRAND_NAME_F, D.CLASS, S.SCHEDULE, I.INGREDIENT, I.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, PM.PM_ENGLISH_FNAME as PM_NAME";
+                commandText += ", CASE WHEN D.BRAND_NAME IS NOT NULL THEN UPPER(D.BRAND_NAME)";
+                commandText += " WHEN D.BRAND_NAME_F IS NOT NULL THEN upper(D.BRAND_NAME_F)";
+                commandText += " ELSE NULL END AS SORT_COLUMN";
             }
-                commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
-            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS C on A.DRUG_CODE = C.DRUG_CODE";
-            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL EX on C.EXTERNAL_STATUS_CODE = EX.EXTERNAL_STATUS_CODE";
-            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_SCHEDULE D on A.DRUG_CODE = D.DRUG_CODE";
-            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS E on A.DRUG_CODE = E.DRUG_CODE";
-            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_COMPANIES B ON A.COMPANY_CODE = B.COMPANY_CODE";
-            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_PM_DRUG pm ON A.DRUG_CODE = pm.DRUG_CODE";
+            commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT D";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS ST on D.DRUG_CODE = ST.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL EX on ST.EXTERNAL_STATUS_CODE = EX.EXTERNAL_STATUS_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_SCHEDULE S on D.DRUG_CODE = S.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS I on D.DRUG_CODE = I.DRUG_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_COMPANIES C ON D.COMPANY_CODE = C.COMPANY_CODE";
+            commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_PM_DRUG PM ON D.DRUG_CODE = PM.DRUG_CODE";
             commandText += " WHERE";
-            commandText += " E.id = (select min(id) from DPD_ONLINE_OWNER.wqry_active_ingredients E where A.drug_code = E.drug_code) AND ";
+            commandText += " I.id = (select min(id) from DPD_ONLINE_OWNER.wqry_active_ingredients I where D.drug_code = I.drug_code) AND ";
+            commandText += " (";
             if (din != null)
             {
-                commandText += " UPPER(A.DRUG_IDENTIFICATION_NUMBER) LIKE '%" + din.ToUpper() + "%'";
+                commandText += " UPPER(D.DRUG_IDENTIFICATION_NUMBER) LIKE '%" + din.ToUpper() + "%'";
             }
             if (brandname != null)
             {
                 if (din != null) commandText += " OR";
-                commandText += " UPPER(A.BRAND_NAME_F) LIKE '%" + brandname.ToUpper() + "%'";
-                commandText += " OR UPPER(A.BRAND_NAME) LIKE '%" + brandname.ToUpper() + "%'";
-          
-                //if (lang.Equals("fr"))
-                //{
-                //    sortBrand = ", CASE WHEN DRUG.BRAND_NAME_F IS NOT NULL THEN UPPER(DRUG.BRAND_NAME_F)"
-                //            + " WHEN DRUG.BRAND_NAME IS NOT NULL THEN upper(DRUG.BRAND_NAME)"
-                //            + " ELSE NULL END AS SORT_COLUMN ";
-                //}
-                //else {
-                //    sortBrand = ", CASE WHEN DRUG.BRAND_NAME IS NOT NULL THEN UPPER(DRUG.BRAND_NAME)"
-                //            + " WHEN DRUG.BRAND_NAME_F IS NOT NULL THEN upper(DRUG.BRAND_NAME_F)"
-                //            + " ELSE NULL END AS SORT_COLUMN ";
-                //}
-
+                
+                commandText += " UPPER(D.BRAND_NAME_F) LIKE '%" + brandname.ToUpper() + "%'";
+                commandText += " OR UPPER(D.BRAND_NAME) LIKE '%" + brandname.ToUpper() + "%'";
             }
-        
             if (company != null)
             {
                 if ((din != null) || (brandname != null)) commandText += " OR";
-                commandText += " UPPER(B.COMPANY_NAME) LIKE '%" + company.ToUpper() + "%'";
+                commandText += " UPPER(C.COMPANY_NAME) LIKE '%" + company.ToUpper() + "%'";
             }
+            commandText += ")";
             if (lang.Equals("fr"))
             {
-                orderClause += " translate(B.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(A.BRAND_NAME_F,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
+                orderClause += " translate(C.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(D.BRAND_NAME_F,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
             }
             else
             {
-                orderClause += " translate(B.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(A.BRAND_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
+                orderClause += " translate(C.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(D.BRAND_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
             }
-            commandText += " ORDER BY" + orderClause + " A.DRUG_IDENTIFICATION_NUMBER";
+            
             using ( OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
@@ -108,11 +102,11 @@ namespace drug
                                 var item = new SearchDrug();
                                 if (lang.Equals("fr"))
                                 {
-                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
                                 }
                                 else
                                 {
-                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
                                 }
                                 item.ClassName = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
                                 item.StatusName = dr["EXTERNAL_STATUS"] == DBNull.Value ? string.Empty : dr["EXTERNAL_STATUS"].ToString().Trim();
@@ -154,15 +148,14 @@ namespace drug
             var drugProduct = new SearchDrug();
             string commandText = "SELECT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
             commandText += " B.COMPANY_NAME, B.SUITE_NUMNER, B.CITY_NAME, B.POSTAL_CODE, C.ORIGINAL_MARKET_DATE, C.HISTORY_DATE, C.EXTERNAL_STATUS_CODE, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
-            
             if (lang.Equals("fr"))
             {
-                commandText += " A.BRAND_NAME_F as BRAND_NAME, A.CLASS_F as CLASS, B.STREET_NAME_F as STREET_NAME, B.PROVINCE_F as PROVINCE_NAME, B.COUNTRY_F as COUNTRY_NAME, EX.EXTERNAL_STATUS_FRENCH as STATUS, D.SCHEDULE_F as SCHEDULE, H.TC_AHFS_F AS AHFS, T.TC_ATC AS ATC, E.INGREDIENT_F as INGREDIENT,";
+                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS_F as CLASS, B.STREET_NAME_F as STREET_NAME, B.PROVINCE_F as PROVINCE_NAME, B.COUNTRY_F as COUNTRY_NAME, EX.EXTERNAL_STATUS_FRENCH as STATUS, D.SCHEDULE_F as SCHEDULE, H.TC_AHFS_F AS AHFS, T.TC_ATC AS ATC, E.INGREDIENT_F as INGREDIENT,";
                 commandText += " E.STRENGTH_UNIT_F as STRENGTH_UNIT, F.PHARMACEUTICAL_FORM_F as FORM_NAME, pm.PM_FRENCH_FNAME as PM_NAME,";
                 commandText += " R.ROUTE_OF_ADMINISTRATION_F as ROUTE_NAME";
             }
             else {
-                commandText += " A.BRAND_NAME, A.CLASS, B.STREET_NAME, B.PROVINCE as PROVINCE_NAME, B.COUNTRY as COUNTRY_NAME, EX.EXTERNAL_STATUS_ENGLISH as STATUS, D.SCHEDULE, F.PHARMACEUTICAL_FORM as FORM_NAME, H.TC_AHFS AS AHFS, T.TC_ATC AS ATC, E.INGREDIENT, E.STRENGTH_UNIT,";
+                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS, B.STREET_NAME, B.PROVINCE as PROVINCE_NAME, B.COUNTRY as COUNTRY_NAME, EX.EXTERNAL_STATUS_ENGLISH as STATUS, D.SCHEDULE, F.PHARMACEUTICAL_FORM as FORM_NAME, H.TC_AHFS AS AHFS, T.TC_ATC AS ATC, E.INGREDIENT, E.STRENGTH_UNIT,";
                 commandText += " pm.PM_ENGLISH_FNAME as PM_NAME, R.ROUTE_OF_ADMINISTRATION as ROUTE_NAME";
             }
             commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
@@ -191,7 +184,14 @@ namespace drug
                             while (dr.Read())
                             {
                                 var item = new SearchDrug();
-                                item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
+                                }
+                                else
+                                {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
+                                }
                                 item.ClassName = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
                                 item.StatusName = dr["STATUS"] == DBNull.Value ? string.Empty : dr["STATUS"].ToString().Trim();
                                 item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();
@@ -245,12 +245,13 @@ namespace drug
             commandText += " B.COMPANY_NAME, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
             if (lang.Equals("fr"))
             {
-                commandText += " A.BRAND_NAME_F as BRAND_NAME, A.CLASS_F as CLASS,D.SCHEDULE_F as SCHEDULE, E.INGREDIENT_F as INGREDIENT,";
+                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS_F as CLASS,D.SCHEDULE_F as SCHEDULE, E.INGREDIENT_F as INGREDIENT,";
                 commandText += " E.STRENGTH_UNIT_F as STRENGTH_UNIT, EX.EXTERNAL_STATUS_FRENCH as EXTERNAL_STATUS, pm.PM_FRENCH_FNAME as PM_NAME";
             }
             else {
-                commandText += " A.BRAND_NAME, A.CLASS, D.SCHEDULE, E.INGREDIENT, E.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, pm.PM_ENGLISH_FNAME as PM_NAME";
+                commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS, D.SCHEDULE, E.INGREDIENT, E.STRENGTH_UNIT, EX.EXTERNAL_STATUS_ENGLISH as EXTERNAL_STATUS, pm.PM_ENGLISH_FNAME as PM_NAME";
             }
+
             commandText += " FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
             commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS C on A.DRUG_CODE = C.DRUG_CODE";
             commandText += " LEFT OUTER JOIN DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL EX on C.EXTERNAL_STATUS_CODE = EX.EXTERNAL_STATUS_CODE";
@@ -278,7 +279,14 @@ namespace drug
                             {
                                 var item = new SearchDrug();
 
-                                item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
+                                }
+                                else
+                                {
+                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
+                                }
                                 item.ClassName = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
                                 item.StatusName = dr["EXTERNAL_STATUS"] == DBNull.Value ? string.Empty : dr["EXTERNAL_STATUS"].ToString().Trim();
                                 item.ScheduleName = dr["SCHEDULE"] == DBNull.Value ? string.Empty : dr["SCHEDULE"].ToString().Trim();

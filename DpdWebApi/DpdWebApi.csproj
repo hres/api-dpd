@@ -223,6 +223,7 @@
     </Compile>
     <Compile Include="Models\ActiveIngredient.cs" />
     <Compile Include="Models\ActiveIngredientRepository.cs" />
+    <Compile Include="Models\boolean.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyRepository.cs" />
     <Compile Include="Models\DataEntity.cs" />

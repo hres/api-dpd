@@ -31,10 +31,10 @@ namespace drug
         {
             get { return ConfigurationManager.ConnectionStrings["dpd"].ToString(); }
         }
-        public List<SearchDrug> GetBySearchCriteria(string din, string brandname, string company, string lang)
+        public List<DrugProduct> GetBySearchCriteria(string din, string brandname, string company, string lang)
         {
             var orderClause = "";
-            var items = new List<SearchDrug>();
+            var items = new List<DrugProduct>();
             string commandText = "SELECT DISTINCT D.DRUG_CODE, D.DRUG_IDENTIFICATION_NUMBER, D.NUMBER_OF_AIS, D.AI_GROUP_NO,";
             commandText += " C.COMPANY_NAME, I.DOSAGE_VALUE, I.DOSAGE_UNIT, I.STRENGTH, ";
             if (lang.Equals("fr"))
@@ -99,7 +99,7 @@ namespace drug
                         {
                             while (dr.Read())
                             {
-                                var item = new SearchDrug();
+                                var item = new DrugProduct();
                                 if (lang.Equals("fr"))
                                 {
                                     item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
@@ -143,9 +143,9 @@ namespace drug
             return items;
         }
         
-        public SearchDrug GetSearchDrugProductById(int id, string lang)
+        public DrugProduct GetDrugProductById(int id, string lang)
         {
-            var drugProduct = new SearchDrug();
+            var drugProduct = new DrugProduct();
             string commandText = "SELECT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
             commandText += " B.COMPANY_NAME, B.SUITE_NUMNER, B.CITY_NAME, B.POSTAL_CODE, C.ORIGINAL_MARKET_DATE, C.HISTORY_DATE, C.EXTERNAL_STATUS_CODE, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
             if (lang.Equals("fr"))
@@ -183,7 +183,7 @@ namespace drug
                         {
                             while (dr.Read())
                             {
-                                var item = new SearchDrug();
+                                var item = new DrugProduct();
                                 if (lang.Equals("fr"))
                                 {
                                     item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
@@ -237,10 +237,10 @@ namespace drug
             return drugProduct;
         }
 
-        public List<SearchDrug> GetAllDrugProduct(string lang)
+        public List<DrugProduct> GetAllDrugProduct(string lang)
         {
             var orderClause = "";
-            var items = new List<SearchDrug>();
+            var items = new List<DrugProduct>();
             string commandText = "SELECT DISTINCT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
             commandText += " B.COMPANY_NAME, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
             if (lang.Equals("fr"))
@@ -277,7 +277,7 @@ namespace drug
                         {
                             while (dr.Read())
                             {
-                                var item = new SearchDrug();
+                                var item = new DrugProduct();
 
                                 if (lang.Equals("fr"))
                                 {
@@ -323,119 +323,119 @@ namespace drug
             return items;
         }
 
-        public DrugProduct GetDrugProductByDrugCode(int id, string lang)
-        {
-            var drugProduct = new DrugProduct();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_CODE = " + id;
-            using (OracleConnection con = new OracleConnection(DpdDBConnection))
-            {
-                OracleCommand cmd = new OracleCommand(commandText, con);
-                try
-                {
-                    con.Open();
-                    using (OracleDataReader dr = cmd.ExecuteReader())
-                    {
-                        if (dr.HasRows)
-                        {
-                            while (dr.Read())
-                            {
-                             var item  = new DrugProduct();
-                                item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                if (lang.Equals("fr"))
-                                {
-                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
-                                    item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
-                                    item.Descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
-                                }
-                                else {
-                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
-                                    //item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
-                                    item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
-                                    //item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
-                                    item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
+        //public oldDrugProductbk GetDrugProductByDrugCode(int id, string lang)
+        //{
+        //    var drugProduct = new oldDrugProductbk();
+        //    string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_CODE = " + id;
+        //    using (OracleConnection con = new OracleConnection(DpdDBConnection))
+        //    {
+        //        OracleCommand cmd = new OracleCommand(commandText, con);
+        //        try
+        //        {
+        //            con.Open();
+        //            using (OracleDataReader dr = cmd.ExecuteReader())
+        //            {
+        //                if (dr.HasRows)
+        //                {
+        //                    while (dr.Read())
+        //                    {
+        //                     var item  = new oldDrugProductbk();
+        //                        item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
+        //                        if (lang.Equals("fr"))
+        //                        {
+        //                            item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+        //                            item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+        //                            item.Descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR_F"].ToString().Trim();
+        //                        }
+        //                        else {
+        //                            item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+        //                            //item.BrandNameF = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+        //                            item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+        //                            //item.ClassF = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+        //                            item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
 
 
-                                }
-                                item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
-                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
-                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
+        //                        }
+        //                        item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
+        //                        item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+        //                        item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+        //                        item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
 
-                                drugProduct = item;
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDrugCode()");
-                    ExceptionHelper.LogException(ex, errorMessages);
-                    Console.WriteLine(errorMessages);
-                }
-                finally
-                {
-                    if (con.State == ConnectionState.Open)
-                        con.Close();
-                }
-            }
-            return drugProduct;
-        }
+        //                        drugProduct = item;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDrugCode()");
+        //            ExceptionHelper.LogException(ex, errorMessages);
+        //            Console.WriteLine(errorMessages);
+        //        }
+        //        finally
+        //        {
+        //            if (con.State == ConnectionState.Open)
+        //                con.Close();
+        //        }
+        //    }
+        //    return drugProduct;
+        //}
 
-        public DrugProduct GetDrugProductByDin(String din, string lang)
-        {
-            var drugProduct = new DrugProduct();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_IDENTIFICATION_NUMBER = " + din;
-            using (OracleConnection con = new OracleConnection(DpdDBConnection))
-            {
-                OracleCommand cmd = new OracleCommand(commandText, con);
-                try
-                {
-                    con.Open();
-                    using (OracleDataReader dr = cmd.ExecuteReader())
-                    {
-                        if (dr.HasRows)
-                        {
-                            while (dr.Read())
-                            {
-                                var item = new DrugProduct();
-                                item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                if (lang.Equals("fr"))
-                                {
-                                    item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
-                                    item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
-                                    item.Descriptor = dr["STATUS_NAME"] == DBNull.Value ? string.Empty : dr["STATUS_NAME_F"].ToString().Trim();
-                                }
-                                else {
-                                    item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
-                                    item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
-                                    item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
+        //public oldDrugProductbk GetDrugProductByDin(String din, string lang)
+        //{
+        //    var drugProduct = new oldDrugProductbk();
+        //    string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT WHERE DRUG_IDENTIFICATION_NUMBER = " + din;
+        //    using (OracleConnection con = new OracleConnection(DpdDBConnection))
+        //    {
+        //        OracleCommand cmd = new OracleCommand(commandText, con);
+        //        try
+        //        {
+        //            con.Open();
+        //            using (OracleDataReader dr = cmd.ExecuteReader())
+        //            {
+        //                if (dr.HasRows)
+        //                {
+        //                    while (dr.Read())
+        //                    {
+        //                        var item = new oldDrugProductbk();
+        //                        item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
+        //                        if (lang.Equals("fr"))
+        //                        {
+        //                            item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
+        //                            item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
+        //                            item.Descriptor = dr["STATUS_NAME"] == DBNull.Value ? string.Empty : dr["STATUS_NAME_F"].ToString().Trim();
+        //                        }
+        //                        else {
+        //                            item.BrandName = dr["BRAND_NAME"] == DBNull.Value ? string.Empty : dr["BRAND_NAME"].ToString().Trim();
+        //                            item.Class = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+        //                            item.Descriptor = dr["DESCRIPTOR"] == DBNull.Value ? string.Empty : dr["DESCRIPTOR"].ToString().Trim();
 
 
-                                }
-                                item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
-                                item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
-                                item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
+        //                        }
+        //                        item.CompanyCode = dr["COMPANY_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["COMPANY_CODE"]);
+        //                        item.DrugCode = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+        //                        item.DrugIdentificationNumber = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+        //                        item.NumberOfAis = dr["NUMBER_OF_AIS"] == DBNull.Value ? 0 : Convert.ToInt32(dr["NUMBER_OF_AIS"]);
 
-                                drugProduct = item;
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDin()");
-                    ExceptionHelper.LogException(ex, errorMessages);
-                    Console.WriteLine(errorMessages);
-                }
-                finally
-                {
-                    if (con.State == ConnectionState.Open)
-                        con.Close();
-                }
-            }
-            return drugProduct;
-        }
+        //                        drugProduct = item;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDin()");
+        //            ExceptionHelper.LogException(ex, errorMessages);
+        //            Console.WriteLine(errorMessages);
+        //        }
+        //        finally
+        //        {
+        //            if (con.State == ConnectionState.Open)
+        //                con.Close();
+        //        }
+        //    }
+        //    return drugProduct;
+        //}
 
         public List<ActiveIngredient> GetAllActiveIngredient(string lang)
         {

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using DpdWebApi.Models;
+using System.Text;
+
 namespace dhpr
 {
     /// <summary>
@@ -30,23 +32,23 @@ namespace dhpr
             }
         }
 
-        public static List<SearchDrug> GetAllDrugProductList(string lang)
+        public static List<DrugProduct> GetAllDrugProductList(string lang)
         {
-            var items = new List<SearchDrug>();
-            var filteredList = new List<SearchDrug>();
+            var items = new List<DrugProduct>();
+            var filteredList = new List<DrugProduct>();
             var json = string.Empty;
-            
-            // var postData = new Dictionary<string, string>();
+
             var dpdJsonUrl = string.Format("{0}&lang={1}", ConfigurationManager.AppSettings["dpdJsonUrl"].ToString(), lang);
 
             try
             {
                 using (var webClient = new System.Net.WebClient())
                 {
+                    webClient.Encoding = Encoding.UTF8;
                     json = webClient.DownloadString(dpdJsonUrl);
                     if (!string.IsNullOrWhiteSpace(json))
                     {
-                        items = JsonConvert.DeserializeObject<List<SearchDrug>>(json);
+                        items = JsonConvert.DeserializeObject<List<DrugProduct>>(json);
 
                     }
                 }
@@ -62,31 +64,26 @@ namespace dhpr
             }
             return items;
         }
-        public static List<SearchDrug> GetDrugProductList(string lang, string term)
+        public static List<DrugProduct> GetDrugProductList(string lang, string term)
         {
-            // CertifySSL.EnableTrustedHosts();
-            var items = new List<SearchDrug>();
-            var filteredList = new List<SearchDrug>();
+            var items = new List<DrugProduct>();
+            var filteredList = new List<DrugProduct>();
             var json = string.Empty;
             var din = term;
             var brandname = term;
             var company = term;
-            // var postData = new Dictionary<string, string>();
+            
             var dpdJsonUrl = string.Format("{0}&din={1}&brandname={2}&company={3}&lang={4}", ConfigurationManager.AppSettings["dpdJsonUrl"].ToString(), din, brandname, company, lang);
             
             try
             {
                 using (var webClient = new System.Net.WebClient())
                 {
+                    webClient.Encoding = Encoding.UTF8;
                     json = webClient.DownloadString(dpdJsonUrl);
                     if (!string.IsNullOrWhiteSpace(json))
                     {
-                        items = JsonConvert.DeserializeObject<List<SearchDrug>>(json);
-
-                        //if (items != null && items.Count > 0)
-                        //{
-                        //     filteredList = items.Where(c => c.DrugIdentificationNumber.ToLower().Contains(term) || c.BrandName.ToLower().Contains(term) || c.CompanyName.ToLower().Contains(term)).ToList();
-                        //}
+                        items = JsonConvert.DeserializeObject<List<DrugProduct>>(json);
                     }
                 }
             }
@@ -102,10 +99,10 @@ namespace dhpr
             return items;
         }
 
-        public static SearchDrug GetDpdByID(string dpdID, string lang)
+        public static DrugProduct GetDpdByID(string dpdID, string lang)
         {
             // CertifySSL.EnableTrustedHosts();
-            var item = new SearchDrug();
+            var item = new DrugProduct();
             var json = string.Empty;
             var postData = new Dictionary<string, string>();
             var dpdJsonUrlbyID = string.Format("{0}&id={1}&lang={2}", ConfigurationManager.AppSettings["dpdJsonUrl"].ToString(), dpdID, lang);
@@ -114,10 +111,11 @@ namespace dhpr
             {
                 using (var webClient = new System.Net.WebClient())
                 {
+                    webClient.Encoding = Encoding.UTF8;
                     json = webClient.DownloadString(dpdJsonUrlbyID);
                     if (!string.IsNullOrWhiteSpace(json))
                     {
-                        item = JsonConvert.DeserializeObject<SearchDrug>(json);
+                        item = JsonConvert.DeserializeObject<DrugProduct>(json);
                     }
                 }
             }

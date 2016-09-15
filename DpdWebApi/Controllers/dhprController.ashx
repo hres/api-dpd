@@ -41,11 +41,11 @@ namespace dhpr
                     switch (pType)
                     {
                         case programType.dpd:
-                            var dpdItem = new SearchDrug();
+                            var dpdItem = new DrugProduct();
                             dpdItem = UtilityHelper.GetDpdByID(linkId, lang);
                             if( !string.IsNullOrWhiteSpace(dpdItem.DrugIdentificationNumber))
                             {
-                                jsonResult = JsonHelper.JsonSerializer<SearchDrug>(dpdItem);
+                                jsonResult = JsonHelper.JsonSerializer<DrugProduct>(dpdItem);
                                 context.Response.Write(jsonResult);
                             }
                             else
@@ -64,11 +64,11 @@ namespace dhpr
                     switch (pType)
                     {
                         case programType.dpd:
-                            var dpdList = new List<SearchDrug>();
+                            var dpdList = new List<DrugProduct>();
                             dpdList =  UtilityHelper.GetAllDrugProductList(lang);
                             if (dpdList != null && dpdList.Count > 0)
                             {
-                                jsonResult = JsonHelper.JsonSerializer<List<SearchDrug>>(dpdList);
+                                jsonResult = JsonHelper.JsonSerializer<List<DrugProduct>>(dpdList);
                                 jsonResult = "{\"data\":" + jsonResult + "}";
                                 context.Response.Write(jsonResult);
                             }
@@ -88,11 +88,11 @@ namespace dhpr
                     switch (pType)
                     {
                         case programType.dpd:
-                            var dpdList = new List<SearchDrug>();
+                            var dpdList = new List<DrugProduct>();
                             dpdList =  UtilityHelper.GetDrugProductList(lang, term);
                             if (dpdList != null && dpdList.Count > 0)
                             {
-                                jsonResult = JsonHelper.JsonSerializer<List<SearchDrug>>(dpdList);
+                                jsonResult = JsonHelper.JsonSerializer<List<DrugProduct>>(dpdList);
                                 jsonResult = "{\"data\":" + jsonResult + "}";
                                 context.Response.Write(jsonResult);
                             }

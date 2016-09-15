@@ -5,33 +5,31 @@ namespace DpdWebApi.Models
 {
     public class DrugProductRepository : IDrugProductRepository
     {
-        // We are using the list and _fakeDatabaseID to represent what would
-    // most likely be a database of some sort, with an auto-incrementing ID field:
-    private List<DrugProduct> _drugProducts = new List<DrugProduct>();
-    private DrugProduct _drugProduct = new DrugProduct();
-    DBConnection dbConnection = new DBConnection("en");
+        private List<DrugProduct> _drugs = new List<DrugProduct>();
+        private DrugProduct _drug = new DrugProduct();
+        DBConnection dbConnection = new DBConnection("en");
 
 
-        public IEnumerable<DrugProduct> GetAll(string lang)
+        public IEnumerable<DrugProduct> GetAllByCriteria(string din = "", string brandname = "", string company = "", string lang = "")
         {
-            _drugProducts = null; //dbConnection.GetAllDrugProduct(lang);
+            _drugs = dbConnection.GetBySearchCriteria(din, brandname, company, lang);
 
-            return _drugProducts;
+            return _drugs;
         }
 
+        public IEnumerable<DrugProduct> GetAll(string lang = "")
+        {
+            _drugs = dbConnection.GetAllDrugProduct(lang);
+
+            return _drugs;
+        }
 
         public DrugProduct Get(int id, string lang)
-    {
-        _drugProduct = dbConnection.GetDrugProductByDrugCode(id, lang);
-        return _drugProduct;
-    }
-
-    public DrugProduct Get(string din, string lang)
-    {
-        _drugProduct = dbConnection.GetDrugProductByDin(din, lang);
-        return _drugProduct;
-    }
-
+        {
+            _drug = dbConnection.GetDrugProductById(id, lang);
+            return _drug;
+        }
 
     }
+
 }

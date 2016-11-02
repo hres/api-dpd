@@ -7,16 +7,16 @@ namespace DpdWebApi.Models
 {
     public class ActiveIngredient
     {
-        public int ActiveIngredientId { get; set; }
-        public int DrugCode { get; set; }
-        public string IngredientName { get; set; }
+        public int active_ingredient_id { get; set; }
+        public int drug_code { get; set; }
+        public string ingredient_name { get; set; }
        
-        public string StrengthUnit { get; set; }
-        public string Strength { get; set; }
-        public int ActiveIngredientCode { get; set; }
+        public string strength_unit { get; set; }
+        public string strength { get; set; }
+        public int active_ingredient_code { get; set; }
         
-        public string DosageUnit { get; set; }
-        public string DosageValue { get; set; }
+        public string dosage_unit { get; set; }
+        public string dosage_value { get; set; }
 
     }
 }

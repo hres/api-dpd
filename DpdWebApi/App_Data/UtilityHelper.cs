@@ -11,7 +11,7 @@ using System.Web;
 using DpdWebApi.Models;
 using System.Text;
 
-namespace dhpr
+namespace drug
 {
     /// <summary>
     /// Summary description for Common
@@ -32,7 +32,7 @@ namespace dhpr
             }
         }
 
-        public static List<DrugProduct> GetAllDrugProductList(string lang)
+        public static List<DrugProduct> GetAllDrugProductList(string lang, int displayLength, int displayStart)
         {
             var items = new List<DrugProduct>();
             var filteredList = new List<DrugProduct>();
@@ -64,7 +64,7 @@ namespace dhpr
             }
             return items;
         }
-        public static List<DrugProduct> GetDrugProductList(string lang, string term)
+        public static List<DrugProduct> GetDrugProductList(string lang, string term, int displayLength, int displayStart)
         {
             var items = new List<DrugProduct>();
             var filteredList = new List<DrugProduct>();

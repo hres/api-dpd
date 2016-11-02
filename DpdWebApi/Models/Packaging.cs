@@ -7,11 +7,12 @@ namespace DpdWebApi.Models
 {
     public class Packaging
     {
-        public int DrugCode { get; set; }
-        public String Upc { get; set; }
-        public String PackageSizeUnit { get; set; }
-        public String PackageType { get; set; }
-        public String PackageSize { get; set; }
-        public String ProductInformation { get; set; }
+        public int packaging_id { get; set; }
+        public int drug_code { get; set; }
+        public String upc { get; set; }
+        public String package_size_unit { get; set; }
+        public String package_type { get; set; }
+        public String package_size { get; set; }
+        public String product_information { get; set; }
     }
 }

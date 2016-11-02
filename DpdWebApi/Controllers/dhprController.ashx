@@ -8,7 +8,7 @@ using DpdWebApi.Models;
 using dhpr;
 
 
-namespace dhpr
+namespace drug
 {
     public class dhprController : IHttpHandler
     {
@@ -32,10 +32,12 @@ namespace dhpr
                 }
 
                 //Get All the QueryStrings
+
                 var term  = context.Request.QueryString.GetSearchTerm().ToLower().Trim();
                 var pType = string.IsNullOrEmpty(context.Request.QueryString.GetProgramType().Trim()) ? programType.dpd : (programType)Enum.Parse(typeof(programType), context.Request.QueryString.GetProgramType().Trim());
                 var linkId = string.IsNullOrWhiteSpace(context.Request.QueryString.GetLinkID().Trim())? string.Empty: context.Request.QueryString.GetLinkID().Trim();
-                
+                var displayLength = 25;
+                var displayStart = 1;
                 if( !string.IsNullOrWhiteSpace(linkId))
                 {
                     switch (pType)
@@ -43,7 +45,7 @@ namespace dhpr
                         case programType.dpd:
                             var dpdItem = new DrugProduct();
                             dpdItem = UtilityHelper.GetDpdByID(linkId, lang);
-                            if( !string.IsNullOrWhiteSpace(dpdItem.DrugIdentificationNumber))
+                            if( !string.IsNullOrWhiteSpace(dpdItem.drug_identification_number))
                             {
                                 jsonResult = JsonHelper.JsonSerializer<DrugProduct>(dpdItem);
                                 context.Response.Write(jsonResult);
@@ -53,7 +55,7 @@ namespace dhpr
                                 context.Response.Write("{\"id\":\"\"}");
                             }
                             break;
-                        
+
                         default:
                             context.Response.Write("{\"id\":\"\"}");
                             break;
@@ -65,7 +67,7 @@ namespace dhpr
                     {
                         case programType.dpd:
                             var dpdList = new List<DrugProduct>();
-                            dpdList =  UtilityHelper.GetAllDrugProductList(lang);
+                            dpdList =  UtilityHelper.GetAllDrugProductList(lang, displayLength, displayStart);
                             if (dpdList != null && dpdList.Count > 0)
                             {
                                 jsonResult = JsonHelper.JsonSerializer<List<DrugProduct>>(dpdList);
@@ -76,8 +78,8 @@ namespace dhpr
                             {
                                 context.Response.Write("{\"data\":[]}");
                             }
-                           break;
-                
+                            break;
+
                         default:
                             context.Response.Write("{\"data\":[]}");
                             break;
@@ -89,7 +91,7 @@ namespace dhpr
                     {
                         case programType.dpd:
                             var dpdList = new List<DrugProduct>();
-                            dpdList =  UtilityHelper.GetDrugProductList(lang, term);
+                            dpdList =  UtilityHelper.GetDrugProductList(lang, term, displayLength, displayStart);
                             if (dpdList != null && dpdList.Count > 0)
                             {
                                 jsonResult = JsonHelper.JsonSerializer<List<DrugProduct>>(dpdList);
@@ -100,8 +102,8 @@ namespace dhpr
                             {
                                 context.Response.Write("{\"data\":[]}");
                             }
-                           break;
-                
+                            break;
+
                         default:
                             context.Response.Write("{\"data\":[]}");
                             break;

@@ -9,9 +9,9 @@ function getParameterByName(name) {
      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));    
 }
 
-function goDhprUrl(lang, pType) {
+function goDhprUrl(lang, pType, displayLength, displayStart) {
     var term = getParameterByName("term");
-    var searchUrl = dhpr + "term=" + term + "&pType=" + pType + "&lang=" + lang;
+    var searchUrl = dhpr + "term=" + term + "&pType=" + pType + "&lang=" + lang + "&displayLength=" + displayLength + "&displayStart=" + displayStart;
     return searchUrl;
 }
 

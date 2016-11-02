@@ -4,12 +4,14 @@ namespace DpdWebApi.Models
 {
     public class Status
     {
-        public int DrugCode { get; set; }
-        public int StatusCode { get; set; }
-        public string StatusName { get; set; }
-        public DateTime? HistoryDate { get; set; }
-        public DateTime? FirstMarketedDate { get; set; }
-        public DateTime? OriginalMarketDate { get; set; }
-        public int ExternalStatusCode { get; set; }
+        public int drug_code { get; set; }
+        public int status_code { get; set; }
+        public string status_name { get; set; }
+        public DateTime? history_date { get; set; }
+        public DateTime? first_marketed_date { get; set; }
+        public DateTime? original_market_date { get; set; }
+        public int external_status_code { get; set; }
+        public DateTime? expiration_date { get; set; }
+        public int lot_number { get; set; }
     }
 }

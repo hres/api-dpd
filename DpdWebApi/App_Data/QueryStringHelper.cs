@@ -29,7 +29,15 @@ namespace dhpr
         public static string GetProgramType(this NameValueCollection queryString)
         {
             return queryString.AllKeys.Contains("pType") ? queryString["pType"] : string.Empty;
-        }        
+        }
+        public static string GetDisplayStart(this NameValueCollection queryString)
+        {
+            return queryString.AllKeys.Contains("displayStart") ? queryString["displayStart"] : string.Empty;
+        }
+        public static string GetDisplayLength(this NameValueCollection queryString)
+        {
+            return queryString.AllKeys.Contains("displayLength") ? queryString["displayLength"] : string.Empty;
+        }
         #endregion
 
     }

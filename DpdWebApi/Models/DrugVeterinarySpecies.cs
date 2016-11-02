@@ -2,8 +2,8 @@
 {
     public class DrugVeterinarySpecies
     {
-        public int DrugCode { get; set; }
-        public int VetSpeciesCode { get; set; }
-        public string VetSpeciesName { get; set; } //there is no _E in DB name
+        public int drug_code { get; set; }
+        public int vet_species_code { get; set; }
+        public string vet_species_name { get; set; } //there is no _E in DB name
     }
 }

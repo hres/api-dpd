@@ -209,6 +209,7 @@
     <Compile Include="Controllers\DrugProductController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\PackagingController.cs" />
+    <Compile Include="Controllers\PharmaceuticalStdController.cs" />
     <Compile Include="Controllers\RouteController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StatusExternalController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Models\DrugProductRepository.cs" />
     <Compile Include="Models\IDrugProductRepository.cs" />
     <Compile Include="Models\DrugProduct.cs" />
+    <Compile Include="Models\IPharmaceuticalStdRepository.cs" />
     <Compile Include="Models\IStatusExternalRepository.cs" />
     <Compile Include="Models\oldDrugProductbk.cs" />
     <Compile Include="Models\oldDrugProductRepositorybk.cs" />
@@ -248,6 +250,8 @@
     <Compile Include="Models\IDrugVeterinarySpeciesRepository.cs" />
     <Compile Include="Models\Packaging.cs" />
     <Compile Include="Models\PackagingRepository.cs" />
+    <Compile Include="Models\PharmaceuticalStd.cs" />
+    <Compile Include="Models\PharmaceuticalStdRepository.cs" />
     <Compile Include="Models\Route.cs" />
     <Compile Include="Models\RouteRepository.cs" />
     <Compile Include="Models\Schedule.cs" />

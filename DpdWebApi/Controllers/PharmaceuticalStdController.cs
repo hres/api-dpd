@@ -8,16 +8,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IPharmaceuticalStdRepository databasePlaceholder = new PharmaceuticalStdRepository();
 
-        public IEnumerable<PharmaceuticalStd> GetAllPharmaceuticalStd(string lang)
+        public IEnumerable<PharmaceuticalStd> GetAllPharmaceuticalStd()
         {
 
-            return databasePlaceholder.GetAll(lang);
+            return databasePlaceholder.GetAll();
         }
 
 
-        public PharmaceuticalStd GetPharmaceuticalStdByID(int id, string lang)
+        public PharmaceuticalStd GetPharmaceuticalStdByID(int id)
         {
-            PharmaceuticalStd pharmaceuticalstd = databasePlaceholder.Get(id, lang);
+            PharmaceuticalStd pharmaceuticalstd = databasePlaceholder.Get(id);
             if (pharmaceuticalstd == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

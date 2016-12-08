@@ -1138,7 +1138,7 @@ namespace drug
             return packaging;
         }
 
-        public List<PharmaceuticalStd> GetAllPharmaceuticalStd(string lang)
+        public List<PharmaceuticalStd> GetAllPharmaceuticalStd()
         {
             var items = new List<PharmaceuticalStd>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PHARMACEUTICAL_STD";
@@ -1176,14 +1176,14 @@ namespace drug
             return items;
         }
 
-        public PharmaceuticalStd GetPharmaceuticalStdByDrugCode(int id, string lang)
+        public PharmaceuticalStd GetPharmaceuticalStdByDrugCode(int id)
         {
             var pharmaceuticalstd = new PharmaceuticalStd();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PHARMACEUTICAL_STD WHERE DRUG_CODE = " + id;
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
-                OracleCommand cmd = new OracleCommand(commandText, con);W
+                OracleCommand cmd = new OracleCommand(commandText, con);
                 try
                 {
                     con.Open();

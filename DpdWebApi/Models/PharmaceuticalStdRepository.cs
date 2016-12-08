@@ -3,27 +3,27 @@ using System.Collections.Generic;
 
 namespace DpdWebApi.Models
 {
-    public class PharmaceuticalStdRepository : IPharmaceuticalStd
+    public class PharmaceuticalStdRepository : IPharmaceuticalStdRepository
     {
-        // We are using the list and _fakeDatabaseID to represent what would
-    // most likely be a database of some sort, with an auto-incrementing ID field:
-    private List<PharmaceuticalStd> _pharmaceuticalstds = new List<PharmaceuticalStd>();
-    private PharmaceuticalStd _pharmaceuticalstd = new PharmaceuticalStd();
-    DBConnection dbConnection = new DBConnection("en");
-    
 
-    public IEnumerable<PharmaceuticalStd> GetAll(string lang)
+    private List<PharmaceuticalStd> pharmaceuticalstds = new List<PharmaceuticalStd>();
+    private PharmaceuticalStd pharmaceuticalstd = new PharmaceuticalStd();
+
+        DBConnection dbConnection = new DBConnection("en");
+
+        public IEnumerable<PharmaceuticalStd> GetAll()
     {
-        _pharmaceuticalstds = dbConnection.GetAllPharmaceuticalStd(lang);
 
-        return _pharmaceuticalstds;
+       pharmaceuticalstds = dbConnection.GetAllPharmaceuticalStd();
+
+        return pharmaceuticalstds;
     }
 
 
-    public PharmaceuticalStd Get(int id, string lang)
+    public PharmaceuticalStd Get(int id)
     {
-        _pharmaceuticalstd = dbConnection.GetPharmaceuticalStdByDrugCode(id, lang);
-        return _pharmaceuticalstd;
+        pharmaceuticalstd = dbConnection.GetPharmaceuticalStdByDrugCode(id);
+        return pharmaceuticalstd;
     }
 
 

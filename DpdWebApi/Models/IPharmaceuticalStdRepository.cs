@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IPharmaceuticalStdRepository
     {
-        IEnumerable<PharmaceuticalStd> GetAll(string lang);
-        PharmaceuticalStd Get(int id, string lang);
+        IEnumerable<PharmaceuticalStd> GetAll();
+        PharmaceuticalStd Get(int id);
     }
 }

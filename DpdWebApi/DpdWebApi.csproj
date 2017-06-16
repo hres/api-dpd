@@ -212,14 +212,13 @@
     <Compile Include="Controllers\PharmaceuticalStdController.cs" />
     <Compile Include="Controllers\RouteController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
-    <Compile Include="Controllers\StatusExternalController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\oldDrugProductControllerbk.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TherapeuticClassController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\DrugVeterinarySpeciesController.cs" />
+    <Compile Include="Controllers\VeterinarySpeciesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,11 +228,13 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CompanyRepository.cs" />
     <Compile Include="Models\DataEntity.cs" />
+    <Compile Include="Models\DrugProductSearchRepositorybk.cs" />
+    <Compile Include="Models\DrugProductSearchbk.cs" />
     <Compile Include="Models\DrugProductRepository.cs" />
+    <Compile Include="Models\IDrugProductSearchRepositorybk.cs" />
     <Compile Include="Models\IDrugProductRepository.cs" />
     <Compile Include="Models\DrugProduct.cs" />
     <Compile Include="Models\IPharmaceuticalStdRepository.cs" />
-    <Compile Include="Models\IStatusExternalRepository.cs" />
     <Compile Include="Models\oldDrugProductbk.cs" />
     <Compile Include="Models\oldDrugProductRepositorybk.cs" />
     <Compile Include="Models\Form.cs" />
@@ -247,7 +248,7 @@
     <Compile Include="Models\IScheduleRepository.cs" />
     <Compile Include="Models\IStatusRepository.cs" />
     <Compile Include="Models\ITherapeuticClassRepository.cs" />
-    <Compile Include="Models\IDrugVeterinarySpeciesRepository.cs" />
+    <Compile Include="Models\IVeterinarySpeciesRepository.cs" />
     <Compile Include="Models\Packaging.cs" />
     <Compile Include="Models\PackagingRepository.cs" />
     <Compile Include="Models\PharmaceuticalStd.cs" />
@@ -256,21 +257,18 @@
     <Compile Include="Models\RouteRepository.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\ScheduleRepository.cs" />
-    <Compile Include="Models\StatusExternal.cs" />
     <Compile Include="Models\Status.cs" />
-    <Compile Include="Models\StatusExternalRepository.cs" />
     <Compile Include="Models\StatusRepository.cs" />
     <Compile Include="Models\TherapeuticClass.cs" />
     <Compile Include="Models\TherapeuticClassRepository.cs" />
-    <Compile Include="Models\DrugVeterinarySpecies.cs" />
-    <Compile Include="Models\DrugVeterinarySpeciesRepository.cs" />
+    <Compile Include="Models\VeterinarySpecies.cs" />
+    <Compile Include="Models\VeterinarySpeciesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\ApplicationInsights.config" />
-    <Content Include="bin\DpdWebApi.dll" />
     <Content Include="bin\DpdWebApi.pdb" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.SqlServer.dll" />

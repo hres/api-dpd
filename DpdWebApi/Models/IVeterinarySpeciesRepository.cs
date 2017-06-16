@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DpdWebApi.Models
 {
-    interface IStatusExternalRepository
+    interface IVeterinarySpeciesRepository
     {
-        IEnumerable<StatusExternal> GetAll(string lang);
-        StatusExternal Get(int id, string lang);
+        IEnumerable<VeterinarySpecies> GetAll(string lang);
+        VeterinarySpecies Get(int id, string lang);
     }
 }

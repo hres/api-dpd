@@ -9,15 +9,15 @@ namespace DpdWebApi.Models
         private Form form = new Form();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<Form> GetAll(string lang)
+        public IEnumerable<Form> GetAll(string lang, string active = "")
         {
-            forms = dbConnection.GetAllForm(lang);
+            forms = dbConnection.GetAllForm(lang, active);
             return forms;
         }
 
-        public Form Get(int id, string lang)
+        public Form Get(int id, string lang, string active = "")
         {
-            form = dbConnection.GetFormByDrugCode(id, lang);
+            form = dbConnection.GetFormByDrugCode(id, lang, active);
             return form;
         }
     }

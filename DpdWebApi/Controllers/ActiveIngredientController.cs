@@ -19,7 +19,7 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public ActiveIngredient GetActiveIngredientByID(int id, string lang)
+        public ActiveIngredient GetActiveIngredientByDrugCode(int id, string lang)
         {
             ActiveIngredient activeIngredient = databasePlaceholder.Get(id, lang);
             if (activeIngredient == null)

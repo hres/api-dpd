@@ -8,16 +8,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IRouteRepository databasePlaceholder = new RouteRepository();
 
-        public IEnumerable<Route> GetAllRoute(string lang)
+        public IEnumerable<Route> GetAllRoute(string lang, string active = "")
         {
 
-            return databasePlaceholder.GetAll(lang);
+            return databasePlaceholder.GetAll(lang, active);
         }
 
 
-        public Route GetRouteByID(int id, string lang)
+        public Route GetRouteByID(int id, string lang, string active = "")
         {
-            Route route = databasePlaceholder.Get(id, lang);
+            Route route = databasePlaceholder.Get(id, lang, active);
             if (route == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

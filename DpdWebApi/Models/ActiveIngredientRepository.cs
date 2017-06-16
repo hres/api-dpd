@@ -22,7 +22,7 @@ namespace DpdWebApi.Models
 
     public ActiveIngredient Get(int id, string lang)
     {
-        activeIngredient = dbConnection.GetActiveIngredientById(id, lang);
+        activeIngredient = dbConnection.GetActiveIngredientByDrugCode(id, lang);
         return activeIngredient;
     }
 

@@ -15,8 +15,8 @@ namespace DpdWebApi
         {
             config.Routes.MapHttpRoute(
                name: "ApiMultiParamPathExtension ID",
-               routeTemplate: "api/{controller}/{din}/{brandname}/{company}/{lang}.{ext}",
-               defaults: new { din = RouteParameter.Optional, brandname = RouteParameter.Optional, company = RouteParameter.Optional, lang = RouteParameter.Optional, ext = RouteParameter.Optional });
+               routeTemplate: "api/{controller}/{din}/{brandname}/{company}/{active}/{status}/{lang}.{ext}",
+               defaults: new { din = RouteParameter.Optional, brandname = RouteParameter.Optional, company = RouteParameter.Optional, active = RouteParameter.Optional, status = RouteParameter.Optional, lang = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                name: "ApiTwoUriPathExtension ID",
                routeTemplate: "api/{controller}/{lang}.{ext}",

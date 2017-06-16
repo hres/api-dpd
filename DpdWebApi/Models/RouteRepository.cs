@@ -12,17 +12,17 @@ namespace DpdWebApi.Models
     DBConnection dbConnection = new DBConnection("en");
     
 
-    public IEnumerable<Route> GetAll(string lang)
+    public IEnumerable<Route> GetAll(string lang, string active = "")
     {
-        routes = dbConnection.GetAllRoute(lang);
+        routes = dbConnection.GetAllRoute(lang, active);
 
         return routes;
     }
 
 
-    public Route Get(int id, string lang)
+    public Route Get(int id, string lang, string active = "")
     {
-        route = dbConnection.GetRouteByDrugCode(id, lang);
+        route = dbConnection.GetRouteByDrugCode(id, lang, active);
         return route;
     }
 

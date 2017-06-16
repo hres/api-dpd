@@ -8,15 +8,15 @@ namespace DpdWebApi.Controllers
     public class DrugProductController : ApiController
     {
         static readonly IDrugProductRepository databasePlaceholder = new DrugProductRepository();
-       
-        public IEnumerable<DrugProduct> GetBySearchCriteria(string din, string brandname, string company, string lang)
-        {
-            return databasePlaceholder.GetAllByCriteria(din, brandname, company, lang);
-        }
+       //KEEP if we decide to do the Search by Drug - Diane 2017-06-08
+        //public IEnumerable<DrugProduct> GetBySearchCriteria(string din, string brandname, string company, string lang)
+        //{
+        //    return databasePlaceholder.GetAllByCriteria(din, brandname, company, lang);
+        //}
 
-        public DrugProduct GetDrugProductByID(int id, string lang)
+        public DrugProduct GetDrugProductByID(int id, string lang, string status = "")
         {
-            DrugProduct drugProduct = databasePlaceholder.Get(id, lang);
+            DrugProduct drugProduct = databasePlaceholder.Get(id, lang, status);
             if (drugProduct == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -24,10 +24,10 @@ namespace DpdWebApi.Controllers
             return drugProduct;
         }
 
-        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang)
+        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang, string status = "")
         {
 
-            return databasePlaceholder.GetAll(lang);
+            return databasePlaceholder.GetAll(lang, status);
         }
     }
 }

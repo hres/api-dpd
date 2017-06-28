@@ -32,6 +32,7 @@ namespace drug
         
         public DrugProduct GetDrugProductById(int id, string lang, string status)
         {
+            var companyCode = "";
             var drugProduct = new DrugProduct();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
             
@@ -73,9 +74,9 @@ namespace drug
                                 }
                                 item.number_of_ais = dr["NUMBER_OF_AIS"] == DBNull.Value ? string.Empty : Convert.ToString(dr["NUMBER_OF_AIS"]);
                                 item.ai_group_no = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                item.company_code = dr["COMPANY_CODE"] == DBNull.Value ? string.Empty : dr["COMPANY_CODE"].ToString().Trim();
+                                companyCode = dr["COMPANY_CODE"] == DBNull.Value ? string.Empty : dr["COMPANY_CODE"].ToString().Trim();
                                 Company company = new Company();
-                                company = GetCompanyByCompanyCode(Int32.Parse(item.company_code), lang);
+                                company = GetCompanyByCompanyCode(Int32.Parse(companyCode), lang);
                                 if (company != null)
                                 {
                                     item.company = company;
@@ -102,6 +103,7 @@ namespace drug
 
         public List<DrugProduct> GetAllDrugProduct(string lang, string status = "")
         {
+            var companyCode = "";
             var orderClause = "";
             var items = new List<DrugProduct>();
             string commandText = "SELECT DISTINCT A.* FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
@@ -140,9 +142,9 @@ namespace drug
 
                                 item.number_of_ais = dr["NUMBER_OF_AIS"] == DBNull.Value ? string.Empty : Convert.ToString(dr["NUMBER_OF_AIS"]);
                                 item.ai_group_no = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-                                item.company_code = dr["COMPANY_CODE"] == DBNull.Value ? string.Empty : dr["COMPANY_CODE"].ToString().Trim();
+                                companyCode = dr["COMPANY_CODE"] == DBNull.Value ? string.Empty : dr["COMPANY_CODE"].ToString().Trim();
                                 Company company = new Company();
-                                company = GetCompanyByCompanyCode(Int32.Parse(item.company_code), lang);
+                                company = GetCompanyByCompanyCode(Int32.Parse(companyCode), lang);
                                 if (company != null)
                                 {
                                     item.company = company;

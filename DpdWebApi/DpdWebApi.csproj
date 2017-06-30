@@ -206,6 +206,7 @@
     <Compile Include="Areas\HelpPage\ModelDescriptions.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ActiveIngredientController.cs" />
+    <Compile Include="Controllers\CSVController.cs" />
     <Compile Include="Controllers\DrugProductController.cs" />
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\PackagingController.cs" />
@@ -305,6 +306,7 @@
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="bin\WebGrease.dll" />
     <Content Include="bin\WebTemplateCore.dll" />
+    <Content Include="index-en.html" />
     <Content Include="Views\Shared\genericError.html" />
     <Content Include="logs\20160419.txt" />
     <Content Include="logs\20160420.txt" />
@@ -364,8 +366,6 @@
     <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional.LeftMenu_Layout.cshtml" />
     <Content Include="Views\GoC.WebTemplate\GoCWebTemplate.Transactional_Layout.cshtml" />
     <Content Include="Views\GoC.WebTemplate\GoCWebTemplate_Layout.cshtml" />
-    <Content Include="index-en.html" />
-    <Content Include="index-fr.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Release\" />
@@ -404,7 +404,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51195/</IISUrl>
+          <IISUrl>http://localhost:51196/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

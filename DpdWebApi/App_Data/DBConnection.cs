@@ -1544,7 +1544,8 @@ namespace drug
     //                    while (dr.Read())
     //                    {
     //                        var item = new DrugProduct();
-    //                        if (lang.Equals("fr"))
+    //                        if (lang.Equals(
+    ))
     //                        {
     //                            item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
     //                        }

@@ -17,9 +17,9 @@ namespace DpdWebApi.Controllers
     {
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage DownloadCSV(string dataType)
+        public HttpResponseMessage DownloadCSV(string dataType, string lang)
         {
-            DBConnection dbConnection = new DBConnection("en");
+            DBConnection dbConnection = new DBConnection(lang);
             var jsonResult = string.Empty;
             var fileNameDate = string.Format("{0}{1}{2}",
                            DateTime.Now.Year.ToString(),
@@ -35,7 +35,7 @@ namespace DpdWebApi.Controllers
             switch (dataType)
             {
                 case "activeIngredient":
-                    var activeIngredient = dbConnection.GetAllActiveIngredient("en").ToList();
+                    var activeIngredient = dbConnection.GetAllActiveIngredient(lang).ToList();
                     if (activeIngredient.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(activeIngredient);
@@ -44,7 +44,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "company":
-                    var company = dbConnection.GetAllCompany("en").ToList();
+                    var company = dbConnection.GetAllCompany(lang).ToList();
                     if (company.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(company);
@@ -53,7 +53,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "drugProduct":
-                    var drugProduct = dbConnection.GetAllCompany("en").ToList();
+                    var drugProduct = dbConnection.GetAllCompany(lang).ToList();
                     if (drugProduct.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(drugProduct);
@@ -62,7 +62,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "form":
-                    var form = dbConnection.GetAllForm("en").ToList();
+                    var form = dbConnection.GetAllForm(lang).ToList();
                     if (form.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(form);
@@ -71,7 +71,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "packaging":
-                    var packaging = dbConnection.GetAllPackaging("en").ToList();
+                    var packaging = dbConnection.GetAllPackaging(lang).ToList();
                     if (packaging.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(packaging);
@@ -89,7 +89,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "schedule":
-                    var schedule = dbConnection.GetAllSchedule("en", "").ToList();
+                    var schedule = dbConnection.GetAllSchedule(lang, "").ToList();
                     if (schedule.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(schedule);
@@ -98,7 +98,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "status":
-                    var status = dbConnection.GetAllStatus("en").ToList();
+                    var status = dbConnection.GetAllStatus(lang).ToList();
                     if (status.Count > 0)
                     { 
                         json = JsonConvert.SerializeObject(status);
@@ -107,7 +107,7 @@ namespace DpdWebApi.Controllers
 
                 /*                  no controller for this?
             case "statusEx":
-                var statusEx = dbConnection.Get("en").ToList();
+                var statusEx = dbConnection.Get(lang).ToList();
                 if (statusEx.Count > 0)
                 { 
                     json = JsonConvert.SerializeObject(statusEx);
@@ -117,7 +117,7 @@ namespace DpdWebApi.Controllers
                 */
 
                 case "route":
-                    var route = dbConnection.GetAllRoute("en").ToList();
+                    var route = dbConnection.GetAllRoute(lang).ToList();
                     if (route.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(route);
@@ -125,7 +125,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "therapeutic":
-                    var therapeutic = dbConnection.GetAllTherapeuticClass("en").ToList();
+                    var therapeutic = dbConnection.GetAllTherapeuticClass(lang).ToList();
                     if (therapeutic.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(therapeutic);
@@ -133,7 +133,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "vetSpecies":
-                    var vetSpecies = dbConnection.GetAllVeterinarySpecies("en").ToList();
+                    var vetSpecies = dbConnection.GetAllVeterinarySpecies(lang).ToList();
                     if (vetSpecies.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(vetSpecies);

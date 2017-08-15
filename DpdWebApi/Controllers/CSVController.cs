@@ -17,7 +17,7 @@ namespace DpdWebApi.Controllers
     {
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage DownloadCSV(string dataType, string lang)
+        public HttpResponseMessage DownloadCSV(string dataType, string lang, string status="")
         {
             DBConnection dbConnection = new DBConnection(lang);
             var jsonResult = string.Empty;
@@ -53,10 +53,55 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "drugProduct":
-                    var drugProduct = dbConnection.GetAllCompany(lang).ToList();
+                    var drugProduct = dbConnection.GetAllDrugProduct(lang).ToList();
                     if (drugProduct.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(drugProduct);
+
+                    }
+                    break;
+
+                case "drugApproved":
+                    var drugApproved = dbConnection.GetAllDrugProduct(lang, "1").ToList();
+                    if (drugApproved.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(drugApproved);
+
+                    }
+                    break;
+
+                case "drugMarketed":
+                    var drugMarketed = dbConnection.GetAllDrugProduct(lang, "2").ToList();
+                    if (drugMarketed.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(drugMarketed);
+
+                    }
+                    break;
+
+                case "drugCancelledPre":
+                    var drugCancelledPre = dbConnection.GetAllDrugProduct(lang, "3").ToList();
+                    if (drugCancelledPre.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(drugCancelledPre);
+
+                    }
+                    break;
+
+                case "drugCancelledPost":
+                    var drugCancelledPost = dbConnection.GetAllDrugProduct(lang, "4").ToList();
+                    if (drugCancelledPost.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(drugCancelledPost);
+
+                    }
+                    break;
+
+                case "drugDormant":
+                    var drugDormant = dbConnection.GetAllDrugProduct(lang, "5").ToList();
+                    if (drugDormant.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(drugDormant);
 
                     }
                     break;
@@ -98,10 +143,10 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "status":
-                    var status = dbConnection.GetAllStatus(lang).ToList();
-                    if (status.Count > 0)
+                    var statuses = dbConnection.GetAllStatus(lang).ToList();
+                    if (statuses.Count > 0)
                     { 
-                        json = JsonConvert.SerializeObject(status);
+                        json = JsonConvert.SerializeObject(statuses);
                     }
                     break;
 

@@ -111,7 +111,7 @@ namespace drug
             {
                 commandText += " , DPD_ONLINE_OWNER.WQRY_STATUS B WHERE A.DRUG_CODE = B.DRUG_CODE AND B.EXTERNAL_STATUS_CODE = " + status;
             }
-
+            
             commandText += " ORDER BY" + orderClause + " A.DRUG_IDENTIFICATION_NUMBER";
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {

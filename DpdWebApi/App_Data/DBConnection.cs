@@ -471,9 +471,9 @@ namespace drug
                                 if (lang.Equals("fr"))
                                 {
 
-                                    item.street_name = dr["STREET_NAME_F"] == DBNull.Value ? dr["INGREDIENT"].ToString().Trim() : dr["STREET_NAME_F"].ToString().Trim();
-                                    item.province_name = dr["PROVINCE_F"] == DBNull.Value ? dr["INGREDIENT"].ToString().Trim() : dr["PROVINCE_F"].ToString().Trim();
-                                    item.country_name = dr["COUNTRY_F"] == DBNull.Value ? dr["INGREDIENT"].ToString().Trim() : dr["COUNTRY_F"].ToString().Trim();
+                                    item.street_name = dr["STREET_NAME_F"] == DBNull.Value ? dr["STREET_NAME"].ToString().Trim() : dr["STREET_NAME_F"].ToString().Trim();
+                                    item.province_name = dr["PROVINCE_F"] == DBNull.Value ? dr["PROVINCE"].ToString().Trim() : dr["PROVINCE_F"].ToString().Trim();
+                                    item.country_name = dr["COUNTRY_F"] == DBNull.Value ? dr["COUNTRY"].ToString().Trim() : dr["COUNTRY_F"].ToString().Trim();
                                 }
                                 else {
                                     item.street_name = dr["STREET_NAME"] == DBNull.Value ? dr["STREET_NAME_F"].ToString().Trim() : dr["STREET_NAME"].ToString().Trim();

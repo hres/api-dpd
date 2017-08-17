@@ -17,7 +17,7 @@ namespace DpdWebApi.Controllers
     {
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [System.Web.Http.HttpGet]
-        public HttpResponseMessage DownloadCSV(string dataType, string lang, string status="")
+        public HttpResponseMessage DownloadCSV(string dataType, string lang)
         {
             DBConnection dbConnection = new DBConnection(lang);
             var jsonResult = string.Empty;
@@ -53,7 +53,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "drugProduct":
-                    var drugProduct = dbConnection.GetAllDrugProduct(lang).ToList();
+                    var drugProduct = dbConnection.GetAllDrugProduct(lang, "0").ToList();
                     if (drugProduct.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(drugProduct);

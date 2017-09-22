@@ -35,7 +35,7 @@ namespace drug
             var companyCode = "";
             var drugProduct = new DrugProduct();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
-            
+
             if (status.Length > 0 && id > 0)
             {
                 commandText += " , DPD_ONLINE_OWNER.WQRY_STATUS B WHERE A.DRUG_CODE = " + id;
@@ -44,8 +44,9 @@ namespace drug
             else
             {
                 commandText += " WHERE A.DRUG_CODE = " + id;
-            }
-            
+            }           
+
+           
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
@@ -89,6 +90,77 @@ namespace drug
                 catch (Exception ex)
                 {
                     string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDrugCode()");
+                    ExceptionHelper.LogException(ex, errorMessages);
+                    Console.WriteLine(errorMessages);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                        con.Close();
+                }
+            }
+            return drugProduct;
+        }
+
+        public DrugProduct GetDrugProductByDin(string din, string lang, string status)
+        {
+            var companyCode = "";
+            var drugProduct = new DrugProduct();
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_PRODUCT A";
+
+            if (status.Length > 0 && din != null)
+            {
+                commandText += " , DPD_ONLINE_OWNER.WQRY_STATUS B WHERE A.DRUG_IDENTIFICATION_NUMBER = '" + din + "'";
+                commandText += "  AND A.DRUG_CODE = B.DRUG_CODE AND B.EXTERNAL_STATUS_CODE = " + status;
+            }
+            else
+            {
+                commandText += " WHERE A.DRUG_IDENTIFICATION_NUMBER = '" + din + "'";
+            }
+
+            using (OracleConnection con = new OracleConnection(DpdDBConnection))
+            {
+                OracleCommand cmd = new OracleCommand(commandText, con);
+                try
+                {
+                    con.Open();
+                    using (OracleDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.HasRows)
+                        {
+                            while (dr.Read())
+                            {
+                                var item = new DrugProduct();
+                                item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
+                                item.class_name = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
+                                item.drug_identification_number = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
+                                if (lang.Equals("fr"))
+                                {
+                                    item.descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? dr["DESCRIPTOR"].ToString().Trim() : dr["DESCRIPTOR_F"].ToString().Trim();
+                                    item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
+                                }
+                                else
+                                {
+                                    item.descriptor = dr["DESCRIPTOR"] == DBNull.Value ? dr["DESCRIPTOR_F"].ToString().Trim() : dr["DESCRIPTOR"].ToString().Trim();
+                                    item.brand_name = dr["BRAND_NAME"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
+                                }
+                                item.number_of_ais = dr["NUMBER_OF_AIS"] == DBNull.Value ? string.Empty : Convert.ToString(dr["NUMBER_OF_AIS"]);
+                                item.ai_group_no = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
+                                companyCode = dr["COMPANY_CODE"] == DBNull.Value ? string.Empty : dr["COMPANY_CODE"].ToString().Trim();
+                                Company company = new Company();
+                                company = GetCompanyByCompanyCode(Int32.Parse(companyCode), lang);
+                                if (company != null)
+                                {
+                                    item.company = company;
+                                }
+                                drugProduct = item;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMessages = string.Format("DbConnection.cs - GetDrugProductByDin()");
                     ExceptionHelper.LogException(ex, errorMessages);
                     Console.WriteLine(errorMessages);
                 }

@@ -29,5 +29,15 @@ namespace DpdWebApi.Controllers
 
             return databasePlaceholder.GetAll(lang, status);
         }
+
+        public DrugProduct GetDrugProductByDin(string din, string lang, string status = "")
+        {
+            DrugProduct drugProduct = databasePlaceholder.GetByDin(din, lang, status);
+            if (drugProduct == null)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+            return drugProduct;
+        }
     }
 }

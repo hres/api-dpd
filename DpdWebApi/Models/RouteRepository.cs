@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
         // We are using the list and _fakeDatabaseID to represent what would
     // most likely be a database of some sort, with an auto-incrementing ID field:
     private List<Route> routes = new List<Route>();
-    private Route route = new Route();
+    //private Route route = new Route();
     DBConnection dbConnection = new DBConnection("en");
     
 
@@ -20,10 +20,10 @@ namespace DpdWebApi.Models
     }
 
 
-    public Route Get(int id, string lang, string active = "")
+        public IEnumerable<Route> Get(int id, string lang, string active = "")
     {
-        route = dbConnection.GetRouteByDrugCode(id, lang, active);
-        return route;
+        routes = dbConnection.GetRouteByDrugCode(id, lang, active);
+        return routes;
     }
 
 

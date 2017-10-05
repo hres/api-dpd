@@ -15,10 +15,10 @@ namespace DpdWebApi.Models
             return forms;
         }
 
-        public Form Get(int id, string lang, string active = "")
+        public IEnumerable<Form> Get(int id, string lang, string active = "")
         {
-            form = dbConnection.GetFormByDrugCode(id, lang, active);
-            return form;
+            forms = dbConnection.GetFormByDrugCode(id, lang, active);
+            return forms;
         }
     }
 }

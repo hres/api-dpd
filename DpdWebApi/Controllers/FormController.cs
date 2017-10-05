@@ -19,14 +19,15 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public Form GetFormByID(int id, string lang, string active = "")
+        public IEnumerable<Form>  GetFormByID(int id, string lang, string active = "")
         {
-            Form form = databasePlaceholder.Get(id, lang, active);
-            if (form == null)
+            //Form form = databasePlaceholder.Get(id, lang, active);
+            IEnumerable <Form> formList= databasePlaceholder.Get(id, lang, active);
+            if (formList.Count()==0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return form;
+            return formList;
         }
     }
 }

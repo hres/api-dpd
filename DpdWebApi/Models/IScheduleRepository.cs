@@ -9,6 +9,6 @@ namespace DpdWebApi.Models
     interface IScheduleRepository
     {
         IEnumerable<Schedule> GetAll(string lang, string active = "");
-        Schedule Get(int id, string lang, string active = "");
+        IEnumerable<Schedule> Get(int id, string lang, string active = "");
     }
 }

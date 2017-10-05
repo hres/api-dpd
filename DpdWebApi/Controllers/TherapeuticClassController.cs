@@ -19,14 +19,14 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public TherapeuticClass GetActiveIngredientByID(int id, string lang)
+        public IEnumerable<TherapeuticClass> GetActiveIngredientByID(int id, string lang)
         {
-            TherapeuticClass therapeuticClass = databasePlaceholder.Get(id, lang);
-            if (therapeuticClass == null)
+            IEnumerable<TherapeuticClass> therapeuticClassList = databasePlaceholder.Get(id, lang);
+            if (therapeuticClassList.Count()==0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return therapeuticClass;
+            return therapeuticClassList;
         }
     }
 }

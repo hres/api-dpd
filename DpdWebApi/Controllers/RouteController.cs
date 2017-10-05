@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Http;
 using DpdWebApi.Models;
@@ -15,14 +16,15 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public Route GetRouteByID(int id, string lang, string active = "")
+        public IEnumerable<Route> GetRouteByID(int id, string lang, string active = "")
         {
-            Route route = databasePlaceholder.Get(id, lang, active);
-            if (route == null)
+            //Route route = databasePlaceholder.Get(id, lang, active);
+            IEnumerable<Route> routeList = databasePlaceholder.Get(id, lang, active);
+            if (routeList.Count()==0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return route;
+            return routeList;
         }
     }
 }

@@ -15,10 +15,10 @@ namespace DpdWebApi.Models
             return therapeuticClasses;
         }
 
-        public TherapeuticClass Get(int id, string lang)
+        public IEnumerable<TherapeuticClass> Get(int id, string lang)
         {
-            therapeuticClass = dbConnection.GetTherapeuticClassByDrugCode(id, lang);
-            return therapeuticClass;
+            therapeuticClasses = dbConnection.GetTherapeuticClassByDrugCode(id, lang);
+            return therapeuticClasses;
         }
     }
 }

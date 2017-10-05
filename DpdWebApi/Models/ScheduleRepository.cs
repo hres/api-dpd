@@ -15,10 +15,10 @@ namespace DpdWebApi.Models
             return schedules;
         }
 
-        public Schedule Get(int id, string lang, string active = "")
+        public IEnumerable<Schedule> Get(int id, string lang, string active = "")
         {
-            schedule = dbConnection.GetScheduleByDrugCode(id, lang, active);
-            return schedule;
+            schedules = dbConnection.GetScheduleByDrugCode(id, lang, active);
+            return schedules;
         }
     }
 }

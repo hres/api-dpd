@@ -19,14 +19,15 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public Schedule GetScheduleByDrugCode(int id, string lang, string active = "")
+        public IEnumerable<Schedule> GetScheduleByDrugCode(int id, string lang, string active = "")
         {
-            Schedule schedule = databasePlaceholder.Get(id, lang, active);
-            if (schedule == null)
+            //Schedule schedule = databasePlaceholder.Get(id, lang, active);
+            IEnumerable<Schedule> scheduleList= databasePlaceholder.Get(id, lang, active);
+            if (scheduleList.Count()==0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return schedule;
+            return scheduleList;
         }
     }
 }

@@ -19,14 +19,14 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public VeterinarySpecies GetActiveIngredientByID(int id, string lang)
+        public IEnumerable<VeterinarySpecies> GetActiveIngredientByID(int id, string lang)
         {
-            VeterinarySpecies veterinarySpecies = databasePlaceholder.Get(id, lang);
-            if (veterinarySpecies == null)
+            IEnumerable<VeterinarySpecies> veterinarySpeciesList = databasePlaceholder.Get(id, lang);
+            if (veterinarySpeciesList.Count()==0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return veterinarySpecies;
+            return veterinarySpeciesList;
         }
     }
 }

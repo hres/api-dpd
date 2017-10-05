@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
         // We are using the list and _fakeDatabaseID to represent what would
     // most likely be a database of some sort, with an auto-incrementing ID field:
         private List<ActiveIngredient> activeIngredients = new List<ActiveIngredient>();
-        private ActiveIngredient activeIngredient = new ActiveIngredient();
+        //private ActiveIngredient activeIngredient = new ActiveIngredient();
     DBConnection dbConnection = new DBConnection("en");
 
 
@@ -20,11 +20,14 @@ namespace DpdWebApi.Models
     }
 
 
-    public ActiveIngredient Get(int id, string lang)
+    public IEnumerable<ActiveIngredient> Get(int id, string lang)
     {
-        activeIngredient = dbConnection.GetActiveIngredientByDrugCode(id, lang);
-        return activeIngredient;
-    }
+            //activeIngredient = dbConnection.GetActiveIngredientByDrugCode(id, lang);
+            //return activeIngredient;
+            activeIngredients = dbConnection.GetActiveIngredientByDrugCode(id, lang);
+
+            return activeIngredients;
+        }
 
 
     }

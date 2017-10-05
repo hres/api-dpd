@@ -16,10 +16,10 @@ namespace DpdWebApi.Models
             return veterinarySpeciess;
         }
 
-        public VeterinarySpecies Get(int id, string lang)
+        public IEnumerable<VeterinarySpecies> Get(int id, string lang)
         {
-            veterinarySpecies = dbConnection.GetVeterinarySpeciesByDrugCode(id, lang);
-            return veterinarySpecies;
+            veterinarySpeciess = dbConnection.GetVeterinarySpeciesByDrugCode(id, lang);
+            return veterinarySpeciess;
         }
     }
 }

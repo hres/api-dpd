@@ -19,14 +19,20 @@ namespace DpdWebApi.Controllers
         }
 
 
-        public ActiveIngredient GetActiveIngredientByDrugCode(int id, string lang)
+        public IEnumerable<ActiveIngredient> GetActiveIngredientByDrugCode(int id, string lang)
         {
-            ActiveIngredient activeIngredient = databasePlaceholder.Get(id, lang);
-            if (activeIngredient == null)
+            IEnumerable<ActiveIngredient> list = databasePlaceholder.Get(id, lang);
+            //ActiveIngredient activeIngredient = databasePlaceholder.Get(id, lang);
+
+            if (list.Count()==0)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            return activeIngredient;
+            //return activeIngredient;
+            else
+            {
+                return list;
+            }
         }
 
 

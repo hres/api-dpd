@@ -116,7 +116,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "packaging":
-                    var packaging = dbConnection.GetAllPackaging(lang).ToList();
+                    var packaging = dbConnection.GetAllPackaging().ToList();
                     if (packaging.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(packaging);

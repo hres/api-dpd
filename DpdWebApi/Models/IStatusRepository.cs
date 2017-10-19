@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IStatusRepository
     {
-        IEnumerable<Status> GetAll(string lang);
-        Status Get(int id, string lang);
+        IEnumerable<Status> GetAll(string lang="");
+        Status Get(int id, string lang="");
     }
 }

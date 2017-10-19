@@ -9,15 +9,15 @@ namespace DpdWebApi.Models
         private Packaging packaging = new Packaging();
         DBConnection dbConnection = new DBConnection("en");
 
-        public IEnumerable<Packaging> GetAll(string lang)
+        public IEnumerable<Packaging> GetAll()
         {
-            packagings = dbConnection.GetAllPackaging(lang);
+            packagings = dbConnection.GetAllPackaging();
             return packagings;
         }
 
-        public Packaging Get(int id, string lang)
+        public Packaging Get(int id)
         {
-            packaging = dbConnection.GetPackagingByDrugCode(id, lang);
+            packaging = dbConnection.GetPackagingByDrugCode(id);
             return packaging;
         }
     }

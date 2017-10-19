@@ -12,14 +12,14 @@ namespace DpdWebApi.Controllers
     {
         static readonly IFormRepository databasePlaceholder = new FormRepository();
 
-        public IEnumerable<Form> GetAllForm(string lang, string active = "")
+        public IEnumerable<Form> GetAllForm(string lang="", string active = "")
         {
 
             return databasePlaceholder.GetAll(lang, active);
         }
 
 
-        public IEnumerable<Form>  GetFormByID(int id, string lang, string active = "")
+        public IEnumerable<Form>  GetFormByID(int id, string lang="", string active = "")
         {
             //Form form = databasePlaceholder.Get(id, lang, active);
             IEnumerable <Form> formList= databasePlaceholder.Get(id, lang, active);

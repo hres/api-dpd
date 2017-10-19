@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IPackagingRepository
     {
-        IEnumerable<Packaging> GetAll(string lang);
-        Packaging Get(int id, string lang);
+        IEnumerable<Packaging> GetAll();
+        Packaging Get(int id);
     }
 }

@@ -30,7 +30,7 @@ namespace drug
         }
     
         
-        public DrugProduct GetDrugProductById(int id, string lang, string status)
+        public DrugProduct GetDrugProductById(int id, string lang = "", string status = "")
         {
             var companyCode = "";
             var drugProduct = new DrugProduct();
@@ -104,7 +104,7 @@ namespace drug
             return drugProduct;
         }
 
-        public DrugProduct GetDrugProductByDin(string din, string lang, string status)
+        public DrugProduct GetDrugProductByDin(string din, string lang = "", string status = "")
         {
             var companyCode = "";
             var drugProduct = new DrugProduct();
@@ -177,7 +177,7 @@ namespace drug
             return drugProduct;
         }
 
-        public List<DrugProduct> GetAllDrugProduct(string lang, string status = "")
+        public List<DrugProduct> GetAllDrugProduct(string lang = "", string status="")
         {
             var companyCode = "";
             var orderClause = "";
@@ -362,7 +362,7 @@ namespace drug
         //    return drugProduct;
         //}
 
-        public List<ActiveIngredient> GetAllActiveIngredient(string lang)
+        public List<ActiveIngredient> GetAllActiveIngredient(string lang = "")
         {
             var items = new List<ActiveIngredient>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS";
@@ -413,7 +413,7 @@ namespace drug
             return items;
         }
 
-        public List<ActiveIngredient> GetActiveIngredientByDrugCode(int id, string lang)
+        public List<ActiveIngredient> GetActiveIngredientByDrugCode(int id, string lang = "")
         {
             // var activeIngredient = new ActiveIngredient();
             var items = new List<ActiveIngredient>();
@@ -466,7 +466,7 @@ namespace drug
             return items;
         }
     
-        public List<Company> GetAllCompany(string lang)
+        public List<Company> GetAllCompany(string lang = "")
         {
             var items = new List<Company>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_COMPANIES";
@@ -522,7 +522,7 @@ namespace drug
             return items;
         }
 
-        public Company GetCompanyByCompanyCode(int id, string lang)
+        public Company GetCompanyByCompanyCode(int id, string lang = "")
         {
             var company = new Company();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_COMPANIES WHERE COMPANY_CODE = " + id;
@@ -580,7 +580,7 @@ namespace drug
             return company;
         }
         
-        public List<Route> GetAllRoute(string lang, string active = "")
+        public List<Route> GetAllRoute(string lang = "", string active = "")
         {
             var items = new List<Route>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ROUTE";
@@ -633,7 +633,7 @@ namespace drug
             return items;
         }
 
-        public List<Route> GetRouteByDrugCode(int id, string lang, string active = "")
+        public List<Route> GetRouteByDrugCode(int id, string lang = "", string active = "")
         {
             //var route = new Route();
             var items = new List<Route>();
@@ -689,9 +689,9 @@ namespace drug
             return items;
         }
 
-        public List<Status> GetAllStatus(string lang)
+        public List<Status> GetAllStatus(string lang = "")
         {
-            var items = new List<Status>();
+            var items = new List<Status>();          
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_STATUS S, DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL ES";
             commandText += " WHERE S.EXTERNAL_STATUS_CODE = ES.EXTERNAL_STATUS_CODE";
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
@@ -707,13 +707,14 @@ namespace drug
                             while (dr.Read())
                             {
                                 var item = new Status();
+                                
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.history_date = dr["HISTORY_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["HISTORY_DATE"]);
                                 item.external_status_code = dr["EXTERNAL_STATUS_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["EXTERNAL_STATUS_CODE"]);
                                 item.original_market_date = dr["ORIGINAL_MARKET_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["ORIGINAL_MARKET_DATE"]);
                                 item.expiration_date = dr["EXPIRATION_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["EXPIRATION_DATE"]);
-                                item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? 0 : Convert.ToInt32(dr["LOT_NUMBER"]);
-
+                                //item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? 0 : Convert.ToInt32(dr["LOT_NUMBER"]);
+                                item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? string.Empty : dr["LOT_NUMBER"].ToString().Trim();
                                 if (lang.Equals("fr"))
                                 {
                                     item.status = dr["EXTERNAL_STATUS_FRENCH"] == DBNull.Value ? dr["EXTERNAL_STATUS_ENGLISH"].ToString().Trim() : dr["EXTERNAL_STATUS_FRENCH"].ToString().Trim();
@@ -722,7 +723,8 @@ namespace drug
                                 {
                                     item.status = dr["EXTERNAL_STATUS_ENGLISH"] == DBNull.Value ? dr["EXTERNAL_STATUS_FRENCH"].ToString().Trim() : dr["EXTERNAL_STATUS_ENGLISH"].ToString().Trim();
                                 }
-                                items.Add(item);
+                                items.Add(item);                                
+                                
                             }
                         }
                     }
@@ -741,7 +743,7 @@ namespace drug
             return items;
         }
 
-        public Status GetStatusByDrugCode(int id, string lang)
+        public Status GetStatusByDrugCode(int id, string lang = "")
         {
             var status = new Status();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_STATUS S, DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL ES";
@@ -766,8 +768,8 @@ namespace drug
                                 item.external_status_code = dr["EXTERNAL_STATUS_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["EXTERNAL_STATUS_CODE"]);
                                 item.original_market_date = dr["ORIGINAL_MARKET_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["ORIGINAL_MARKET_DATE"]);
                                 item.expiration_date = dr["EXPIRATION_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["EXPIRATION_DATE"]);
-                                item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? 0 : Convert.ToInt32(dr["LOT_NUMBER"]);
-
+                                //item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? 0 : Convert.ToInt32(dr["LOT_NUMBER"]);
+                                item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? string.Empty : dr["LOT_NUMBER"].ToString().Trim();
                                 if (lang.Equals("fr"))
                                 {
                                     item.status = dr["EXTERNAL_STATUS_FRENCH"] == DBNull.Value ? dr["EXTERNAL_STATUS_ENGLISH"].ToString().Trim() : dr["EXTERNAL_STATUS_FRENCH"].ToString().Trim();
@@ -795,7 +797,7 @@ namespace drug
             return status;
         }
      
-        public List<Form> GetAllForm(string lang, string active = "")
+        public List<Form> GetAllForm(string lang = "", string active = "")
         {
             var items = new List<Form>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM";
@@ -847,7 +849,7 @@ namespace drug
             return items;
         }
 
-        public List<Form> GetFormByDrugCode(int id, string lang, string active = "")
+        public List<Form> GetFormByDrugCode(int id, string lang = "", string active = "")
         {
             //var form = new Form();
             var items = new List<Form>();
@@ -901,7 +903,7 @@ namespace drug
             return items;
         }
 
-        public List<Packaging> GetAllPackaging(string lang)
+        public List<Packaging> GetAllPackaging()
         {
             var items = new List<Packaging>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING";
@@ -944,7 +946,7 @@ namespace drug
             return items;
         }
 
-        public Packaging GetPackagingByDrugCode(int id, string lang)
+        public Packaging GetPackagingByDrugCode(int id)
         {
             var packaging = new Packaging();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING WHERE WQRY_PACKAGING_ID = " + id;
@@ -1067,7 +1069,7 @@ namespace drug
             return pharmaceuticalstd;
         }
         
-        public List<Schedule> GetAllSchedule(string lang, string active = "")
+        public List<Schedule> GetAllSchedule(string lang = "", string active = "")
         {
             var items = new List<Schedule>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE";
@@ -1118,7 +1120,7 @@ namespace drug
             return items;
         }
 
-        public List<Schedule> GetScheduleByDrugCode(int id, string lang, string active = "")
+        public List<Schedule> GetScheduleByDrugCode(int id, string lang = "", string active = "")
         {
             //var schedule = new Schedule();
             var items = new List<Schedule>();
@@ -1173,7 +1175,7 @@ namespace drug
             return items;
         }
 
-        public List<TherapeuticClass> GetAllTherapeuticClass(string lang)
+        public List<TherapeuticClass> GetAllTherapeuticClass(string lang = "")
         {
             var items = new List<TherapeuticClass>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A, DPD_ONLINE_OWNER.WQRY_AHFS B";
@@ -1225,7 +1227,7 @@ namespace drug
             return items;
         }
 
-        public List<TherapeuticClass> GetTherapeuticClassByDrugCode(int id, string lang)
+        public List<TherapeuticClass> GetTherapeuticClassByDrugCode(int id, string lang = "")
         {
             //var therapeuticClass = new TherapeuticClass();
             var items = new List<TherapeuticClass>();
@@ -1278,7 +1280,7 @@ namespace drug
             return items;
         }
 
-        public List<VeterinarySpecies> GetAllVeterinarySpecies(string lang)
+        public List<VeterinarySpecies> GetAllVeterinarySpecies(string lang = "")
         {
             var items = new List<VeterinarySpecies>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_VETERINARY_SPECIES";
@@ -1324,7 +1326,7 @@ namespace drug
             return items;
         }
 
-        public List<VeterinarySpecies> GetVeterinarySpeciesByDrugCode(int id, string lang)
+        public List<VeterinarySpecies> GetVeterinarySpeciesByDrugCode(int id, string lang = "")
         {
             //var veterinarySpecies = new VeterinarySpecies();
             var items = new List<VeterinarySpecies>();

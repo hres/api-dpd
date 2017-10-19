@@ -12,14 +12,14 @@ namespace DpdWebApi.Controllers
     {
         static readonly IScheduleRepository databasePlaceholder = new ScheduleRepository();
 
-        public IEnumerable<Schedule> GetAllSchedule(string lang, string active = "")
+        public IEnumerable<Schedule> GetAllSchedule(string lang="", string active = "")
         {
 
             return databasePlaceholder.GetAll(lang, active);
         }
 
 
-        public IEnumerable<Schedule> GetScheduleByDrugCode(int id, string lang, string active = "")
+        public IEnumerable<Schedule> GetScheduleByDrugCode(int id, string lang="", string active = "")
         {
             //Schedule schedule = databasePlaceholder.Get(id, lang, active);
             IEnumerable<Schedule> scheduleList= databasePlaceholder.Get(id, lang, active);

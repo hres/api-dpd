@@ -11,14 +11,14 @@ namespace DpdWebApi.Controllers
     {
         static readonly ICompanyRepository databasePlaceholder = new CompanyRepository();
 
-        public IEnumerable<Company> GetAllCompany(string lang)
+        public IEnumerable<Company> GetAllCompany(string lang="")
         {
 
             return databasePlaceholder.GetAll(lang);
         }
 
 
-        public Company GetCompanyByID(int id, string lang)
+        public Company GetCompanyByID(int id, string lang="")
         {
             Company company = databasePlaceholder.Get(id, lang);
             if (company == null)

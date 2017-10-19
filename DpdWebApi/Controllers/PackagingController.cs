@@ -12,16 +12,16 @@ namespace DpdWebApi.Controllers
     {
         static readonly IPackagingRepository databasePlaceholder = new PackagingRepository();
 
-        public IEnumerable<Packaging> GetAllActiveIngredient(string lang)
+        public IEnumerable<Packaging> GetAllPackaging()
         {
 
-            return databasePlaceholder.GetAll(lang);
+            return databasePlaceholder.GetAll();
         }
 
 
-        public Packaging GetActiveIngredientByID(int id, string lang)
+        public Packaging GetPackagingByDrugCode(int id)
         {
-            Packaging packaging = databasePlaceholder.Get(id, lang);
+            Packaging packaging = databasePlaceholder.Get(id);
             if (packaging == null)
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);

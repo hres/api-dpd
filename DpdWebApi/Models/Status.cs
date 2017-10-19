@@ -12,6 +12,7 @@ namespace DpdWebApi.Models
         public DateTime? original_market_date { get; set; }
         public int external_status_code { get; set; }
         public DateTime? expiration_date { get; set; }
-        public int lot_number { get; set; }
+        //public int lot_number { get; set; }
+        public string lot_number { get; set; }
     }
 }

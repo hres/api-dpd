@@ -12,14 +12,14 @@ namespace DpdWebApi.Controllers
     {
         static readonly IActiveIngredientRepository databasePlaceholder = new ActiveIngredientRepository();
 
-        public IEnumerable<ActiveIngredient> GetAllActiveIngredient(string lang)
+        public IEnumerable<ActiveIngredient> GetAllActiveIngredient(string lang="")
         {
 
             return databasePlaceholder.GetAll(lang);
         }
 
 
-        public IEnumerable<ActiveIngredient> GetActiveIngredientByDrugCode(int id, string lang)
+        public IEnumerable<ActiveIngredient> GetActiveIngredientByDrugCode(int id, string lang="")
         {
             IEnumerable<ActiveIngredient> list = databasePlaceholder.Get(id, lang);
             //ActiveIngredient activeIngredient = databasePlaceholder.Get(id, lang);

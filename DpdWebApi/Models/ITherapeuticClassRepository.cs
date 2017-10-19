@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface ITherapeuticClassRepository
     {
-        IEnumerable<TherapeuticClass> GetAll(string lang);
-        IEnumerable<TherapeuticClass> Get(int id, string lang);
+        IEnumerable<TherapeuticClass> GetAll(string lang="");
+        IEnumerable<TherapeuticClass> Get(int id, string lang="");
     }
 }

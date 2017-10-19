@@ -24,13 +24,13 @@ namespace DpdWebApi.Models
             return drugs;
         }
 
-        public DrugProduct Get(int id, string lang, string status = "")
+        public DrugProduct Get(int id, string lang = "", string status = "")
         {
             drug = dbConnection.GetDrugProductById(id, lang, status);
             return drug;
         }
 
-        public DrugProduct GetByDin(string din, string lang, string status = "")
+        public DrugProduct GetByDin(string din, string lang = "", string status = "")
         {
             drug = dbConnection.GetDrugProductByDin(din, lang, status);
             return drug;

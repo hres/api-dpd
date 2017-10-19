@@ -9,14 +9,14 @@ namespace DpdWebApi.Controllers
     {
         static readonly IRouteRepository databasePlaceholder = new RouteRepository();
 
-        public IEnumerable<Route> GetAllRoute(string lang, string active = "")
+        public IEnumerable<Route> GetAllRoute(string lang = "", string active = "")
         {
 
             return databasePlaceholder.GetAll(lang, active);
         }
 
 
-        public IEnumerable<Route> GetRouteByID(int id, string lang, string active = "")
+        public IEnumerable<Route> GetRouteByID(int id, string lang = "", string active = "")
         {
             //Route route = databasePlaceholder.Get(id, lang, active);
             IEnumerable<Route> routeList = databasePlaceholder.Get(id, lang, active);

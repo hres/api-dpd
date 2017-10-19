@@ -12,7 +12,7 @@ namespace DpdWebApi.Models
     DBConnection dbConnection = new DBConnection("en");
 
 
-    public IEnumerable<ActiveIngredient> GetAll(string lang)
+    public IEnumerable<ActiveIngredient> GetAll(string lang="")
     {
         activeIngredients = dbConnection.GetAllActiveIngredient(lang);
 
@@ -20,7 +20,7 @@ namespace DpdWebApi.Models
     }
 
 
-    public IEnumerable<ActiveIngredient> Get(int id, string lang)
+    public IEnumerable<ActiveIngredient> Get(int id, string lang="")
     {
             //activeIngredient = dbConnection.GetActiveIngredientByDrugCode(id, lang);
             //return activeIngredient;

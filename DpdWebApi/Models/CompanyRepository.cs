@@ -12,7 +12,7 @@ namespace DpdWebApi.Models
     DBConnection dbConnection = new DBConnection("en");
 
 
-    public IEnumerable<Company> GetAll(string lang)
+    public IEnumerable<Company> GetAll(string lang = "")
     {
         companies = dbConnection.GetAllCompany(lang);
 
@@ -20,7 +20,7 @@ namespace DpdWebApi.Models
     }
 
 
-    public Company Get(int id, string lang)
+    public Company Get(int id, string lang = "")
     {
         company = dbConnection.GetCompanyByCompanyCode(id, lang);
         return company;

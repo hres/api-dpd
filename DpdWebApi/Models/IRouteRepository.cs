@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IRouteRepository
     {
-        IEnumerable<Route> GetAll(string lang, string active = "");
-        IEnumerable<Route> Get(int id, string lang, string active = "");
+        IEnumerable<Route> GetAll(string lang = "", string active = "");
+        IEnumerable<Route> Get(int id, string lang = "", string active = "");
     }
 }

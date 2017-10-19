@@ -14,7 +14,7 @@ namespace DpdWebApi.Controllers
         //    return databasePlaceholder.GetAllByCriteria(din, brandname, company, lang);
         //}
 
-        public DrugProduct GetDrugProductByID(int id, string lang, string status = "")
+        public DrugProduct GetDrugProductByID(int id, string lang = "", string status = "")
         {
             DrugProduct drugProduct = databasePlaceholder.Get(id, lang, status);
             if (drugProduct == null)
@@ -24,13 +24,13 @@ namespace DpdWebApi.Controllers
             return drugProduct;
         }
 
-        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang, string status = "")
+        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang = "", string status = "")
         {
 
             return databasePlaceholder.GetAll(lang, status);
         }
 
-        public DrugProduct GetDrugProductByDin(string din, string lang, string status = "")
+        public DrugProduct GetDrugProductByDin(string din, string lang = "", string status = "")
         {
             DrugProduct drugProduct = databasePlaceholder.GetByDin(din, lang, status);
             if (drugProduct == null)

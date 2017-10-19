@@ -12,14 +12,14 @@ namespace DpdWebApi.Controllers
     {
         static readonly IVeterinarySpeciesRepository databasePlaceholder = new VeterinarySpeciesRepository();
 
-        public IEnumerable<VeterinarySpecies> GetAllActiveIngredient(string lang)
+        public IEnumerable<VeterinarySpecies> GetAllActiveIngredient(string lang="")
         {
 
             return databasePlaceholder.GetAll(lang);
         }
 
 
-        public IEnumerable<VeterinarySpecies> GetActiveIngredientByID(int id, string lang)
+        public IEnumerable<VeterinarySpecies> GetActiveIngredientByID(int id, string lang="")
         {
             IEnumerable<VeterinarySpecies> veterinarySpeciesList = databasePlaceholder.Get(id, lang);
             if (veterinarySpeciesList.Count()==0)

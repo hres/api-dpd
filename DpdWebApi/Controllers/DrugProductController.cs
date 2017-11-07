@@ -24,20 +24,20 @@ namespace DpdWebApi.Controllers
             return drugProduct;
         }
 
-        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang = "", string status = "")
+        public IEnumerable<DrugProduct> GetAllDrugProduct(string lang = "", string status = "", string brandname = "", string din = "")
         {
 
-            return databasePlaceholder.GetAll(lang, status);
+            return databasePlaceholder.GetAll(lang, status, brandname, din);
         }
 
-        public DrugProduct GetDrugProductByDin(string din, string lang = "", string status = "")
-        {
-            DrugProduct drugProduct = databasePlaceholder.GetByDin(din, lang, status);
-            if (drugProduct == null)
-            {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
-            }
-            return drugProduct;
-        }
+        //public DrugProduct GetDrugProductByDin(string din, string lang = "", string status = "")
+        //{
+        //    DrugProduct drugProduct = databasePlaceholder.GetByDin(din, lang, status);
+        //    if (drugProduct == null)
+        //    {
+        //        throw new HttpResponseException(HttpStatusCode.NotFound);
+        //    }
+        //    return drugProduct;
+        //}
     }
 }

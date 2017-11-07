@@ -17,9 +17,9 @@ namespace DpdWebApi.Models
         //    return drugs;
         //}
 
-        public IEnumerable<DrugProduct> GetAll(string lang = "", string status = "")
+        public IEnumerable<DrugProduct> GetAll(string lang = "", string status = "", string brandname = "", string din = "")
         {
-            drugs = dbConnection.GetAllDrugProduct(lang, status);
+            drugs = dbConnection.GetAllDrugProduct(lang, status, brandname, din);
 
             return drugs;
         }
@@ -30,11 +30,11 @@ namespace DpdWebApi.Models
             return drug;
         }
 
-        public DrugProduct GetByDin(string din, string lang = "", string status = "")
-        {
-            drug = dbConnection.GetDrugProductByDin(din, lang, status);
-            return drug;
-        }
+        //public DrugProduct GetByDin(string din, string lang = "", string status = "")
+        //{
+        //    drug = dbConnection.GetDrugProductByDin(din, lang, status);
+        //    return drug;
+        //}
 
     }
 

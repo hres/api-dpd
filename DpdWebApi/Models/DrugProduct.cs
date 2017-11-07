@@ -11,7 +11,8 @@ namespace DpdWebApi.Models
         public string number_of_ais { get; set; }
         //last_update_date not there
         public string ai_group_no { get; set; }
-        //public string company_code { get; set; }
-        public Company company { get; set; }
+        
+        public string company_name { get; set; }
+        //public Company company { get; set; }
     }
 }

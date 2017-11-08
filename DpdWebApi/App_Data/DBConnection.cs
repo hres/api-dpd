@@ -384,10 +384,16 @@ namespace drug
         //    return drugProduct;
         //}
 
-        public List<ActiveIngredient> GetAllActiveIngredient(string lang = "")
+        public List<ActiveIngredient> GetAllActiveIngredient(string lang = "", string ingredientname = "")
         {
             var items = new List<ActiveIngredient>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS";
+
+            if (ingredientname.Length > 0)
+            {
+                commandText += " WHERE (UPPER(INGREDIENT) LIKE '%" + ingredientname.Trim().ToUpper() + "%'";
+                commandText += " OR UPPER(INGREDIENT_F) like '%" + ingredientname.Trim().ToUpper() + "%')";
+            }
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);

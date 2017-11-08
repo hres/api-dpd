@@ -8,7 +8,7 @@ namespace DpdWebApi.Models
 {
     interface IActiveIngredientRepository
     {
-        IEnumerable<ActiveIngredient> GetAll(string lang="");
+        IEnumerable<ActiveIngredient> GetAll(string lang="", string ingredientname = "");
         //ActiveIngredient Get(int id, string lang);
         IEnumerable<ActiveIngredient> Get(int id, string lang="");
     }

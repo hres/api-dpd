@@ -53,7 +53,7 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "drugProduct":
-                    var drugProduct = dbConnection.GetAllDrugProduct(lang, "0").ToList();
+                    var drugProduct = dbConnection.GetAllDrugProduct(lang, "", "","").ToList();
                     if (drugProduct.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(drugProduct);

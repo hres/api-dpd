@@ -382,6 +382,13 @@
     <Content Include="Controllers\dhprController.ashx" />
     <None Include="Properties\PublishProfiles\dpd.pubxml" />
     <None Include="Properties\PublishProfiles\dpdapi.pubxml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

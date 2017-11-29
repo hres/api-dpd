@@ -977,7 +977,7 @@ namespace drug
         public Packaging GetPackagingByDrugCode(int id)
         {
             var packaging = new Packaging();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING WHERE WQRY_PACKAGING_ID = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING WHERE DRUG_CODE = " + id;
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {

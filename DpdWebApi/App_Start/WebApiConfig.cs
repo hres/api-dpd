@@ -15,19 +15,19 @@ namespace DpdWebApi
         {
             config.Routes.MapHttpRoute(
                name: "ApiMultiParamPathExtension ID",
-               routeTemplate: "api/{controller}/{din}/{brandname}/{company}/{active}/{status}/{ingredientname}/{lang}.{ext}",
+               routeTemplate: "{controller}/{din}/{brandname}/{company}/{active}/{status}/{ingredientname}/{lang}.{ext}",
                defaults: new { din = RouteParameter.Optional, brandname = RouteParameter.Optional, company = RouteParameter.Optional, active = RouteParameter.Optional, status = RouteParameter.Optional, lang = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                name: "ApiTwoUriPathExtension ID",
-               routeTemplate: "api/{controller}/{lang}.{ext}",
+               routeTemplate: "{controller}/{lang}.{ext}",
                defaults: new { lang = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "ApiUriPathExtension ID",
-                routeTemplate: "api/{controller}/{lang}/{id}.{ext}",
+                routeTemplate: "{controller}/{lang}/{id}.{ext}",
                 defaults: new { lang = RouteParameter.Optional, id = RouteParameter.Optional, ext = RouteParameter.Optional });
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Formatters.XmlFormatter.MediaTypeMappings.Add(new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));

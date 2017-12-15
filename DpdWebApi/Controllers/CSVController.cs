@@ -98,10 +98,19 @@ namespace DpdWebApi.Controllers
                     break;
 
                 case "drugDormant":
-                    var drugDormant = dbConnection.GetAllDrugProduct(lang, "5").ToList();
+                    var drugDormant = dbConnection.GetAllDrugProduct(lang, "6").ToList();
                     if (drugDormant.Count > 0)
                     {
                         json = JsonConvert.SerializeObject(drugDormant);
+
+                    }
+                    break;
+
+                case "cancelled":
+                    var cancelled = dbConnection.GetAllDrugProduct(lang, "9").ToList();
+                    if (cancelled.Count > 0)
+                    {
+                        json = JsonConvert.SerializeObject(cancelled);
 
                     }
                     break;

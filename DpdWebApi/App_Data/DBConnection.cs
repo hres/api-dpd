@@ -409,8 +409,8 @@ namespace drug
 
             if (ingredientname.Length > 0)
             {
-                commandText += " WHERE (UPPER(INGREDIENT) LIKE :ingredientname )";
-                commandText += " OR UPPER(INGREDIENT_F) LIKE :ingredientname ";
+                commandText += " WHERE (UPPER(INGREDIENT) LIKE :ingredientname ";
+                commandText += " OR UPPER(INGREDIENT_F) LIKE :ingredientname )";
             }
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {

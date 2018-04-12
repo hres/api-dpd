@@ -306,6 +306,7 @@
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="bin\WebGrease.dll" />
     <Content Include="bin\WebTemplateCore.dll" />
+    <Content Include="index-en.html" />
     <Content Include="Views\Shared\genericError.html" />
     <Content Include="logs\20160419.txt" />
     <Content Include="logs\20160420.txt" />

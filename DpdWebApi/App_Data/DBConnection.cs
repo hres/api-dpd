@@ -38,19 +38,25 @@ namespace drug
             commandText += " , DPD_ONLINE_OWNER.WQRY_COMPANIES C";
             if (status.Length > 0 && id > 0)
             {
-                commandText += " , DPD_ONLINE_OWNER.WQRY_STATUS B WHERE A.DRUG_CODE = " + id;
-                commandText += "  AND A.DRUG_CODE = B.DRUG_CODE AND A.COMPANY_CODE = C.COMPANY_CODE AND B.EXTERNAL_STATUS_CODE = " + status;
+                commandText += " , DPD_ONLINE_OWNER.WQRY_STATUS B WHERE A.DRUG_CODE = :id " ;
+                commandText += "  AND A.DRUG_CODE = B.DRUG_CODE AND A.COMPANY_CODE = C.COMPANY_CODE AND B.EXTERNAL_STATUS_CODE = :status " ;
             }
             else
             {
-                commandText += " WHERE A.COMPANY_CODE = C.COMPANY_CODE AND A.DRUG_CODE = " + id; 
+                commandText += " WHERE A.COMPANY_CODE = C.COMPANY_CODE AND A.DRUG_CODE = :id " ; 
             }           
 
            
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                try
+                cmd.Parameters.Add(":id", id);
+                if (status.Length > 0 && id > 0)
+                {
+                    cmd.Parameters.Add(":status", status);
+                }
+
+                    try
                 {
                     con.Open();
                     using (OracleDataReader dr = cmd.ExecuteReader())
@@ -196,24 +202,36 @@ namespace drug
             commandText += " WHERE A.COMPANY_CODE = C.COMPANY_CODE";
             if (status.Length > 0)
             {
-                commandText += " AND A.DRUG_CODE = B.DRUG_CODE AND B.EXTERNAL_STATUS_CODE = " + status;
+                commandText += " AND A.DRUG_CODE = B.DRUG_CODE AND B.EXTERNAL_STATUS_CODE = :status " ;
             }
             if (din.Length > 0)
             {
-                commandText += " AND A.DRUG_IDENTIFICATION_NUMBER like '" + din + "'";
+                commandText += " AND A.DRUG_IDENTIFICATION_NUMBER like :din ";
             }
             
             if (brandname.Length > 0)
             {
-                commandText += " AND (UPPER(A.BRAND_NAME) like '%" + brandname.Trim().ToUpper() + "%'";
-                commandText += " OR UPPER(A.BRAND_NAME_F) like '%" + brandname.Trim().ToUpper() + "%')";
+                commandText += " AND (UPPER(A.BRAND_NAME) like :brandname ) ";
+                commandText += " OR UPPER(A.BRAND_NAME_F) like :brandname ";
             }
             commandText += " ORDER BY" + orderClause + " A.DRUG_IDENTIFICATION_NUMBER";
 
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                try
+                if (status.Length > 0)
+                {
+                    cmd.Parameters.Add(":status", status);
+                }
+                if (brandname.Length > 0)
+                {
+                    cmd.Parameters.Add(":brandname", '%'+ brandname.ToUpper().Trim()+ '%');
+                }
+                if (din.Length > 0)
+                {
+                    cmd.Parameters.Add(":din", din);
+                }
+                    try
                 {
                     con.Open();
                     using (OracleDataReader dr = cmd.ExecuteReader())
@@ -391,13 +409,17 @@ namespace drug
 
             if (ingredientname.Length > 0)
             {
-                commandText += " WHERE (UPPER(INGREDIENT) LIKE '%" + ingredientname.Trim().ToUpper() + "%'";
-                commandText += " OR UPPER(INGREDIENT_F) like '%" + ingredientname.Trim().ToUpper() + "%')";
+                commandText += " WHERE (UPPER(INGREDIENT) LIKE :ingredientname ";
+                commandText += " OR UPPER(INGREDIENT_F) LIKE :ingredientname )";
             }
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
-                try
+                if (ingredientname.Length > 0)
+                {
+                    cmd.Parameters.Add(":ingredientname", '%' + ingredientname.ToUpper().Trim() + '%');
+                }
+                    try
                 {
                     con.Open();
                     using (OracleDataReader dr = cmd.ExecuteReader())
@@ -445,10 +467,11 @@ namespace drug
         {
             // var activeIngredient = new ActiveIngredient();
             var items = new List<ActiveIngredient>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ACTIVE_INGREDIENTS WHERE DRUG_CODE = :id ";
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -553,12 +576,14 @@ namespace drug
         public Company GetCompanyByCompanyCode(int id, string lang = "")
         {
             var company = new Company();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_COMPANIES WHERE COMPANY_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_COMPANIES WHERE COMPANY_CODE = :id ";
             using (
                 
                 OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
+
                 try
                 {
                     con.Open();
@@ -665,7 +690,7 @@ namespace drug
         {
             //var route = new Route();
             var items = new List<Route>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ROUTE WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ROUTE WHERE DRUG_CODE = :id ";
             if (active.ToUpper().Equals("YES"))
             {
                 commandText = commandText + " AND INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
@@ -674,6 +699,7 @@ namespace drug
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -775,12 +801,13 @@ namespace drug
         {
             var status = new Status();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_STATUS S, DPD_ONLINE_OWNER.WQRY_STATUS_EXTERNAL ES";
-            commandText += " WHERE DRUG_CODE = " + id + " AND S.EXTERNAL_STATUS_CODE = ES.EXTERNAL_STATUS_CODE";
+            commandText += " WHERE DRUG_CODE = :id "  + " AND S.EXTERNAL_STATUS_CODE = ES.EXTERNAL_STATUS_CODE";
             
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -881,7 +908,7 @@ namespace drug
         {
             //var form = new Form();
             var items = new List<Form>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM WHERE DRUG_CODE = :id ";
             if (active.ToUpper().Equals("YES"))
             {
                 commandText = commandText + " AND INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
@@ -890,6 +917,7 @@ namespace drug
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -977,11 +1005,12 @@ namespace drug
         public Packaging GetPackagingByDrugCode(int id)
         {
             var packaging = new Packaging();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PACKAGING WHERE DRUG_CODE = :id ";
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -1060,11 +1089,12 @@ namespace drug
         public PharmaceuticalStd GetPharmaceuticalStdByDrugCode(int id)
         {
             var pharmaceuticalstd = new PharmaceuticalStd();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PHARMACEUTICAL_STD WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_PHARMACEUTICAL_STD WHERE DRUG_CODE = :id ";
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -1152,7 +1182,7 @@ namespace drug
         {
             //var schedule = new Schedule();
             var items = new List<Schedule>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE WHERE DRUG_CODE = :id ";
             if (active.ToUpper().Equals("YES"))
             {
                 commandText = commandText + " AND INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
@@ -1161,6 +1191,7 @@ namespace drug
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -1260,11 +1291,12 @@ namespace drug
             //var therapeuticClass = new TherapeuticClass();
             var items = new List<TherapeuticClass>();
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A, DPD_ONLINE_OWNER.WQRY_AHFS B";
-            commandText += " WHERE A.DRUG_CODE = B.DRUG_CODE AND A.DRUG_CODE = " + id;
+            commandText += " WHERE A.DRUG_CODE = B.DRUG_CODE AND A.DRUG_CODE = :id ";
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();
@@ -1358,11 +1390,12 @@ namespace drug
         {
             //var veterinarySpecies = new VeterinarySpecies();
             var items = new List<VeterinarySpecies>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_VETERINARY_SPECIES WHERE DRUG_CODE = " + id;
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_DRUG_VETERINARY_SPECIES WHERE DRUG_CODE = :id ";
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
+                cmd.Parameters.Add(":id", id);
                 try
                 {
                     con.Open();

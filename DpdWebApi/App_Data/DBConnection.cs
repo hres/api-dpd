@@ -70,7 +70,7 @@ namespace drug
                                 //item.class_name = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
                                 item.drug_identification_number = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
                                 item.company_name = dr["COMPANY_NAME"] == DBNull.Value ? string.Empty : dr["COMPANY_NAME"].ToString().Trim();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? dr["DESCRIPTOR"].ToString().Trim() : dr["DESCRIPTOR_F"].ToString().Trim();
                                     item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
@@ -145,7 +145,7 @@ namespace drug
         //                        //item.class_name = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
         //                        item.drug_identification_number = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
         //                        item.company_name = dr["COMPANY_NAME"] == DBNull.Value ? string.Empty : dr["COMPANY_NAME"].ToString().Trim();
-        //                        if (lang.Equals("fr"))
+        //                        if (lang != null && lang.Equals("fr"))
         //                        {
         //                            item.descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? dr["DESCRIPTOR"].ToString().Trim() : dr["DESCRIPTOR_F"].ToString().Trim();
         //                            item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
@@ -245,7 +245,7 @@ namespace drug
                                 //item.class_name = dr["CLASS"] == DBNull.Value ? string.Empty : dr["CLASS"].ToString().Trim();
                                 item.drug_identification_number = dr["DRUG_IDENTIFICATION_NUMBER"] == DBNull.Value ? string.Empty : dr["DRUG_IDENTIFICATION_NUMBER"].ToString().Trim();
                                 item.company_name = dr["COMPANY_NAME"] == DBNull.Value ? string.Empty : dr["COMPANY_NAME"].ToString().Trim();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.descriptor = dr["DESCRIPTOR_F"] == DBNull.Value ? dr["DESCRIPTOR"].ToString().Trim() : dr["DESCRIPTOR_F"].ToString().Trim();
                                     item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
@@ -306,7 +306,7 @@ namespace drug
         //                    {
         //                     var item  = new oldDrugProductbk();
         //                        item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-        //                        if (lang.Equals("fr"))
+        //                        if (lang != null && lang.Equals("fr"))
         //                        {
         //                            item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
         //                            item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
@@ -364,7 +364,7 @@ namespace drug
         //                    {
         //                        var item = new oldDrugProductbk();
         //                        item.AiGroupNo = dr["AI_GROUP_NO"] == DBNull.Value ? string.Empty : dr["AI_GROUP_NO"].ToString().Trim();
-        //                        if (lang.Equals("fr"))
+        //                        if (lang != null && lang.Equals("fr"))
         //                        {
         //                            item.BrandName = dr["BRAND_NAME_F"] == DBNull.Value ? string.Empty : dr["BRAND_NAME_F"].ToString().Trim();
         //                            item.Class = dr["CLASS_F"] == DBNull.Value ? string.Empty : dr["CLASS_F"].ToString().Trim();
@@ -430,7 +430,7 @@ namespace drug
                             {
                                 var item  = new ActiveIngredient();
    
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.ingredient_name = dr["INGREDIENT_F"] == DBNull.Value ? dr["INGREDIENT"].ToString().Trim() : dr["INGREDIENT_F"].ToString().Trim();
                                     item.strength_unit = dr["STRENGTH_UNIT_F"] == DBNull.Value ? dr["STRENGTH_UNIT"].ToString().Trim() : dr["STRENGTH_UNIT_F"].ToString().Trim();
@@ -482,7 +482,7 @@ namespace drug
                             while (dr.Read())
                             {
                              var item  = new ActiveIngredient();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.ingredient_name = dr["INGREDIENT_F"] == DBNull.Value ? dr["INGREDIENT"].ToString().Trim() : dr["INGREDIENT_F"].ToString().Trim();
                                     item.strength_unit = dr["STRENGTH_UNIT_F"] == DBNull.Value ? dr["STRENGTH_UNIT"].ToString().Trim() : dr["STRENGTH_UNIT_F"].ToString().Trim();
@@ -542,7 +542,7 @@ namespace drug
                                 item.postal_code = dr["POSTAL_CODE"] == DBNull.Value ? string.Empty : dr["POSTAL_CODE"].ToString().Trim();
                                 item.post_office_box = dr["POST_OFFICE_BOX"] == DBNull.Value ? string.Empty : dr["POST_OFFICE_BOX"].ToString().Trim();
 
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     
                                     item.street_name = dr["STREET_NAME_F"] == DBNull.Value ? dr["STREET_NAME"].ToString().Trim() : dr["STREET_NAME_F"].ToString().Trim();
@@ -602,7 +602,7 @@ namespace drug
                                 item.postal_code = dr["POSTAL_CODE"] == DBNull.Value ? string.Empty : dr["POSTAL_CODE"].ToString().Trim();
                                 item.post_office_box = dr["POST_OFFICE_BOX"] == DBNull.Value ? string.Empty : dr["POST_OFFICE_BOX"].ToString().Trim();
 
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
 
                                     item.street_name = dr["STREET_NAME_F"] == DBNull.Value ? dr["STREET_NAME"].ToString().Trim() : dr["STREET_NAME_F"].ToString().Trim();
@@ -659,7 +659,7 @@ namespace drug
                                 item.route_of_administration_code = dr["ROUTE_OF_ADMINISTRATION_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ROUTE_OF_ADMINISTRATION_CODE"]);
                                 //item.inactive_date = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
 
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.route_of_administration_name = dr["ROUTE_OF_ADMINISTRATION_F"] == DBNull.Value ? dr["ROUTE_OF_ADMINISTRATION"].ToString().Trim() : dr["ROUTE_OF_ADMINISTRATION_F"].ToString().Trim();
                                 }
@@ -714,7 +714,7 @@ namespace drug
                                 item.route_of_administration_code = dr["ROUTE_OF_ADMINISTRATION_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["ROUTE_OF_ADMINISTRATION_CODE"]);
                                 //item.inactive_date = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
 
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.route_of_administration_name = dr["ROUTE_OF_ADMINISTRATION_F"] == DBNull.Value ? dr["ROUTE_OF_ADMINISTRATION"].ToString().Trim() : dr["ROUTE_OF_ADMINISTRATION_F"].ToString().Trim();
                                 }
@@ -769,7 +769,7 @@ namespace drug
                                 item.expiration_date = dr["EXPIRATION_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["EXPIRATION_DATE"]);
                                 //item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? 0 : Convert.ToInt32(dr["LOT_NUMBER"]);
                                 item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? string.Empty : dr["LOT_NUMBER"].ToString().Trim();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.status = dr["EXTERNAL_STATUS_FRENCH"] == DBNull.Value ? dr["EXTERNAL_STATUS_ENGLISH"].ToString().Trim() : dr["EXTERNAL_STATUS_FRENCH"].ToString().Trim();
                                 }
@@ -825,7 +825,7 @@ namespace drug
                                 item.expiration_date = dr["EXPIRATION_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["EXPIRATION_DATE"]);
                                 //item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? 0 : Convert.ToInt32(dr["LOT_NUMBER"]);
                                 item.lot_number = dr["LOT_NUMBER"] == DBNull.Value ? string.Empty : dr["LOT_NUMBER"].ToString().Trim();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.status = dr["EXTERNAL_STATUS_FRENCH"] == DBNull.Value ? dr["EXTERNAL_STATUS_ENGLISH"].ToString().Trim() : dr["EXTERNAL_STATUS_FRENCH"].ToString().Trim();
                                 }
@@ -877,7 +877,7 @@ namespace drug
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 //item.inactive_date = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
                                 item.pharmaceutical_form_code = dr["PHARMACEUTICAL_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARMACEUTICAL_FORM_CODE"]);
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.pharmaceutical_form_name = dr["PHARMACEUTICAL_FORM_F"] == DBNull.Value ? dr["PHARMACEUTICAL_FORM"].ToString().Trim() : dr["PHARMACEUTICAL_FORM_F"].ToString().Trim();
                                 }
@@ -931,7 +931,7 @@ namespace drug
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 //item.inactive_date = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
                                 item.pharmaceutical_form_code = dr["PHARMACEUTICAL_FORM_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["PHARMACEUTICAL_FORM_CODE"]);
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.pharmaceutical_form_name = dr["PHARMACEUTICAL_FORM_F"] == DBNull.Value ? dr["PHARMACEUTICAL_FORM"].ToString().Trim() : dr["PHARMACEUTICAL_FORM_F"].ToString().Trim();
                                 }
@@ -1151,7 +1151,7 @@ namespace drug
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 //item.schedule_code = dr["SCHEDULE_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["SCHEDULE_CODE"]);
                                 //item.inactive_date = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.schedule_name = dr["SCHEDULE_F"] == DBNull.Value ? dr["SCHEDULE"].ToString().Trim() : dr["SCHEDULE_F"].ToString().Trim();
                                 }
@@ -1205,7 +1205,7 @@ namespace drug
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 //item.schedule_code = dr["SCHEDULE_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["SCHEDULE_CODE"]);
                                 //item.inactive_date = dr["INACTIVE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["INACTIVE_DATE"]);
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.schedule_name = dr["SCHEDULE_F"] == DBNull.Value ? dr["SCHEDULE"].ToString().Trim() : dr["SCHEDULE_F"].ToString().Trim();
                                 }
@@ -1256,7 +1256,7 @@ namespace drug
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.tc_atc_number = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
                                 item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.tc_atc = dr["TC_ATC_F"] == DBNull.Value ? dr["TC_ATC"].ToString().Trim() : dr["TC_ATC_F"].ToString().Trim();
                                     item.tc_ahfs = dr["TC_AHFS_F"] == DBNull.Value ? dr["TC_AHFS"].ToString().Trim() : dr["TC_AHFS_F"].ToString().Trim();
@@ -1310,7 +1310,7 @@ namespace drug
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.tc_atc_number = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
                                 item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.tc_atc = dr["TC_ATC_F"] == DBNull.Value ? dr["TC_ATC"].ToString().Trim() : dr["TC_ATC_F"].ToString().Trim();
                                     item.tc_ahfs = dr["TC_AHFS_F"] == DBNull.Value ? dr["TC_AHFS"].ToString().Trim() : dr["TC_AHFS_F"].ToString().Trim();
@@ -1359,7 +1359,7 @@ namespace drug
                                 var item = new VeterinarySpecies();
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 //item.vet_species_code = dr["VET_SPECIES_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["VET_SPECIES_CODE"]);
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.vet_species_name = dr["VET_SPECIES_F"] == DBNull.Value ? dr["VET_SPECIES"].ToString().Trim() : dr["VET_SPECIES_F"].ToString().Trim();
                                 }
@@ -1408,7 +1408,7 @@ namespace drug
                                 var item = new VeterinarySpecies();
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 //item.vet_species_code = dr["VET_SPECIES_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["VET_SPECIES_CODE"]);
-                                if (lang.Equals("fr"))
+                                if (lang != null && lang.Equals("fr"))
                                 {
                                     item.vet_species_name = dr["VET_SPECIES_F"] == DBNull.Value ? dr["VET_SPECIES"].ToString().Trim() : dr["VET_SPECIES_F"].ToString().Trim();
                                 }
@@ -1443,7 +1443,7 @@ namespace drug
     //    var drugProduct = new DrugProduct();
     //    string commandText = "SELECT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO, A.COMPANY_CODE,";
     //    commandText += " C.ORIGINAL_MARKET_DATE, C.HISTORY_DATE, C.EXTERNAL_STATUS_CODE, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
-    //    if (lang.Equals("fr"))
+    //    if (lang != null && lang.Equals("fr"))
     //    {
     //        commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS_F as CLASS, EX.EXTERNAL_STATUS_FRENCH as STATUS, D.SCHEDULE_F as SCHEDULE, H.TC_AHFS_F AS AHFS, T.TC_ATC AS ATC, E.INGREDIENT_F as INGREDIENT,";
     //        commandText += " E.STRENGTH_UNIT_F as STRENGTH_UNIT, F.PHARMACEUTICAL_FORM_F as FORM_NAME, pm.PM_FRENCH_FNAME as PM_NAME,";
@@ -1478,7 +1478,7 @@ namespace drug
     //                    while (dr.Read())
     //                    {
     //                        var item = new DrugProduct();
-    //                        if (lang.Equals("fr"))
+    //                        if (lang != null && lang.Equals("fr"))
     //                        {
     //                            item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME_F"].ToString().Trim() : dr["BRAND_NAME"].ToString().Trim();
     //                        }
@@ -1544,7 +1544,7 @@ namespace drug
     //    var items = new List<DrugProduct>();
     //    string commandText = "SELECT DISTINCT A.DRUG_CODE, A.DRUG_IDENTIFICATION_NUMBER, A.NUMBER_OF_AIS, A.AI_GROUP_NO,";
     //    commandText += " B.COMPANY_CODE, E.DOSAGE_VALUE, E.DOSAGE_UNIT, E.STRENGTH, ";
-    //    if (lang.Equals("fr"))
+    //    if (lang != null && lang.Equals("fr"))
     //    {
     //        commandText += " A.BRAND_NAME, A.BRAND_NAME_F, A.CLASS_F as CLASS,D.SCHEDULE_F as SCHEDULE, E.INGREDIENT_F as INGREDIENT,";
     //        commandText += " E.STRENGTH_UNIT_F as STRENGTH_UNIT, EX.EXTERNAL_STATUS_FRENCH as EXTERNAL_STATUS, pm.PM_FRENCH_FNAME as PM_NAME";
@@ -1579,7 +1579,7 @@ namespace drug
     //                    {
     //                        var item = new DrugProduct();
 
-    //                        if (lang.Equals("fr"))
+    //                        if (lang != null && lang.Equals("fr"))
     //                        {
     //                            item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
     //                        }
@@ -1634,7 +1634,7 @@ namespace drug
     //    var items = new List<DrugProduct>();
     //    string commandText = "SELECT DISTINCT D.DRUG_CODE, D.DRUG_IDENTIFICATION_NUMBER, D.NUMBER_OF_AIS, D.AI_GROUP_NO,";
     //    commandText += " C.COMPANY_NAME, I.DOSAGE_VALUE, I.DOSAGE_UNIT, I.STRENGTH, ";
-    //    if (lang.Equals("fr"))
+    //    if (lang != null && lang.Equals("fr"))
     //    {
     //        commandText += " D.BRAND_NAME, D.BRAND_NAME_F, D.CLASS_F as CLASS, S.SCHEDULE_F as SCHEDULE, I.INGREDIENT_F as INGREDIENT,";
     //        commandText += " I.STRENGTH_UNIT_F as STRENGTH_UNIT, EX.EXTERNAL_STATUS_FRENCH as EXTERNAL_STATUS, PM.PM_FRENCH_FNAME as PM_NAME";
@@ -1677,7 +1677,7 @@ namespace drug
     //    commandText += ")";
 
 
-    //    if (lang.Equals("fr"))
+    //    if (lang != null && lang.Equals("fr"))
     //    {
     //        orderClause += " translate(C.COMPANY_NAME,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'), translate(D.BRAND_NAME_F,'ÀÂÄÇÈÉËÊÌÎÏÒÔÖÙÚÛÜ','AAACEEEEIIIOOOUUUU'),";
     //    }
@@ -1700,7 +1700,7 @@ namespace drug
     //                    while (dr.Read())
     //                    {
     //                        var item = new DrugProduct();
-    //                        if (lang.Equals(
+    //                        if (lang != null && lang.Equals(
     //                        {
     //                            item.brand_name = dr["BRAND_NAME_F"] == DBNull.Value ? dr["BRAND_NAME"].ToString().Trim() : dr["BRAND_NAME_F"].ToString().Trim();
     //                        }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
@@ -16,7 +17,17 @@ namespace DpdWebApi
 
     public class WebApiApplication : System.Web.HttpApplication
     {
-        
+        private readonly Logger logger = LogManager.GetCurrentClassLogger();
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+            if (exception != null)
+            {
+                logger.Debug(exception);
+            }
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

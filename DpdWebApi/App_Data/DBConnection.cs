@@ -91,6 +91,7 @@ namespace drug
                                 //{
                                 //    item.company = company;
                                 //}
+                                item.last_update_date = dr["LAST_UPDATE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["LAST_UPDATE_DATE"]);
                                 drugProduct = item;
                             }
                         }
@@ -267,6 +268,7 @@ namespace drug
                                 //{
                                 //    item.company = company;
                                 //}
+                                item.last_update_date = dr["LAST_UPDATE_DATE"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["LAST_UPDATE_DATE"]);
                                 items.Add(item);
                             }
                         }

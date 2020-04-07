@@ -14,5 +14,6 @@ namespace DpdWebApi.Models
         
         public string company_name { get; set; }
         //public Company company { get; set; }
+        public DateTime? last_update_date { get; set; }
     }
 }

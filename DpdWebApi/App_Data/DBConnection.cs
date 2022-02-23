@@ -1257,16 +1257,16 @@ namespace drug
                                 var item = new TherapeuticClass();
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.tc_atc_number = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
-                                item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
+                                //item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
                                 if (lang != null && lang.Equals("fr"))
                                 {
                                     item.tc_atc = dr["TC_ATC_F"] == DBNull.Value ? dr["TC_ATC"].ToString().Trim() : dr["TC_ATC_F"].ToString().Trim();
-                                    item.tc_ahfs = dr["TC_AHFS_F"] == DBNull.Value ? dr["TC_AHFS"].ToString().Trim() : dr["TC_AHFS_F"].ToString().Trim();
+                                //    item.tc_ahfs = dr["TC_AHFS_F"] == DBNull.Value ? dr["TC_AHFS"].ToString().Trim() : dr["TC_AHFS_F"].ToString().Trim();
                                 }
                                 else
                                 {
                                     item.tc_atc = dr["TC_ATC"] == DBNull.Value ? dr["TC_ATC_F"].ToString().Trim() : dr["TC_ATC"].ToString().Trim();
-                                    item.tc_ahfs = dr["TC_AHFS"] == DBNull.Value ? dr["TC_AHFS_F"].ToString().Trim() : dr["TC_AHFS"].ToString().Trim();
+                                //    item.tc_ahfs = dr["TC_AHFS"] == DBNull.Value ? dr["TC_AHFS_F"].ToString().Trim() : dr["TC_AHFS"].ToString().Trim();
                                 }
                                 
                                 items.Add(item);
@@ -1311,16 +1311,16 @@ namespace drug
                                 var item = new TherapeuticClass();
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
                                 item.tc_atc_number = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
-                                item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
+                                //item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
                                 if (lang != null && lang.Equals("fr"))
                                 {
                                     item.tc_atc = dr["TC_ATC_F"] == DBNull.Value ? dr["TC_ATC"].ToString().Trim() : dr["TC_ATC_F"].ToString().Trim();
-                                    item.tc_ahfs = dr["TC_AHFS_F"] == DBNull.Value ? dr["TC_AHFS"].ToString().Trim() : dr["TC_AHFS_F"].ToString().Trim();
+                                //    item.tc_ahfs = dr["TC_AHFS_F"] == DBNull.Value ? dr["TC_AHFS"].ToString().Trim() : dr["TC_AHFS_F"].ToString().Trim();
                                 }
                                 else
                                 {
                                     item.tc_atc = dr["TC_ATC"] == DBNull.Value ? dr["TC_ATC_F"].ToString().Trim() : dr["TC_ATC"].ToString().Trim();
-                                    item.tc_ahfs = dr["TC_AHFS"] == DBNull.Value ? dr["TC_AHFS_F"].ToString().Trim() : dr["TC_AHFS"].ToString().Trim();
+                                //    item.tc_ahfs = dr["TC_AHFS"] == DBNull.Value ? dr["TC_AHFS_F"].ToString().Trim() : dr["TC_AHFS"].ToString().Trim();
                                 }
                                 //therapeuticClass = item;
                                 items.Add(item);

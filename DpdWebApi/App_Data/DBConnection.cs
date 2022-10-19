@@ -1239,8 +1239,7 @@ namespace drug
         public List<TherapeuticClass> GetAllTherapeuticClass(string lang = "")
         {
             var items = new List<TherapeuticClass>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A, DPD_ONLINE_OWNER.WQRY_AHFS B";
-            commandText += " WHERE A.DRUG_CODE = B.DRUG_CODE";
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A";
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
                 OracleCommand cmd = new OracleCommand(commandText, con);
@@ -1293,8 +1292,8 @@ namespace drug
         {
             //var therapeuticClass = new TherapeuticClass();
             var items = new List<TherapeuticClass>();
-            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A, DPD_ONLINE_OWNER.WQRY_AHFS B";
-            commandText += " WHERE A.DRUG_CODE = B.DRUG_CODE AND A.DRUG_CODE = :id ";
+            string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A";
+            commandText += " WHERE A.DRUG_CODE = :id ";
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
             {

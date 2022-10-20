@@ -1239,6 +1239,7 @@ namespace drug
         public List<TherapeuticClass> GetAllTherapeuticClass(string lang = "")
         {
             var items = new List<TherapeuticClass>();
+            //AHFS info no longer needs to be displayed. Therefore, therapeutic Class drug does not need to query WQRY_AHFS for info.  
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A";
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
@@ -1255,7 +1256,7 @@ namespace drug
                             {
                                 var item = new TherapeuticClass();
                                 item.drug_code = dr["DRUG_CODE"] == DBNull.Value ? 0 : Convert.ToInt32(dr["DRUG_CODE"]);
-                                item.tc_atc_number = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim();
+                                item.tc_atc_number = dr["TC_ATC_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_ATC_NUMBER"].ToString().Trim(); 
                                 //item.tc_ahfs_number = dr["TC_AHFS_NUMBER"] == DBNull.Value ? string.Empty : dr["TC_AHFS_NUMBER"].ToString().Trim();
                                 item.tc_ahfs_number = "";
                                 if (lang != null && lang.Equals("fr"))
@@ -1292,6 +1293,7 @@ namespace drug
         {
             //var therapeuticClass = new TherapeuticClass();
             var items = new List<TherapeuticClass>();
+            //AHFS info no longer needs to be displayed. Therefore, no need to query WQRY_AHFS.  
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ATC A";
             commandText += " WHERE A.DRUG_CODE = :id ";
             using (

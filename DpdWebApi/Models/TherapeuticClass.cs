@@ -11,8 +11,9 @@ namespace DpdWebApi.Models
         public int drug_code { get; set; }
         public string tc_atc_number { get; set; }
         public string tc_atc { get; set; }
-        public string tc_ahfs_number { get; set; }
-        public string tc_ahfs { get; set; }
+        //2026 March, AHFS no longer support in DPD API
+        //public string tc_ahfs_number { get; set; }
+        //public string tc_ahfs { get; set; }
 
     }
 }

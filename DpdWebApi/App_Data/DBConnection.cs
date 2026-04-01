@@ -212,8 +212,7 @@ namespace drug
             
             if (brandname.Length > 0)
             {
-                commandText += " AND (UPPER(A.BRAND_NAME) like :brandname ) ";
-                commandText += " OR UPPER(A.BRAND_NAME_F) like :brandname ";
+                commandText += " AND ( (UPPER(A.BRAND_NAME) like :brandname ) OR (UPPER(A.BRAND_NAME_F) like :brandname ) ) ";
             }
             commandText += " ORDER BY" + orderClause + " A.DRUG_IDENTIFICATION_NUMBER";
 

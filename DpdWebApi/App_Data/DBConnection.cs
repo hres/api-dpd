@@ -410,7 +410,7 @@ namespace drug
 
             if (ingredientname.Length > 0)
             {
-                commandText += " WHERE (UPPER(INGREDIENT) LIKE :ingredientname ";
+                commandText += " WHERE ( UPPER(INGREDIENT) LIKE :ingredientname ";
                 commandText += " OR UPPER(INGREDIENT_F) LIKE :ingredientname )";
             }
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
@@ -641,7 +641,7 @@ namespace drug
             if (active.ToUpper().Equals("YES"))
             {
 
-                commandText = commandText + " WHERE INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
+                commandText = commandText + " WHERE ( INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE )";
             }
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
@@ -694,7 +694,7 @@ namespace drug
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_ROUTE WHERE DRUG_CODE = :id ";
             if (active.ToUpper().Equals("YES"))
             {
-                commandText = commandText + " AND INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
+                commandText = commandText + " AND (INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE)";
             }
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
@@ -859,7 +859,7 @@ namespace drug
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM";
             if (active.ToUpper().Equals("YES"))
             {
-                commandText = commandText + " WHERE INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
+                commandText = commandText + " WHERE (INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE)";
             }
             
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
@@ -912,7 +912,7 @@ namespace drug
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_FORM WHERE DRUG_CODE = :id ";
             if (active.ToUpper().Equals("YES"))
             {
-                commandText = commandText + " AND INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
+                commandText = commandText + " AND (INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE)";
             }
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))
@@ -1134,7 +1134,7 @@ namespace drug
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE";
             if (active.ToUpper().Equals("YES"))
             {
-                commandText = commandText + " WHERE INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
+                commandText = commandText + " WHERE (INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE)";
             }
             using (OracleConnection con = new OracleConnection(DpdDBConnection))
             {
@@ -1186,7 +1186,7 @@ namespace drug
             string commandText = "SELECT * FROM DPD_ONLINE_OWNER.WQRY_SCHEDULE WHERE DRUG_CODE = :id ";
             if (active.ToUpper().Equals("YES"))
             {
-                commandText = commandText + " AND INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE";
+                commandText = commandText + " AND (INACTIVE_DATE IS NULL OR INACTIVE_DATE > SYSDATE)";
             }
             using (
             OracleConnection con = new OracleConnection(DpdDBConnection))

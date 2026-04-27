@@ -11,8 +11,10 @@ namespace DpdWebApi.Models
         public int drug_code { get; set; }
         public string tc_atc_number { get; set; }
         public string tc_atc { get; set; }
-        public string tc_ahfs_number { get; set; }
-        public string tc_ahfs { get; set; }
+
+        //2026 Do not support AHFS
+        //public string tc_ahfs_number { get; set; }
+        //public string tc_ahfs { get; set; }
 
     }
 }

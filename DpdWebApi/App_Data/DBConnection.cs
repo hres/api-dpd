@@ -1323,7 +1323,7 @@ namespace drug
                                 {
                                     item.tc_atc = dr["TC_ATC"] == DBNull.Value ? dr["TC_ATC_F"].ToString().Trim() : dr["TC_ATC"].ToString().Trim();
                                 //    item.tc_ahfs = dr["TC_AHFS"] == DBNull.Value ? dr["TC_AHFS_F"].ToString().Trim() : dr["TC_AHFS"].ToString().Trim();
-                                }
+                                }//
                                 //therapeuticClass = item;
                                 //item.tc_ahfs = "";
                                 items.Add(item);
